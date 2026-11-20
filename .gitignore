@@ -10,3 +10,7 @@ dist/
 airgus.toml
 data/
 .claude/
+
+# Own night logs stay local; only the sample night for the regression tests is versioned
+logs/*
+!logs/2026-11-14/
