@@ -32,18 +32,18 @@ h2 { font-size: 15px; margin: 0 0 10px; display: inline-block; }
 h3 { font-size: 13px; margin: 12px 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
 main { display: grid; gap: 16px; padding: 16px; max-width: 1600px; margin: 0 auto;
   grid-template-columns: 1fr;
-  grid-template-areas: "control" "mount" "rig" "alerts" "guiding" "settings"; }
+  grid-template-areas: "control" "mount" "rig" "alerts" "timeline" "guiding" "settings"; }
 @media (min-width: 720px) {
   main { grid-template-columns: 1fr 1fr;
-    grid-template-areas: "control mount" "rig alerts" "guiding guiding" "settings settings"; }
+    grid-template-areas: "control mount" "rig alerts" "timeline timeline" "guiding guiding" "settings settings"; }
 }
 @media (min-width: 1280px) {
   main { grid-template-columns: 1fr 1fr 1fr 1.4fr;
-    grid-template-areas: "control mount rig alerts" "guiding guiding guiding guiding"
+    grid-template-areas: "control mount rig alerts" "timeline timeline timeline timeline" "guiding guiding guiding guiding"
                          "settings settings settings settings"; }
 }
 #control { grid-area: control; } #mount { grid-area: mount; } #rig { grid-area: rig; }
-#alerts { grid-area: alerts; } #guiding { grid-area: guiding; } #settings { grid-area: settings; }
+#alerts { grid-area: alerts; } #timeline-card { grid-area: timeline; } #guiding { grid-area: guiding; } #settings { grid-area: settings; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; min-width: 0; }
 .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 label { display: block; margin: 8px 0; color: var(--muted); font-size: 13px; }
@@ -124,3 +124,18 @@ body.no-live .live { display: none; }
 /* value from a live connection that is down: last known, shown grey */
 dd.stale, dd.stale.bad, #mount-info.stale { color: var(--muted); }
 #mount-view.stale { opacity: 0.35; filter: grayscale(1); }
+
+/* timeline */
+#timeline svg { display: block; font-size: 12px; }
+.tl-label { fill: var(--muted); }
+.tl-on { fill: var(--ok); opacity: .55; }
+.tl-off { fill: var(--muted); opacity: .35; }
+.tl-tick { stroke: var(--ok); stroke-width: 1.5; }
+.tl-stall { fill: var(--high); opacity: .14; }
+.tl-axis { stroke: var(--border); }
+.tl-grid { stroke: var(--border); stroke-dasharray: 2 3; }
+.tl-alert { stroke: var(--card); stroke-width: 1; }
+.tl-alert.sev-WARNING { fill: var(--warning); } .tl-alert.sev-HIGH { fill: var(--high); } .tl-alert.sev-EMERGENCY { fill: var(--emergency); }
+.tl-key { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin: 0 4px 0 12px; vertical-align: -1px; }
+.tl-key.on { background: var(--ok); opacity: .55; } .tl-key.off { background: var(--muted); opacity: .35; }
+.tl-key.stall { background: var(--high); opacity: .3; } .tl-key.alert { background: var(--high); border-radius: 50%; }

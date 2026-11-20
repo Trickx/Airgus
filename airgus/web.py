@@ -79,6 +79,10 @@ def create_app(data_dir: Path, logs_root: Path) -> FastAPI:
     def frames():
         return monitor.frames()
 
+    @app.get("/api/timeline")
+    def timeline():
+        return monitor.timeline.to_dict()
+
     @app.get("/api/folders")
     def folders():
         return {"root": str(monitor.logs_root), "folders": monitor.folders()}

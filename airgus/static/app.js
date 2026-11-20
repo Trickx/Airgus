@@ -212,11 +212,79 @@ function fmtDuration(s) {
 
 let pageCode;  // code_started of the backend this page was loaded from
 
+// --- timeline (which part of the rig was active when) ---------------------------------
+
+let timelineLoaded = 0, timelineStatus = null;
+
+async function loadTimeline() {
+  timelineLoaded = Date.now();
+  try { renderTimeline(await api("/api/timeline")); } catch (e) { /* next status update retries */ }
+}
+
+function maybeLoadTimeline(s) {
+  // refresh every few seconds while running, and once when a run changes state
+  const status = s.run.status;
+  if (status !== timelineStatus || (status === "running" && Date.now() - timelineLoaded > 4000)) {
+    timelineStatus = status;
+    loadTimeline();
+  }
+}
+
+window.addEventListener("resize", () => { if (timelineLoaded) loadTimeline(); });
+
+function renderTimeline(tl) {
+  const box = $("#timeline");
+  if (!tl.start || tl.start === tl.end) {
+    box.innerHTML = `<p class="muted">Noch keine Daten – sie entstehen beim Abspielen oder live.</p>`;
+    return;
+  }
+  const t0 = Date.parse(tl.start), t1 = Date.parse(tl.end), span = Math.max(t1 - t0, 60000);
+  // drawn at the card's real width, so labels keep their size on wide screens
+  const W = Math.max(560, Math.round(box.clientWidth || 1000)), L = 110, R = W - 12, laneH = 22, top = 34;
+  const x = (iso) => L + (Date.parse(iso) - t0) / span * (R - L);
+  const lanes = [{ name: "Bilder", ticks: tl.exposures }, ...tl.lanes];
+  const H = top + lanes.length * (laneH + 8) + 28;
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const hhmm = (ms) => new Date(ms).toTimeString().slice(0, 5);
+  const parts = [];
+  for (const [s, e] of tl.stalls) {
+    parts.push(`<rect class="tl-stall" x="${x(s)}" y="${top - 6}" width="${Math.max(2, x(e) - x(s))}" height="${lanes.length * (laneH + 8) + 4}" rx="3"><title>Aufnahme hing ${s.slice(11, 16)}–${e.slice(11, 16)}</title></rect>`);
+  }
+  lanes.forEach((lane, i) => {
+    const y = top + i * (laneH + 8);
+    parts.push(`<text class="tl-label" x="8" y="${y + 15}">${esc(lane.name)}</text>`);
+    if (lane.ticks) {
+      for (const t of lane.ticks) parts.push(`<line class="tl-tick" x1="${x(t)}" x2="${x(t)}" y1="${y + 2}" y2="${y + laneH - 2}"/>`);
+      if (!lane.ticks.length) parts.push(`<text class="tl-label" x="${L}" y="${y + 15}">keine</text>`);
+    } else {
+      for (const [s, e, kind] of lane.segments) {
+        parts.push(`<rect class="tl-seg ${kind === "off" ? "tl-off" : "tl-on"}" x="${x(s)}" y="${y + 4}" width="${Math.max(1.5, x(e) - x(s))}" height="${laneH - 8}" rx="3"><title>${esc(lane.name)} ${kind === "off" ? "aus" : "aktiv"} ${s.slice(11, 16)}–${e.slice(11, 16)}</title></rect>`);
+      }
+    }
+  });
+  for (const a of tl.alerts) {
+    parts.push(`<circle class="tl-alert sev-${a.severity}" cx="${x(a.time)}" cy="${top - 14}" r="4"><title>${a.time.slice(11, 16)} ${esc(a.title)}</title></circle>`);
+  }
+  const axisY = top + lanes.length * (laneH + 8) + 2;
+  parts.push(`<line class="tl-axis" x1="${L}" x2="${R}" y1="${axisY}" y2="${axisY}"/>`);
+  const pxPerHour = (R - L) / (span / 3600e3);
+  const stepMin = pxPerHour < 45 ? 120 : pxPerHour < 90 ? 60 : pxPerHour < 180 ? 30 : pxPerHour < 400 ? 15 : 5;
+  const step = stepMin * 60e3;
+  for (let t = Math.ceil(t0 / step) * step; t <= t1; t += step) {
+    const px = L + (t - t0) / span * (R - L);
+    parts.push(`<line class="tl-grid" x1="${px}" x2="${px}" y1="${top - 6}" y2="${axisY}"/><text class="tl-label" x="${px}" y="${axisY + 16}" text-anchor="middle">${hhmm(t)}</text>`);
+  }
+  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Zeitleiste der Sitzung">${parts.join("")}</svg>
+    <div class="legend"><span class="tl-key on"></span>aktiv / führt nach <span class="tl-key off"></span>Nachführung aus
+    <span class="tl-key stall"></span>Aufnahme hing <span class="tl-key alert"></span>Meldung</div>`;
+}
+
 function renderStatus(s) {
   // Airgus was restarted with new code: this page (HTML/JS) is outdated, load the current one.
   if (pageCode === undefined) pageCode = s.code_started;
   else if (s.code_started !== undefined && s.code_started !== pageCode) { location.reload(); return; }
   last = s;
+  maybeLoadTimeline(s);
   $("#restart-banner").hidden = s.restart_needed === false;
   const r = s.run;
   const badge = $("#run-badge");
@@ -481,7 +549,7 @@ function connect() {
   es.addEventListener("frames", (e) => addFrames(JSON.parse(e.data)));
   es.addEventListener("alert", (e) => addAlert(JSON.parse(e.data)));
   es.addEventListener("notice", (e) => toast(JSON.parse(e.data).text));
-  es.addEventListener("reset", () => { frames = []; alerts = []; renderAlerts(); });
+  es.addEventListener("reset", () => { frames = []; alerts = []; renderAlerts(); loadTimeline(); });
 }
 
 async function init() {

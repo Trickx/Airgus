@@ -21,6 +21,7 @@ from .rules import default_rules
 from .settings import SettingsStore
 from .fs import MultiFS, SmbFS
 from .sources import FolderTail, log_files, replay
+from .timeline import Timeline
 
 PACKAGE_DIR = Path(__file__).resolve().parent
 
@@ -82,6 +83,7 @@ class Monitor:
         self._anchor: tuple[float, datetime] | None = None  # (loop time, sim time)
         self._subscribers: set[asyncio.Queue] = set()
         self._frames: deque[dict] = deque(maxlen=FRAME_BUFFER)
+        self.timeline = Timeline()
         self._new_frames: list[dict] = []
         self._push_queue: asyncio.Queue[Alert] = asyncio.Queue()
         self._background: list[asyncio.Task] = []
@@ -178,6 +180,7 @@ class Monitor:
         self.sim_time = None
         self._anchor = None
         self._frames.clear()
+        self.timeline = Timeline()
         self.tail = None
         self._new_frames = []
         self._publish("reset", {})
@@ -249,6 +252,7 @@ class Monitor:
             return  # the live guider already delivered this frame
         self.engine.process(ev)
         self.sim_time = ev.time
+        self.timeline.add(ev)
         if isinstance(ev, GuideFrame):
             scale = self.engine.state.pixel_scale
             f = {"t": ev.time.isoformat(), "ra": round(ev.ra_px * scale, 2), "dec": round(ev.dec_px * scale, 2),
@@ -259,6 +263,7 @@ class Monitor:
     # --- alerts --------------------------------------------------------------
 
     def _on_alert(self, alert: Alert) -> None:
+        self.timeline.add_alert(alert)
         self._publish("alert", alert_dict(alert))
         if self.mode == "live" or self.push_enabled:
             po = self.store.pushover()
