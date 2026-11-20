@@ -6,9 +6,9 @@ Live log monitor for ASIAIR and NINA: watches PHD2 and session logs over SMB, de
 failed meridian flips and stalled sessions, and alerts via Pushover or Home Assistant (MQTT).
 Web UI, runs in Docker.
 
-> **Status:** early prototype. ASIAIR + PHD2 log parsing, rule engine, web UI (replay with adjustable
-> speed, live folder monitoring, guiding chart, 3D mount view, settings) and Pushover work.
-> NINA adapter and Home Assistant/MQTT are planned (see roadmap).
+> **Status:** early prototype. ASIAIR, NINA, PHD2 and iOptron Commander log parsing, rule engine, web UI
+> (replay with adjustable speed, live folder monitoring, guiding chart, 3D mount view, settings) and
+> Pushover work. Home Assistant/MQTT is planned (see roadmap).
 
 ## What it detects
 
@@ -29,6 +29,7 @@ Web UI, runs in Docker.
 | `main-camera` | Main camera: every `CameraStateChange` on port 4700 is listed (the event does not say whether it was connected or disconnected; warning during a sequence), high if no exposure starts within 3 min; port 4700 queries such as `get_camera_state` are only answered to the verified ASIAIR app ¹ | warning / high / info |
 | `focuser` | EAF: reopened during a sequence (port 4700 `OpenEAF`; closing sends nothing) is a warning; the live position (`get_focuser_info`) is only answered to the verified ASIAIR app ¹ | high / warning / info |
 | `mount-home` | Mount driven to its home position (port 4400 `ScopeHome`): warning while a sequence runs, info when it arrives ¹ | warning / info |
+| `app-error` | Unhandled exception in NINA: a crash is high during a sequence (warning otherwise), others are listed | high / warning / info |
 | `controller-health` | ASIAIR reports undervoltage, overcurrent or overheating ¹ | high / warning |
 | `wifi` | ASIAIR WLAN signal stays weak ¹ | warning |
 | `controller-offline` | Live connection to the ASIAIR lost while a sequence runs ¹ | high |
@@ -37,6 +38,18 @@ Web UI, runs in Docker.
 
 Failure lines the ASIAIR writes after "Stop Autorun Manually" (cancelled center, flip, settle) are the
 consequence of stopping by hand and are not reported.
+
+## Supported logs
+
+| System | Files | Used for |
+|---|---|---|
+| ASIAIR | `Autorun_Log_*.txt` | sequence, exposures, flips, auto-center, autofocus, tracking |
+| PHD2 (ASIAIR and Windows) | `PHD2_GuideLog_*.txt` | guiding frames, star loss, settling, dithering, calibration (`PHD2_DebugLog_*` is ignored) |
+| NINA 3.x | `YYYYMMDD-HHMMSS-<version>.<pid>-YYYYMM.log` | sequence and target, light/flat/dark frames, meridian flip incl. tracking stop, centering, autofocus and focuser position, PHD2 settle errors, mount/camera/focuser disconnects during a sequence, crashes |
+| iOptron Commander | `iOptronCommander*Log_YYYYMMDD.txt` | tracking state as reported by the mount itself (status of `:GLS#`) |
+
+Put the logs of one night (or one system) in a folder below the log folder; replay merges all files
+in time order. After a NINA "Sequence run was cancelled", centering or settle failures are not reported.
 
 ## Live logs over SMB
 
@@ -134,7 +147,8 @@ Rules never see raw log text, so adding NINA only means adding a parser.
 - [x] Live connection to the ASIAIR control port (4700)
 - [x] Live guiding events from the ASIAIR guider port (4400, PHD2 event format)
 - [x] Built-in SMB client for live logs
-- [ ] NINA log adapter (and optionally live events via the NINA Advanced API plugin)
+- [x] NINA log adapter (NINA 3.x logs, iOptron Commander serial logs)
+- [ ] live events via the NINA Advanced API plugin
 - [x] Web UI: state, guiding graph, alert history, configuration, replay speed, 3D mount view
 - [ ] Authentication for the web UI (currently binds to localhost by default)
 - [ ] Home Assistant via MQTT discovery (sensors, alert events, mute/acknowledge)

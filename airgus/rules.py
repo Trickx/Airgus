@@ -13,10 +13,12 @@ from typing import Iterable
 
 from .alerts import Alert, Severity
 from .events import (
+    ApplicationError,
     AutoCenterResult,
     CalibrationFailed,
     ControllerDisconnected,
     ControllerHealth,
+    DeviceConnection,
     DeviceStatus,
     Event,
     ExposureProgress,
@@ -507,7 +509,19 @@ class DeviceLostRule(Rule):
     def __init__(self) -> None:
         self._last: DeviceStatus | None = None
 
+    NINA_DEVICES = {"mount": ("Montierung", "zur"), "camera": ("Kamera", "zur"), "focuser": ("Fokussierer", "zum")}
+
     def on_event(self, ev: Event, state: RigState) -> Iterable[Alert]:
+        if isinstance(ev, DeviceConnection):  # NINA log; outside a sequence (e.g. closing NINA) not of interest
+            label, article = self.NINA_DEVICES.get(ev.device, (ev.device, "zu"))
+            if not ev.connected and state.imaging:
+                yield self.alert(ev.time, Severity.HIGH, f"{label} getrennt",
+                                 f"NINA hat die Verbindung {article} {label} während der Sequenz getrennt. "
+                                 f"{_where(state, ev.time)}".strip(), key=f"device-lost-{ev.device}")
+            elif ev.connected and state.imaging:
+                yield self.alert(ev.time, Severity.INFO, f"{label} verbunden",
+                                 f"{ev.name or label} ist wieder mit NINA verbunden.", key=f"device-back-{ev.device}")
+            return
         if isinstance(ev, GuiderDisconnected):
             self._last = None  # no answers now: unknown, not lost
             return
@@ -651,6 +665,25 @@ class MountHomeRule(Rule):
                              "Die Montierung hat die Home-Position erreicht.", key="mount-home-done")
 
 
+class ApplicationErrorRule(Rule):
+    """Unhandled exception in the imaging software (NINA): a crash is high, others are listed."""
+
+    name = "app-error"
+    cooldown = timedelta(minutes=5)
+
+    def on_event(self, ev: Event, state: RigState) -> Iterable[Alert]:
+        if not isinstance(ev, ApplicationError):
+            return
+        if ev.fatal:
+            yield self.alert(ev.time, Severity.HIGH if state.imaging else Severity.WARNING,
+                             "Aufnahmeprogramm abgestürzt",
+                             f"{ev.message} - das Programm beendet sich. {_where(state, ev.time)}".strip(),
+                             key="app-crash")
+        else:
+            yield self.alert(ev.time, Severity.INFO, "Fehler im Aufnahmeprogramm",
+                             f"{ev.message} (das Programm läuft weiter).", key="app-error")
+
+
 class ControllerHealthRule(Rule):
     """ASIAIR reports undervoltage, overcurrent or overheating (live connection)."""
 
@@ -720,7 +753,7 @@ class ControllerOfflineRule(Rule):
 
 RULE_CLASSES: list[type[Rule]] = [RunawayRule, StarLostRule, CalibrationRule, SettleRule, MeridianFlipRule,
                                    PastMeridianRule, RmsRule, SnrDropRule, StaleLogRule, TrackingOffRule,
-                                   PlateSolveRule, DeviceLostRule, MainCameraRule, FocuserRule, MountHomeRule,
+                                   PlateSolveRule, DeviceLostRule, MainCameraRule, FocuserRule, MountHomeRule, ApplicationErrorRule,
                                    ControllerHealthRule, WifiRule, ControllerOfflineRule]
 
 

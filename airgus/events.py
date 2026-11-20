@@ -15,6 +15,7 @@ class Source(str, Enum):
     PHD2 = "phd2"
     ASIAIR = "asiair"
     NINA = "nina"
+    IOPTRON = "ioptron"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -52,6 +53,23 @@ class FramesStarted(Event):
 @dataclass(frozen=True, kw_only=True)
 class TrackingStartFailed(Event):
     """ASIAIR could not start tracking ("[Guide] Start Tracking failed")."""
+
+
+@dataclass(frozen=True, kw_only=True)
+class DeviceConnection(Event):
+    """A device was connected or disconnected in the imaging software (NINA: mount, camera, focuser)."""
+
+    device: str  # "mount" / "camera" / "focuser"
+    connected: bool
+    name: str | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class ApplicationError(Event):
+    """Unhandled exception in the imaging software; `fatal` = the application terminates."""
+
+    message: str
+    fatal: bool
 
 
 @dataclass(frozen=True, kw_only=True)
