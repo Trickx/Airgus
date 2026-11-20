@@ -2,7 +2,7 @@ const $ = (sel) => document.querySelector(sel);
 const RULE_LABELS = {
   "runaway": "Stern läuft davon", "star-lost": "Leitstern verloren", "calibration": "Kalibrierung", "settle": "Settle-Fehler",
   "meridian-flip": "Meridian-Flip", "past-meridian": "Hinter dem Meridian", "rms": "Guiding-RMS",
-  "snr-drop": "SNR-Abfall", "stale-log": "Log steht still", "tracking-off": "Nachführung aus",
+  "snr-drop": "SNR-Abfall", "stale-log": "Log steht still", "capture-stalled": "Aufnahme hängt", "tracking-off": "Nachführung aus",
   "plate-solve": "Plate Solve", "device-lost": "Gerät getrennt", "main-camera": "Hauptkamera", "focuser": "Fokussierer", "mount-home": "Home-Position", "app-error": "Aufnahmeprogramm",
   "controller-health": "ASIAIR-Stromversorgung/Temperatur", "wifi": "ASIAIR-WLAN",
   "controller-offline": "ASIAIR nicht erreichbar",

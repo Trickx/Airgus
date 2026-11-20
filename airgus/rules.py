@@ -37,6 +37,7 @@ from .events import (
     MeridianFlipFailed,
     MeridianFlipStarted,
     SequenceEnded,
+    SequenceStarted,
     SettleFailed,
     SolveProgress,
     Source,
@@ -416,6 +417,63 @@ class StaleLogRule(Rule):
                              f"Seit {mins:.0f} min keine Aktivität, obwohl die Sequenz läuft.")
 
 
+class CaptureStalledRule(Rule):
+    """The imaging software stops starting exposures although the sequence runs and guiding goes on
+    (NINA frozen after a lost remote-desktop session, hung camera driver).
+
+    The guide log keeps growing in that case, so `stale-log` does not see it. Raised when no exposure
+    started for its duration plus `grace_min` (autofocus, dither, centering fit in there); paused
+    during a meridian flip, which has its own rules.
+    """
+
+    name = "capture-stalled"
+    cooldown = timedelta(minutes=30)
+
+    def __init__(self, grace_min: float = 10.0, guiding_recent_s: float = 120.0) -> None:
+        self.grace = timedelta(minutes=grace_min)
+        self.guiding_recent = timedelta(seconds=guiding_recent_s)
+        self._last_start: datetime | None = None
+        self._duration = timedelta(0)
+        self._last_guide: datetime | None = None
+        self._flip_active = False
+        self._alerted = False
+
+    def on_event(self, ev: Event, state: RigState) -> Iterable[Alert]:
+        if isinstance(ev, GuideFrame):
+            self._last_guide = ev.time
+        elif isinstance(ev, (SequenceStarted, SequenceEnded)):
+            self._last_start, self._alerted, self._flip_active = None, False, False
+        elif isinstance(ev, MeridianFlipStarted):
+            self._flip_active = True
+        elif isinstance(ev, (MeridianFlipCompleted, MeridianFlipFailed)):
+            self._flip_active = False
+            self._last_start = ev.time if self._last_start else None  # count again from the end of the flip
+            self._duration = timedelta(0)
+        elif isinstance(ev, ExposureStarted) or (isinstance(ev, ExposureProgress) and ev.state == "start"):
+            if self._alerted:
+                yield self.alert(ev.time, Severity.INFO, "Belichtungen laufen wieder",
+                                 f"Nach {(ev.time - self._last_start).total_seconds() / 60:.0f} min ohne neue "
+                                 f"Belichtung hat wieder eine begonnen.",
+                                 key="capture-resumed")
+            self._last_start, self._alerted = ev.time, False
+            self._duration = timedelta(seconds=ev.duration_s or 0)
+
+    def on_tick(self, now: datetime, state: RigState) -> Iterable[Alert]:
+        if self._alerted or self._flip_active or self._last_start is None or not state.imaging:
+            return
+        if state.frame_type in ("flat", "dark", "bias"):
+            return
+        guiding = self._last_guide is not None and now - self._last_guide <= self.guiding_recent
+        silent = now - self._last_start
+        if not guiding or silent < self._duration + self.grace:
+            return
+        self._alerted = True
+        yield self.alert(now, Severity.HIGH, "Aufnahme hängt",
+                         f"Seit {silent.total_seconds() / 60:.0f} min keine neue Belichtung, obwohl die Sequenz "
+                         f"läuft und PHD2 weiter guidet. Aufnahmeprogramm eingefroren (z. B. Remote-Desktop "
+                         f"getrennt) oder Kamera hängt? {_where(state, now)}".strip())
+
+
 class TrackingOffRule(Rule):
     """Mount tracking stays off while a sequence runs (meridian flip stuck, tracking stopped by hand).
 
@@ -752,7 +810,7 @@ class ControllerOfflineRule(Rule):
 
 
 RULE_CLASSES: list[type[Rule]] = [RunawayRule, StarLostRule, CalibrationRule, SettleRule, MeridianFlipRule,
-                                   PastMeridianRule, RmsRule, SnrDropRule, StaleLogRule, TrackingOffRule,
+                                   PastMeridianRule, RmsRule, SnrDropRule, StaleLogRule, CaptureStalledRule, TrackingOffRule,
                                    PlateSolveRule, DeviceLostRule, MainCameraRule, FocuserRule, MountHomeRule, ApplicationErrorRule,
                                    ControllerHealthRule, WifiRule, ControllerOfflineRule]
 

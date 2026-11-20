@@ -118,3 +118,40 @@ def test_ioptron_status():
     evs = [e for line in lines for e in p.feed(line)]
     assert [(e.time.strftime("%H:%M"), e.on) for e in evs] == [("15:57", False), ("17:41", True), ("19:56", False)]
     assert all(e.source is Source.IOPTRON for e in evs)
+
+
+def test_frozen_nina_while_guiding_goes_on():
+    """2026-11-15: remote desktop dropped at 00:04, NINA saved its last image at 00:52 and hung until 03:10,
+    while PHD2 kept guiding. The guide log stays fresh, so only the missing exposures show it."""
+    from datetime import timedelta
+
+    from airgus.events import GuideFrame
+    from airgus.rules import CaptureStalledRule
+
+    engine = Engine([CaptureStalledRule()])
+    start = LIGHT.replace("2026-11-14T20:22:29", "2026-11-15T00:47:25")
+    for ev in feed([SEQ_START.replace("2026-11-14T20:22:28", "2026-11-15T00:40:00"), start]):
+        engine.process(ev)
+    t, alerts = datetime(2026, 11, 15, 0, 47, 30), []
+    while t < datetime(2026, 11, 15, 3, 10):
+        alerts += engine.process(GuideFrame(time=t, source=Source.PHD2, frame=0, ra_px=0, dec_px=0, ra_pulse_ms=0,
+                                            dec_pulse_ms=0, snr=30, mass=1000, settling=False))
+        t += timedelta(seconds=3)
+    (alert,) = alerts
+    assert alert.title == "Aufnahme hängt" and alert.severity is Severity.HIGH
+    assert "01:02" <= alert.time.strftime("%H:%M") <= "01:03"
+    (back,) = [a for ev in feed([LIGHT.replace("2026-11-14T20:22:29", "2026-11-15T03:13:27")])
+               for a in engine.process(ev)]
+    assert back.title == "Belichtungen laufen wieder" and back.severity is Severity.INFO
+
+
+def test_no_stall_alert_without_guiding_or_during_flip():
+    from airgus.events import MeridianFlipStarted
+    from airgus.rules import CaptureStalledRule
+
+    engine = Engine([CaptureStalledRule()])
+    for ev in feed([SEQ_START, LIGHT]):
+        engine.process(ev)
+    assert engine.tick(datetime(2026, 11, 14, 21, 30)) == []  # no guide frames: stale-log's case
+    engine.process(MeridianFlipStarted(time=datetime(2026, 11, 14, 21, 31), source=Source.NINA))
+    assert engine.tick(datetime(2026, 11, 14, 22, 30)) == []

@@ -23,6 +23,7 @@ Web UI, runs in Docker.
 | `rms` | Rolling total RMS above threshold | warning |
 | `snr-drop` | Guide-star SNR falls well below its starting value (clouds, dew, dawn) | warning |
 | `stale-log` | Sequence running but no new log lines | high |
+| `capture-stalled` | No new exposure for its duration + 10 min while the sequence runs and PHD2 keeps guiding (NINA frozen after a lost remote-desktop session, hung camera); paused during a meridian flip | high |
 | `tracking-off` | Mount tracking off while the sequence runs (Autorun log "Stop Tracking", or live `ScopeTrack` on port 4400 – also when switched off by hand; longer grace during a meridian flip; not for flats, darks and bias; counted from the sequence start; "Start Tracking failed" is reported at once) | high |
 | `plate-solve` | Plate solve failed: preview shots info, during a sequence warning, repeated failures high ¹ | info / warning / high |
 | `device-lost` | Guide camera or mount disconnected from the ASIAIR (high during a sequence, else info); reconnect is listed too ¹ | high / info |
