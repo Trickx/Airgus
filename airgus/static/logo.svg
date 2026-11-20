@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Airgus">
+  <!-- Airgus: the watchful eye (Argus) whose iris is a guide star in its lock reticle -->
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="35%" r="75%">
+      <stop offset="0" stop-color="#1f2a4d"/>
+      <stop offset="1" stop-color="#0d1222"/>
+    </radialGradient>
+    <radialGradient id="iris" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#7cb6ff"/>
+      <stop offset="0.65" stop-color="#3b6fd8"/>
+      <stop offset="1" stop-color="#1f3f8f"/>
+    </radialGradient>
+    <clipPath id="eye">
+      <path d="M14 64 Q64 16 114 64 Q64 112 14 64 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="128" height="128" rx="28" fill="url(#sky)"/>
+
+  <!-- background stars -->
+  <g fill="#cfd8ff">
+    <circle cx="27" cy="25" r="1.6" opacity=".8"/>
+    <circle cx="99" cy="21" r="1.2" opacity=".6"/>
+    <circle cx="108" cy="100" r="1.4" opacity=".7"/>
+    <circle cx="20" cy="104" r="1" opacity=".5"/>
+    <circle cx="86" cy="33" r=".9" opacity=".5"/>
+  </g>
+
+  <!-- eye -->
+  <path d="M14 64 Q64 16 114 64 Q64 112 14 64 Z" fill="#0b1020" opacity=".55"/>
+  <g clip-path="url(#eye)">
+    <circle cx="64" cy="64" r="23" fill="url(#iris)"/>
+    <circle cx="64" cy="64" r="23" fill="none" stroke="#9cc8ff" stroke-width="1.5" opacity=".6"/>
+  </g>
+  <path d="M14 64 Q64 16 114 64 Q64 112 14 64 Z" fill="none" stroke="#e8ecf6" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- guide-star lock reticle -->
+  <rect x="53" y="53" width="22" height="22" rx="2" fill="none" stroke="#5ee39a" stroke-width="2.4"/>
+  <g stroke="#5ee39a" stroke-width="2" stroke-linecap="round">
+    <line x1="64" y1="40" x2="64" y2="48"/>
+    <line x1="64" y1="80" x2="64" y2="88"/>
+    <line x1="40" y1="64" x2="48" y2="64"/>
+    <line x1="80" y1="64" x2="88" y2="64"/>
+  </g>
+
+  <!-- guide star -->
+  <path d="M64 55.5 L66 62 L72.5 64 L66 66 L64 72.5 L62 66 L55.5 64 L62 62 Z" fill="#ffffff"/>
+  <circle cx="64" cy="64" r="2.2" fill="#ffffff"/>
+</svg>

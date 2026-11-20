@@ -1,0 +1,54 @@
+# Airgus configuration. Copy to airgus.toml.
+# Secrets come from the environment: AIRGUS_PUSHOVER_TOKEN, AIRGUS_PUSHOVER_USER.
+
+[pushover]
+min_severity = "WARNING"   # INFO, WARNING, HIGH, EMERGENCY
+
+# Every rule can be disabled with `enabled = false`.
+
+[rules.runaway]            # star runs away while corrections are at their limit
+threshold_arcsec = 30
+min_duration_s = 30
+emergency_after_s = 120
+saturation = 0.9           # pulse >= 90 % of max duration counts as "at the limit"
+
+[rules.star-lost]
+min_lost_s = 15            # ignore shorter drop-outs
+
+[rules.settle]
+count = 3                  # settle failures ...
+window_min = 60            # ... within this window
+
+[rules.meridian-flip]
+max_center_attempts = 5
+
+[rules.past-meridian]
+limit_h = 1.0              # alert if still on the pre-meridian pier side this far past
+
+[rules.rms]
+threshold_arcsec = 2.5     # total RMS (RA+DEC)
+window_min = 10
+
+[rules.snr-drop]
+ratio = 0.5                # alert below 50 % of the SNR at guiding start
+
+[rules.stale-log]
+timeout_min = 10
+
+[rules.tracking-off]
+max_off_min = 5.0          # tracking off while the sequence runs
+flip_grace_min = 10.0      # longer while a meridian flip is in progress
+
+# The following rules need the live ASIAIR connection (web UI: Einstellungen → ASIAIR live).
+[rules.plate-solve]
+escalate_after = 3         # consecutive failures before it becomes HIGH (pushed)
+
+[rules.controller-health]
+max_temp_c = 75.0          # undervoltage/overcurrent always alert
+
+[rules.wifi]
+min_dbm = -75.0
+min_duration_s = 120
+
+[rules.controller-offline]
+offline_s = 60             # only while a sequence runs

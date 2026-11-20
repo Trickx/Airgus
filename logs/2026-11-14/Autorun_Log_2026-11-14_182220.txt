@@ -1,0 +1,1810 @@
+Log enabled at 2026/11/14 18:22:20
+2026/11/14 18:22:20 [Autorun|Begin] M 45 Start
+2026/11/14 18:22:20 Target RA:22h9m20s DEC:+57°44'45"
+2026/11/14 18:22:20 Shooting 20 flat frames, auto-exposure Bin1
+2026/11/14 18:22:34 Exposure 100.0ms image 1#
+2026/11/14 18:22:37 Exposure 100.0ms image 2#
+2026/11/14 18:22:41 Exposure 100.0ms image 3#
+2026/11/14 18:22:43 Exposure 100.0ms image 4#
+2026/11/14 18:22:46 Exposure 100.0ms image 5#
+2026/11/14 18:22:50 Exposure 100.0ms image 6#
+2026/11/14 18:22:53 Exposure 100.0ms image 7#
+2026/11/14 18:22:56 Exposure 100.0ms image 8#
+2026/11/14 18:22:59 Exposure 100.0ms image 9#
+2026/11/14 18:23:02 Exposure 100.0ms image 10#
+2026/11/14 18:23:05 Exposure 100.0ms image 11#
+2026/11/14 18:23:10 Exposure 100.0ms image 12#
+2026/11/14 18:23:13 Exposure 100.0ms image 13#
+2026/11/14 18:23:16 Exposure 100.0ms image 14#
+2026/11/14 18:23:19 Exposure 100.0ms image 15#
+2026/11/14 18:23:22 Exposure 100.0ms image 16#
+2026/11/14 18:23:25 Exposure 100.0ms image 17#
+2026/11/14 18:23:30 Exposure 100.0ms image 18#
+2026/11/14 18:23:33 Exposure 100.0ms image 19#
+2026/11/14 18:23:36 Exposure 100.0ms image 20#
+2026/11/14 18:23:40 [Autorun|End] Finish Autorun
+Log disabled at 2026/11/14 18:23:40
+Log enabled at 2026/11/14 19:10:17
+2026/11/14 19:10:17 Plan M. 51 Darkframes  Start
+2026/11/14 19:10:18 [Autorun|Begin] AE Aurigae Start
+2026/11/14 19:10:18 [AutoCenter|Begin] Auto-Center 1#
+2026/11/14 19:10:18 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/14 19:10:27 Exposure 10.0s
+2026/11/14 19:10:40 Plate Solve
+2026/11/14 19:10:42 Solve succeeded: RA:5h17m36s DEC:+34°28'55" Angle = 1.234, Star number = 538
+2026/11/14 19:10:42 [AutoCenter|End] Too far from center, distance = 2%(0.0306535°)
+2026/11/14 19:10:44 [AutoCenter|Begin] Auto-Center 2#
+2026/11/14 19:10:44 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/14 19:10:49 Stop Autorun Manually
+2026/11/14 19:10:49 [AutoCenter|End] Mount slews failed
+2026/11/14 19:10:49 [Autorun|End] Pause Autorun
+2026/11/14 19:10:49 Pause Plan M. 51 Darkframes 
+Log disabled at 2026/11/14 19:10:49
+Log enabled at 2026/11/14 19:12:24
+2026/11/14 19:12:24 Plan M. 51 Darkframes  Start
+2026/11/14 19:12:24 [Autorun|Begin] AE Aurigae Start
+2026/11/14 19:12:25 [AutoCenter|Begin] Auto-Center 1#
+2026/11/14 19:12:25 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/14 19:12:29 Exposure 10.0s
+2026/11/14 19:12:42 Plate Solve
+2026/11/14 19:12:44 Solve succeeded: RA:5h17m29s DEC:+34°28'9" Angle = 1.209, Star number = 585
+2026/11/14 19:12:44 [AutoCenter|End] The target is centered
+2026/11/14 19:12:44 Start Tracking
+2026/11/14 19:12:46 [Guide] ReSelect Guide star
+2026/11/14 19:12:47 [Guide] Start Guiding
+2026/11/14 19:12:48 [Guide] Guide Settle
+2026/11/14 19:12:51 [Guide] Settle Done
+2026/11/14 19:12:51 Shooting 150 light frames, exposure 300.0s Bin1
+2026/11/14 19:12:51 Exposure 300.0s image 1#
+2026/11/14 19:14:55 Stop Autorun Manually
+2026/11/14 19:14:58 [Guide] Stop Guiding
+2026/11/14 19:14:58 [Autorun|End] Pause Autorun
+2026/11/14 19:14:58 Pause Plan M. 51 Darkframes 
+Log disabled at 2026/11/14 19:14:58
+Log enabled at 2026/11/14 19:19:04
+2026/11/14 19:19:04 Plan M. 51 Darkframes  Start
+2026/11/14 19:19:04 [Autorun|Begin] AE Aurigae Start
+2026/11/14 19:19:04 [Guide] Stop Guiding
+2026/11/14 19:19:04 [AutoCenter|Begin] Auto-Center 1#
+2026/11/14 19:19:04 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/14 19:19:09 Exposure 10.0s
+2026/11/14 19:19:22 Plate Solve
+2026/11/14 19:19:24 Solve succeeded: RA:5h17m26s DEC:+34°28'10" Angle = 1.186, Star number = 645
+2026/11/14 19:19:25 [AutoCenter|End] The target is centered
+2026/11/14 19:19:25 Start Tracking
+2026/11/14 19:19:27 [Guide] ReSelect Guide star
+2026/11/14 19:19:28 [Guide] Start Guiding
+2026/11/14 19:19:29 [Guide] Guide Settle
+2026/11/14 19:19:39 [Guide] Settle Done
+2026/11/14 19:19:39 Shooting 150 light frames, exposure 300.0s Bin1
+2026/11/14 19:19:39 Exposure 300.0s image 1#
+2026/11/14 19:24:45 [Guide] Dither
+2026/11/14 19:24:45 [Guide] Dither Settle
+2026/11/14 19:24:58 [Guide] Settle Done
+2026/11/14 19:24:58 Exposure 300.0s image 2#
+2026/11/14 19:30:04 [Guide] Dither
+2026/11/14 19:30:04 [Guide] Dither Settle
+2026/11/14 19:30:14 [Guide] Settle Done
+2026/11/14 19:30:14 Exposure 300.0s image 3#
+2026/11/14 19:35:20 [Guide] Dither
+2026/11/14 19:35:20 [Guide] Dither Settle
+2026/11/14 19:35:37 [Guide] Settle Done
+2026/11/14 19:35:37 Exposure 300.0s image 4#
+2026/11/14 19:36:35 Stop Autorun Manually
+2026/11/14 19:36:37 [Guide] Stop Guiding
+2026/11/14 19:36:37 [Autorun|End] Pause Autorun
+2026/11/14 19:36:37 Pause Plan M. 51 Darkframes 
+Log disabled at 2026/11/14 19:36:37
+Log enabled at 2026/11/14 19:38:44
+2026/11/14 19:38:44 Plan M. 51 Darkframes  Start
+2026/11/14 19:38:44 [Autorun|Begin] AE Aurigae Start
+2026/11/14 19:38:44 [AutoCenter|Begin] Auto-Center 1#
+2026/11/14 19:38:44 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/14 19:38:49 Exposure 10.0s
+2026/11/14 19:39:02 Plate Solve
+2026/11/14 19:39:04 Solve succeeded: RA:5h17m27s DEC:+34°28'5" Angle = 1.189, Star number = 684
+2026/11/14 19:39:05 [AutoCenter|End] The target is centered
+2026/11/14 19:39:05 Start Tracking
+2026/11/14 19:39:07 [Guide] ReSelect Guide star
+2026/11/14 19:39:08 [Guide] Start Guiding
+2026/11/14 19:39:09 [Guide] Guide Settle
+2026/11/14 19:39:13 [Guide] Settle Done
+2026/11/14 19:39:13 Shooting 150 light frames, exposure 300.0s Bin1
+2026/11/14 19:39:13 [Guide] Dither
+2026/11/14 19:39:13 [Guide] Dither Settle
+2026/11/14 19:39:24 [Guide] Settle Done
+2026/11/14 19:39:24 Exposure 300.0s image 4#
+2026/11/14 19:44:31 [Guide] Dither
+2026/11/14 19:44:31 [Guide] Dither Settle
+2026/11/14 19:44:44 [Guide] Settle Done
+2026/11/14 19:44:44 Exposure 300.0s image 5#
+2026/11/14 19:49:51 [Guide] Dither
+2026/11/14 19:49:51 [Guide] Dither Settle
+2026/11/14 19:50:09 [Guide] Settle Done
+2026/11/14 19:50:09 Exposure 300.0s image 6#
+2026/11/14 19:55:16 [Guide] Dither
+2026/11/14 19:55:16 [Guide] Dither Settle
+2026/11/14 19:55:27 [Guide] Settle Done
+2026/11/14 19:55:27 Exposure 300.0s image 7#
+2026/11/14 20:00:34 [Guide] Dither
+2026/11/14 20:00:34 [Guide] Dither Settle
+2026/11/14 20:00:42 [Guide] Settle Done
+2026/11/14 20:00:42 Exposure 300.0s image 8#
+2026/11/14 20:05:49 [Guide] Dither
+2026/11/14 20:05:49 [Guide] Dither Settle
+2026/11/14 20:06:00 [Guide] Settle Done
+2026/11/14 20:06:00 Exposure 300.0s image 9#
+2026/11/14 20:11:06 [Guide] Dither
+2026/11/14 20:11:06 [Guide] Dither Settle
+2026/11/14 20:11:13 [Guide] Settle Done
+2026/11/14 20:11:13 Exposure 300.0s image 10#
+2026/11/14 20:16:19 [Guide] Dither
+2026/11/14 20:16:19 [Guide] Dither Settle
+2026/11/14 20:16:29 [Guide] Settle Done
+2026/11/14 20:16:29 Exposure 300.0s image 11#
+2026/11/14 20:21:35 [Guide] Dither
+2026/11/14 20:21:35 [Guide] Dither Settle
+2026/11/14 20:21:42 [Guide] Settle Done
+2026/11/14 20:21:42 Exposure 300.0s image 12#
+2026/11/14 20:26:48 [Guide] Dither
+2026/11/14 20:26:48 [Guide] Dither Settle
+2026/11/14 20:27:01 [Guide] Settle Done
+2026/11/14 20:27:01 Exposure 300.0s image 13#
+2026/11/14 20:32:07 [Guide] Dither
+2026/11/14 20:32:07 [Guide] Dither Settle
+2026/11/14 20:32:16 [Guide] Settle Done
+2026/11/14 20:32:16 Exposure 300.0s image 14#
+2026/11/14 20:37:22 [Guide] Dither
+2026/11/14 20:37:22 [Guide] Dither Settle
+2026/11/14 20:37:29 [Guide] Settle Done
+2026/11/14 20:37:29 Exposure 300.0s image 15#
+2026/11/14 20:42:35 [Guide] Dither
+2026/11/14 20:42:35 [Guide] Dither Settle
+2026/11/14 20:42:51 [Guide] Settle Done
+2026/11/14 20:42:51 Exposure 300.0s image 16#
+2026/11/14 20:47:57 [Guide] Dither
+2026/11/14 20:47:57 [Guide] Dither Settle
+2026/11/14 20:48:04 [Guide] Settle Done
+2026/11/14 20:48:04 Exposure 300.0s image 17#
+2026/11/14 20:53:10 [Guide] Dither
+2026/11/14 20:53:10 [Guide] Dither Settle
+2026/11/14 20:53:22 [Guide] Settle Done
+2026/11/14 20:53:22 Exposure 300.0s image 18#
+2026/11/14 20:58:28 [Guide] Dither
+2026/11/14 20:58:28 [Guide] Dither Settle
+2026/11/14 20:58:39 [Guide] Settle Done
+2026/11/14 20:58:39 Exposure 300.0s image 19#
+2026/11/14 21:03:46 [Guide] Dither
+2026/11/14 21:03:46 [Guide] Dither Settle
+2026/11/14 21:03:58 [Guide] Settle Done
+2026/11/14 21:03:58 Exposure 300.0s image 20#
+2026/11/14 21:09:05 [Guide] Dither
+2026/11/14 21:09:05 [Guide] Dither Settle
+2026/11/14 21:09:13 [Guide] Settle Done
+2026/11/14 21:09:13 Exposure 300.0s image 21#
+2026/11/14 21:14:19 [Guide] Dither
+2026/11/14 21:14:19 [Guide] Dither Settle
+2026/11/14 21:14:30 [Guide] Settle Done
+2026/11/14 21:14:30 Exposure 300.0s image 22#
+2026/11/14 21:19:36 [Guide] Dither
+2026/11/14 21:19:36 [Guide] Dither Settle
+2026/11/14 21:19:47 [Guide] Settle Done
+2026/11/14 21:19:47 Start Tracking
+2026/11/14 21:19:47 [Guide] Stop Guiding
+2026/11/14 21:19:47 [AutoFocus|Begin] Run AF 2 hours later, exposure 8.0s Bin1, temperature 0.5℃
+2026/11/14 21:19:47 Find Focus Star
+2026/11/14 21:20:01 Find Focus Star: detect and calculate star size 4.2 ,  EAF position 5846
+2026/11/14 21:20:01 Find Focus Star: finding appropriate stars star size 4.2
+2026/11/14 21:20:25 Find Focus Star: detect and calculate star size 17.1 ,  EAF position 6046
+2026/11/14 21:20:25 Calculate V-Curve
+2026/11/14 21:20:39 Calculate V-Curve: detect and calculate star size 16.5 ,  EAF position 6046
+2026/11/14 21:20:54 Calculate V-Curve: detect and calculate star size 16.7 ,  EAF position 6006
+2026/11/14 21:21:08 Calculate V-Curve: detect and calculate star size 12.9 ,  EAF position 5966
+2026/11/14 21:21:23 Calculate V-Curve: detect and calculate star size 9.6 ,  EAF position 5926
+2026/11/14 21:21:38 Calculate V-Curve: detect and calculate star size 5.6 ,  EAF position 5886
+2026/11/14 21:21:52 Calculate V-Curve: detect and calculate star size 3.6 ,  EAF position 5846
+2026/11/14 21:22:07 Calculate V-Curve: detect and calculate star size 4.3 ,  EAF position 5806
+2026/11/14 21:22:21 Calculate V-Curve: detect and calculate star size 7.9 ,  EAF position 5766
+2026/11/14 21:22:36 Calculate V-Curve: detect and calculate star size 12.2 ,  EAF position 5726
+2026/11/14 21:22:51 Calculate V-Curve: detect and calculate star size 14.3 ,  EAF position 5686
+2026/11/14 21:23:01 Find Focus Point
+2026/11/14 21:23:15 Calculate Focus Point: detect and calculate star size 5.9 ,  EAF position 5940
+2026/11/14 21:23:30 Calculate Focus Point: detect and calculate star size 5.1 ,  EAF position 5920
+2026/11/14 21:23:44 Calculate Focus Point: detect and calculate star size 4.1 ,  EAF position 5900
+2026/11/14 21:23:59 Calculate Focus Point: detect and calculate star size 3.5 ,  EAF position 5880
+2026/11/14 21:24:13 Calculate Focus Point: detect and calculate star size 3.5 ,  EAF position 5860
+2026/11/14 21:24:13 Auto focus succeeded, the focused position is 5860
+2026/11/14 21:24:13 [AutoFocus|End] Auto focus succeeded
+2026/11/14 21:24:16 [Guide] ReSelect Guide star
+2026/11/14 21:24:17 [Guide] Start Guiding
+2026/11/14 21:24:18 [Guide] Guide Settle
+2026/11/14 21:24:28 [Guide] Settle Done
+2026/11/14 21:24:28 Exposure 300.0s image 23#
+2026/11/14 21:29:35 [Guide] Dither
+2026/11/14 21:29:35 [Guide] Dither Settle
+2026/11/14 21:29:43 [Guide] Settle Done
+2026/11/14 21:29:43 Exposure 300.0s image 24#
+2026/11/14 21:34:49 [Guide] Dither
+2026/11/14 21:34:49 [Guide] Dither Settle
+2026/11/14 21:35:04 [Guide] Settle Done
+2026/11/14 21:35:04 Exposure 300.0s image 25#
+2026/11/14 21:40:10 [Guide] Dither
+2026/11/14 21:40:11 [Guide] Dither Settle
+2026/11/14 21:40:24 [Guide] Settle Done
+2026/11/14 21:40:24 Exposure 300.0s image 26#
+2026/11/14 21:45:30 [Guide] Dither
+2026/11/14 21:45:30 [Guide] Dither Settle
+2026/11/14 21:45:38 [Guide] Settle Done
+2026/11/14 21:45:38 Exposure 300.0s image 27#
+2026/11/14 21:50:45 [Guide] Dither
+2026/11/14 21:50:45 [Guide] Dither Settle
+2026/11/14 21:51:05 [Guide] Settle Done
+2026/11/14 21:51:05 Exposure 300.0s image 28#
+2026/11/14 21:56:11 [Guide] Dither
+2026/11/14 21:56:11 [Guide] Dither Settle
+2026/11/14 21:56:28 [Guide] Settle Done
+2026/11/14 21:56:28 Exposure 300.0s image 29#
+2026/11/14 22:01:34 [Guide] Dither
+2026/11/14 22:01:34 [Guide] Dither Settle
+2026/11/14 22:01:44 [Guide] Settle Done
+2026/11/14 22:01:44 Exposure 300.0s image 30#
+2026/11/14 22:06:50 [Guide] Dither
+2026/11/14 22:06:50 [Guide] Dither Settle
+2026/11/14 22:07:02 [Guide] Settle Done
+2026/11/14 22:07:02 Exposure 300.0s image 31#
+2026/11/14 22:12:08 [Guide] Dither
+2026/11/14 22:12:08 [Guide] Dither Settle
+2026/11/14 22:12:16 [Guide] Settle Done
+2026/11/14 22:12:16 Exposure 300.0s image 32#
+2026/11/14 22:17:22 [Guide] Dither
+2026/11/14 22:17:22 [Guide] Dither Settle
+2026/11/14 22:17:28 [Guide] Settle Done
+2026/11/14 22:17:28 Exposure 300.0s image 33#
+2026/11/14 22:22:34 [Guide] Dither
+2026/11/14 22:22:34 [Guide] Dither Settle
+2026/11/14 22:22:51 [Guide] Settle Done
+2026/11/14 22:22:51 Exposure 300.0s image 34#
+2026/11/14 22:27:57 [Guide] Dither
+2026/11/14 22:27:57 [Guide] Dither Settle
+2026/11/14 22:28:03 [Guide] Settle Done
+2026/11/14 22:28:03 Exposure 300.0s image 35#
+2026/11/14 22:33:09 [Guide] Dither
+2026/11/14 22:33:09 [Guide] Dither Settle
+2026/11/14 22:33:18 [Guide] Settle Done
+2026/11/14 22:33:18 Exposure 300.0s image 36#
+2026/11/14 22:38:24 [Guide] Dither
+2026/11/14 22:38:24 [Guide] Dither Settle
+2026/11/14 22:39:25 [Guide] Settle Timeout
+2026/11/14 22:39:25 Exposure 300.0s image 37#
+2026/11/14 22:44:31 [Guide] Dither
+2026/11/14 22:44:31 [Guide] Dither Settle
+2026/11/14 22:44:51 [Guide] Settle Done
+2026/11/14 22:44:51 Exposure 300.0s image 38#
+2026/11/14 22:49:57 [Guide] Dither
+2026/11/14 22:49:57 [Guide] Dither Settle
+2026/11/14 22:50:09 [Guide] Settle Done
+2026/11/14 22:50:09 Exposure 300.0s image 39#
+2026/11/14 22:55:15 [Guide] Dither
+2026/11/14 22:55:15 [Guide] Dither Settle
+2026/11/14 22:55:40 [Guide] Settle Done
+2026/11/14 22:55:40 Exposure 300.0s image 40#
+2026/11/14 23:00:46 [Guide] Dither
+2026/11/14 23:00:46 [Guide] Dither Settle
+2026/11/14 23:00:58 [Guide] Settle Done
+2026/11/14 23:00:58 Exposure 300.0s image 41#
+2026/11/14 23:06:04 [Guide] Dither
+2026/11/14 23:06:04 [Guide] Dither Settle
+2026/11/14 23:06:11 [Guide] Settle Done
+2026/11/14 23:06:11 Exposure 300.0s image 42#
+2026/11/14 23:11:17 [Guide] Dither
+2026/11/14 23:11:17 [Guide] Dither Settle
+2026/11/14 23:11:30 [Guide] Settle Done
+2026/11/14 23:11:30 Exposure 300.0s image 43#
+2026/11/14 23:16:36 [Guide] Dither
+2026/11/14 23:16:36 [Guide] Dither Settle
+2026/11/14 23:16:42 [Guide] Settle Done
+2026/11/14 23:16:42 Exposure 300.0s image 44#
+2026/11/14 23:21:48 [Guide] Dither
+2026/11/14 23:21:48 [Guide] Dither Settle
+2026/11/14 23:21:59 [Guide] Settle Done
+2026/11/14 23:21:59 Exposure 300.0s image 45#
+2026/11/14 23:27:05 [Guide] Dither
+2026/11/14 23:27:05 [Guide] Dither Settle
+2026/11/14 23:27:16 [Guide] Settle Done
+2026/11/14 23:27:16 Start Tracking
+2026/11/14 23:27:16 [Guide] Stop Guiding
+2026/11/14 23:27:16 [AutoFocus|Begin] Run AF 2 hours later, exposure 8.0s Bin1, temperature -0.4℃
+2026/11/14 23:27:16 Find Focus Star
+2026/11/14 23:27:30 Find Focus Star: detect and calculate star size 3.3 ,  EAF position 5860
+2026/11/14 23:27:30 Find Focus Star: finding appropriate stars star size 3.3
+2026/11/14 23:27:54 Find Focus Star: detect and calculate star size 14.1 ,  EAF position 6060
+2026/11/14 23:27:54 Calculate V-Curve
+2026/11/14 23:28:08 Calculate V-Curve: detect and calculate star size 16.3 ,  EAF position 6060
+2026/11/14 23:28:23 Calculate V-Curve: detect and calculate star size 16.7 ,  EAF position 6020
+2026/11/14 23:28:37 Calculate V-Curve: detect and calculate star size 16.6 ,  EAF position 5980
+2026/11/14 23:28:52 Calculate V-Curve: detect and calculate star size 11.8 ,  EAF position 5940
+2026/11/14 23:29:07 Calculate V-Curve: detect and calculate star size 8.0 ,  EAF position 5900
+2026/11/14 23:29:22 Calculate V-Curve: detect and calculate star size 4.3 ,  EAF position 5860
+2026/11/14 23:29:36 Calculate V-Curve: detect and calculate star size 3.3 ,  EAF position 5820
+2026/11/14 23:29:51 Calculate V-Curve: detect and calculate star size 5.8 ,  EAF position 5780
+2026/11/14 23:30:06 Calculate V-Curve: detect and calculate star size 10.0 ,  EAF position 5740
+2026/11/14 23:30:20 Calculate V-Curve: detect and calculate star size 12.6 ,  EAF position 5700
+2026/11/14 23:30:35 Calculate V-Curve: detect and calculate star size 15.7 ,  EAF position 5660
+2026/11/14 23:30:46 Find Focus Point
+2026/11/14 23:30:59 Calculate Focus Point: detect and calculate star size 4.6 ,  EAF position 5918
+2026/11/14 23:31:14 Calculate Focus Point: detect and calculate star size 4.1 ,  EAF position 5898
+2026/11/14 23:31:29 Calculate Focus Point: detect and calculate star size 3.5 ,  EAF position 5878
+2026/11/14 23:31:44 Calculate Focus Point: detect and calculate star size 3.7 ,  EAF position 5858
+2026/11/14 23:31:44 Auto focus succeeded, the focused position is 5858
+2026/11/14 23:31:44 [AutoFocus|End] Auto focus succeeded
+2026/11/14 23:31:46 [Guide] ReSelect Guide star
+2026/11/14 23:31:46 [Guide] Start Guiding
+2026/11/14 23:31:48 [Guide] Guide Settle
+2026/11/14 23:31:51 [Guide] Settle Done
+2026/11/14 23:31:51 Exposure 300.0s image 46#
+2026/11/14 23:36:57 [Guide] Dither
+2026/11/14 23:36:57 [Guide] Dither Settle
+2026/11/14 23:37:05 [Guide] Settle Done
+2026/11/14 23:37:05 Exposure 300.0s image 47#
+2026/11/14 23:42:11 [Guide] Dither
+2026/11/14 23:42:11 [Guide] Dither Settle
+2026/11/14 23:42:23 [Guide] Settle Done
+2026/11/14 23:42:23 Exposure 300.0s image 48#
+2026/11/14 23:47:29 [Guide] Dither
+2026/11/14 23:47:29 [Guide] Dither Settle
+2026/11/14 23:47:36 [Guide] Settle Done
+2026/11/14 23:47:36 Exposure 300.0s image 49#
+2026/11/14 23:52:42 [Guide] Dither
+2026/11/14 23:52:42 [Guide] Dither Settle
+2026/11/14 23:52:50 [Guide] Settle Done
+2026/11/14 23:52:50 Exposure 300.0s image 50#
+2026/11/14 23:57:56 [Guide] Dither
+2026/11/14 23:57:56 [Guide] Dither Settle
+2026/11/14 23:58:03 [Guide] Settle Done
+2026/11/14 23:58:03 Exposure 300.0s image 51#
+2026/11/15 00:03:09 [Guide] Dither
+2026/11/15 00:03:09 [Guide] Dither Settle
+2026/11/15 00:03:20 [Guide] Settle Done
+2026/11/15 00:03:20 Exposure 300.0s image 52#
+2026/11/15 00:08:26 [Guide] Dither
+2026/11/15 00:08:26 [Guide] Dither Settle
+2026/11/15 00:08:39 [Guide] Settle Done
+2026/11/15 00:08:39 Exposure 300.0s image 53#
+2026/11/15 00:13:45 [Guide] Dither
+2026/11/15 00:13:45 [Guide] Dither Settle
+2026/11/15 00:13:52 [Guide] Settle Done
+2026/11/15 00:13:52 Exposure 300.0s image 54#
+2026/11/15 00:18:58 [Guide] Dither
+2026/11/15 00:18:58 [Guide] Dither Settle
+2026/11/15 00:19:05 [Guide] Settle Done
+2026/11/15 00:19:05 Exposure 300.0s image 55#
+2026/11/15 00:24:11 [Guide] Dither
+2026/11/15 00:24:11 [Guide] Dither Settle
+2026/11/15 00:24:20 [Guide] Settle Done
+2026/11/15 00:24:20 Exposure 300.0s image 56#
+2026/11/15 00:29:27 [Guide] Dither
+2026/11/15 00:29:27 [Guide] Dither Settle
+2026/11/15 00:29:41 [Guide] Settle Done
+2026/11/15 00:29:41 Exposure 300.0s image 57#
+2026/11/15 00:34:48 [Guide] Dither
+2026/11/15 00:34:48 [Guide] Dither Settle
+2026/11/15 00:34:59 [Guide] Settle Done
+2026/11/15 00:34:59 Exposure 300.0s image 58#
+2026/11/15 00:40:06 [Guide] Dither
+2026/11/15 00:40:06 [Guide] Dither Settle
+2026/11/15 00:40:26 [Guide] Settle Done
+2026/11/15 00:40:26 Exposure 300.0s image 59#
+2026/11/15 00:45:33 [Guide] Dither
+2026/11/15 00:45:33 [Guide] Dither Settle
+2026/11/15 00:45:39 [Guide] Settle Done
+2026/11/15 00:45:39 Exposure 300.0s image 60#
+2026/11/15 00:50:46 [Guide] Dither
+2026/11/15 00:50:46 [Guide] Dither Settle
+2026/11/15 00:50:58 [Guide] Settle Done
+2026/11/15 00:50:58 Exposure 300.0s image 61#
+2026/11/15 00:56:05 [Guide] Dither
+2026/11/15 00:56:05 [Guide] Dither Settle
+2026/11/15 00:56:16 [Guide] Settle Done
+2026/11/15 00:56:16 Exposure 300.0s image 62#
+2026/11/15 01:01:23 [Guide] Dither
+2026/11/15 01:01:23 [Guide] Dither Settle
+2026/11/15 01:01:35 [Guide] Settle Done
+2026/11/15 01:01:35 Exposure 300.0s image 63#
+2026/11/15 01:06:42 [Guide] Dither
+2026/11/15 01:06:42 [Guide] Dither Settle
+2026/11/15 01:06:55 [Guide] Settle Done
+2026/11/15 01:06:55 Exposure 300.0s image 64#
+2026/11/15 01:12:02 [Guide] Dither
+2026/11/15 01:12:02 [Guide] Dither Settle
+2026/11/15 01:12:15 [Guide] Settle Done
+2026/11/15 01:12:15 Exposure 300.0s image 65#
+2026/11/15 01:17:22 [Guide] Dither
+2026/11/15 01:17:22 [Guide] Dither Settle
+2026/11/15 01:17:30 [Guide] Settle Done
+2026/11/15 01:17:30 Exposure 300.0s image 66#
+2026/11/15 01:22:37 [Guide] Dither
+2026/11/15 01:22:37 [Guide] Dither Settle
+2026/11/15 01:22:47 [Guide] Settle Done
+2026/11/15 01:22:47 Exposure 300.0s image 67#
+2026/11/15 01:27:54 [Guide] Dither
+2026/11/15 01:27:54 [Guide] Dither Settle
+2026/11/15 01:28:05 [Guide] Settle Done
+2026/11/15 01:28:05 Exposure 300.0s image 68#
+2026/11/15 01:33:12 [Guide] Dither
+2026/11/15 01:33:12 [Guide] Dither Settle
+2026/11/15 01:33:25 [Guide] Settle Done
+2026/11/15 01:33:25 Start Tracking
+2026/11/15 01:33:25 [Guide] Stop Guiding
+2026/11/15 01:33:26 [AutoFocus|Begin] Run AF 2 hours later, exposure 8.0s Bin1, temperature -1.0℃
+2026/11/15 01:33:26 Find Focus Star
+2026/11/15 01:33:39 Find Focus Star: detect and calculate star size 3.7 ,  EAF position 5858
+2026/11/15 01:33:39 Find Focus Star: finding appropriate stars star size 3.7
+2026/11/15 01:34:04 Find Focus Star: detect and calculate star size 15.8 ,  EAF position 6058
+2026/11/15 01:34:04 Calculate V-Curve
+2026/11/15 01:34:17 Calculate V-Curve: detect and calculate star size 18.6 ,  EAF position 6058
+2026/11/15 01:34:32 Calculate V-Curve: detect and calculate star size 20.1 ,  EAF position 6018
+2026/11/15 01:34:47 Calculate V-Curve: detect and calculate star size 16.6 ,  EAF position 5978
+2026/11/15 01:35:02 Calculate V-Curve: detect and calculate star size 12.6 ,  EAF position 5938
+2026/11/15 01:35:16 Calculate V-Curve: detect and calculate star size 7.9 ,  EAF position 5898
+2026/11/15 01:35:31 Calculate V-Curve: detect and calculate star size 4.6 ,  EAF position 5858
+2026/11/15 01:35:46 Calculate V-Curve: detect and calculate star size 3.5 ,  EAF position 5818
+2026/11/15 01:36:00 Calculate V-Curve: detect and calculate star size 5.7 ,  EAF position 5778
+2026/11/15 01:36:15 Calculate V-Curve: detect and calculate star size 9.9 ,  EAF position 5738
+2026/11/15 01:36:30 Calculate V-Curve: detect and calculate star size 12.3 ,  EAF position 5698
+2026/11/15 01:36:44 Calculate V-Curve: detect and calculate star size 16.2 ,  EAF position 5658
+2026/11/15 01:36:55 Find Focus Point
+2026/11/15 01:37:09 Calculate Focus Point: detect and calculate star size 4.0 ,  EAF position 5900
+2026/11/15 01:37:24 Calculate Focus Point: detect and calculate star size 3.7 ,  EAF position 5880
+2026/11/15 01:37:38 Calculate Focus Point: detect and calculate star size 3.7 ,  EAF position 5860
+2026/11/15 01:37:53 Calculate Focus Point: detect and calculate star size 3.7 ,  EAF position 5840
+2026/11/15 01:38:08 Calculate Focus Point: detect and calculate star size 3.7 ,  EAF position 5820
+2026/11/15 01:38:08 Auto focus succeeded, the focused position is 5820
+2026/11/15 01:38:08 [AutoFocus|End] Auto focus succeeded
+2026/11/15 01:38:10 [Guide] ReSelect Guide star
+2026/11/15 01:38:11 [Guide] Start Guiding
+2026/11/15 01:38:12 [Guide] Guide Settle
+2026/11/15 01:38:16 [Guide] Settle Done
+2026/11/15 01:38:16 Exposure 300.0s image 69#
+2026/11/15 01:43:23 [Guide] Dither
+2026/11/15 01:43:23 [Guide] Dither Settle
+2026/11/15 01:43:30 [Guide] Settle Done
+2026/11/15 01:43:31 Exposure 300.0s image 70#
+2026/11/15 01:48:37 [Guide] Dither
+2026/11/15 01:48:37 [Guide] Dither Settle
+2026/11/15 01:48:47 [Guide] Settle Done
+2026/11/15 01:48:47 Exposure 300.0s image 71#
+2026/11/15 01:53:54 [Guide] Dither
+2026/11/15 01:53:54 [Guide] Dither Settle
+2026/11/15 01:54:03 [Guide] Settle Done
+2026/11/15 01:54:03 Exposure 300.0s image 72#
+2026/11/15 01:59:10 [Guide] Dither
+2026/11/15 01:59:10 [Guide] Dither Settle
+2026/11/15 01:59:24 [Guide] Settle Done
+2026/11/15 01:59:24 [Guide] Stop Guiding
+2026/11/15 01:59:25 Stop Tracking
+2026/11/15 01:59:25 [Meridian Flip|Begin] Wait 1min48s to Meridian Flip
+2026/11/15 02:01:13 Meridian Flip 1# Start
+2026/11/15 02:01:13 [AutoCenter|Begin] Auto-Center 1#
+2026/11/15 02:01:13 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:01:16 Exposure 10.0s
+2026/11/15 02:01:29 Plate Solve
+2026/11/15 02:01:32 Solve succeeded: RA:5h19m10s DEC:+34°25'38" Angle = 0.53, Star number = 1322
+2026/11/15 02:01:32 [AutoCenter|End] Too far from center, distance = 31%(0.354235°)
+2026/11/15 02:01:34 [AutoCenter|Begin] Auto-Center 2#
+2026/11/15 02:01:34 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:01:38 Exposure 10.0s
+2026/11/15 02:01:51 Plate Solve
+2026/11/15 02:01:54 Solve succeeded: RA:5h19m13s DEC:+34°25'39" Angle = 0.534, Star number = 1353
+2026/11/15 02:01:54 [AutoCenter|End] Too far from center, distance = 32%(0.364905°)
+2026/11/15 02:01:56 [AutoCenter|Begin] Auto-Center 3#
+2026/11/15 02:01:56 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:01:59 Exposure 10.0s
+2026/11/15 02:02:13 Plate Solve
+2026/11/15 02:02:15 Solve succeeded: RA:5h19m16s DEC:+34°25'40" Angle = 0.55, Star number = 1378
+2026/11/15 02:02:15 [AutoCenter|End] Too far from center, distance = 33%(0.375953°)
+2026/11/15 02:02:17 [AutoCenter|Begin] Auto-Center 4#
+2026/11/15 02:02:17 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:02:21 Exposure 10.0s
+2026/11/15 02:02:34 Plate Solve
+2026/11/15 02:02:37 Solve succeeded: RA:5h19m20s DEC:+34°25'40" Angle = 0.56, Star number = 1374
+2026/11/15 02:02:37 [AutoCenter|End] Too far from center, distance = 34%(0.387777°)
+2026/11/15 02:02:39 [AutoCenter|Begin] Auto-Center 5#
+2026/11/15 02:02:39 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:02:43 Exposure 10.0s
+2026/11/15 02:02:56 Plate Solve
+2026/11/15 02:02:59 Solve succeeded: RA:5h19m23s DEC:+34°25'40" Angle = 0.568, Star number = 1357
+2026/11/15 02:02:59 [AutoCenter|End] Too far from center, distance = 35%(0.399699°)
+2026/11/15 02:03:01 [AutoCenter|Begin] Auto-Center 6#
+2026/11/15 02:03:01 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:03:04 Exposure 10.0s
+2026/11/15 02:03:18 Plate Solve
+2026/11/15 02:03:20 Solve succeeded: RA:5h19m27s DEC:+34°25'40" Angle = 0.577, Star number = 1395
+2026/11/15 02:03:21 [AutoCenter|End] Too far from center, distance = 36%(0.410612°)
+2026/11/15 02:03:23 [AutoCenter|Begin] Auto-Center 7#
+2026/11/15 02:03:23 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:03:26 Exposure 10.0s
+2026/11/15 02:03:39 Plate Solve
+2026/11/15 02:03:42 Solve succeeded: RA:5h19m30s DEC:+34°25'39" Angle = 0.587, Star number = 1344
+2026/11/15 02:03:42 [AutoCenter|End] Too far from center, distance = 37%(0.421358°)
+2026/11/15 02:03:44 [AutoCenter|Begin] Auto-Center 8#
+2026/11/15 02:03:44 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:03:47 Exposure 10.0s
+2026/11/15 02:04:00 Plate Solve
+2026/11/15 02:04:02 Solve succeeded: RA:5h19m32s DEC:+34°25'40" Angle = 0.594, Star number = 1365
+2026/11/15 02:04:03 [AutoCenter|End] Too far from center, distance = 38%(0.430098°)
+2026/11/15 02:04:05 [AutoCenter|Begin] Auto-Center 9#
+2026/11/15 02:04:05 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:04:07 Exposure 10.0s
+2026/11/15 02:04:21 Plate Solve
+2026/11/15 02:04:23 Solve succeeded: RA:5h19m35s DEC:+34°25'40" Angle = 0.598, Star number = 1379
+2026/11/15 02:04:23 [AutoCenter|End] Too far from center, distance = 38%(0.438971°)
+2026/11/15 02:04:25 [AutoCenter|Begin] Auto-Center 10#
+2026/11/15 02:04:25 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:04:29 Exposure 10.0s
+2026/11/15 02:04:42 Plate Solve
+2026/11/15 02:04:45 Solve succeeded: RA:5h19m38s DEC:+34°25'40" Angle = 0.601, Star number = 1372
+2026/11/15 02:04:45 [AutoCenter|End] Too far from center, distance = 39%(0.4503°)
+2026/11/15 02:04:47 [AutoCenter|Begin] Auto-Center 11#
+2026/11/15 02:04:47 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:04:50 Exposure 10.0s
+2026/11/15 02:05:04 Plate Solve
+2026/11/15 02:05:06 Solve succeeded: RA:5h19m42s DEC:+34°25'38" Angle = 0.616, Star number = 1392
+2026/11/15 02:05:07 [AutoCenter|End] Too far from center, distance = 40%(0.461992°)
+2026/11/15 02:05:09 [AutoCenter|Begin] Auto-Center 12#
+2026/11/15 02:05:09 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:05:12 Exposure 10.0s
+2026/11/15 02:05:25 Plate Solve
+2026/11/15 02:05:28 Solve succeeded: RA:5h19m45s DEC:+34°25'36" Angle = 0.622, Star number = 1422
+2026/11/15 02:05:28 [AutoCenter|End] Too far from center, distance = 42%(0.474434°)
+2026/11/15 02:05:30 [AutoCenter|Begin] Auto-Center 13#
+2026/11/15 02:05:30 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:05:34 Exposure 10.0s
+2026/11/15 02:05:47 Plate Solve
+2026/11/15 02:05:50 Solve succeeded: RA:5h19m49s DEC:+34°25'36" Angle = 0.629, Star number = 1385
+2026/11/15 02:05:50 [AutoCenter|End] Too far from center, distance = 43%(0.487144°)
+2026/11/15 02:05:52 [AutoCenter|Begin] Auto-Center 14#
+2026/11/15 02:05:52 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:05:55 Exposure 10.0s
+2026/11/15 02:06:09 Plate Solve
+2026/11/15 02:06:12 Solve succeeded: RA:5h19m53s DEC:+34°25'37" Angle = 0.635, Star number = 1388
+2026/11/15 02:06:12 [AutoCenter|End] Too far from center, distance = 44%(0.49946°)
+2026/11/15 02:06:14 [AutoCenter|Begin] Auto-Center 15#
+2026/11/15 02:06:14 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:06:17 Exposure 10.0s
+2026/11/15 02:06:30 Plate Solve
+2026/11/15 02:06:33 Solve succeeded: RA:5h19m56s DEC:+34°25'37" Angle = 0.642, Star number = 1378
+2026/11/15 02:06:33 [AutoCenter|End] Too far from center, distance = 45%(0.511752°)
+2026/11/15 02:06:35 [AutoCenter|Begin] Auto-Center 16#
+2026/11/15 02:06:35 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:06:39 Exposure 10.0s
+2026/11/15 02:06:52 Plate Solve
+2026/11/15 02:06:55 Solve succeeded: RA:5h20m0s DEC:+34°25'37" Angle = 0.65, Star number = 1402
+2026/11/15 02:06:55 [AutoCenter|End] Too far from center, distance = 46%(0.523837°)
+2026/11/15 02:06:57 [AutoCenter|Begin] Auto-Center 17#
+2026/11/15 02:06:57 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:07:00 Exposure 10.0s
+2026/11/15 02:07:14 Plate Solve
+2026/11/15 02:07:16 Solve succeeded: RA:5h20m3s DEC:+34°25'37" Angle = 0.664, Star number = 1396
+2026/11/15 02:07:17 [AutoCenter|End] Too far from center, distance = 47%(0.536007°)
+2026/11/15 02:07:19 [AutoCenter|Begin] Auto-Center 18#
+2026/11/15 02:07:19 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:07:22 Exposure 10.0s
+2026/11/15 02:07:35 Plate Solve
+2026/11/15 02:07:38 Solve succeeded: RA:5h20m7s DEC:+34°25'38" Angle = 0.683, Star number = 1437
+2026/11/15 02:07:38 [AutoCenter|End] Too far from center, distance = 48%(0.548095°)
+2026/11/15 02:07:40 [AutoCenter|Begin] Auto-Center 19#
+2026/11/15 02:07:40 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:07:44 Exposure 10.0s
+2026/11/15 02:07:57 Plate Solve
+2026/11/15 02:08:00 Solve succeeded: RA:5h20m10s DEC:+34°25'38" Angle = 0.694, Star number = 1409
+2026/11/15 02:08:00 [AutoCenter|End] Too far from center, distance = 49%(0.560099°)
+2026/11/15 02:08:02 [AutoCenter|Begin] Auto-Center 20#
+2026/11/15 02:08:02 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:08:05 Exposure 10.0s
+2026/11/15 02:08:19 Plate Solve
+2026/11/15 02:08:21 Solve succeeded: RA:5h20m14s DEC:+34°25'37" Angle = 0.695, Star number = 1451
+2026/11/15 02:08:21 [AutoCenter|End] Too far from center, distance = 50%(0.572032°)
+2026/11/15 02:08:23 [AutoCenter|Begin] Auto-Center 21#
+2026/11/15 02:08:23 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:08:27 Exposure 10.0s
+2026/11/15 02:08:40 Plate Solve
+2026/11/15 02:08:43 Solve succeeded: RA:5h20m17s DEC:+34°25'37" Angle = 0.701, Star number = 1435
+2026/11/15 02:08:43 [AutoCenter|End] Too far from center, distance = 51%(0.584197°)
+2026/11/15 02:08:45 [AutoCenter|Begin] Auto-Center 22#
+2026/11/15 02:08:45 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:08:49 Exposure 10.0s
+2026/11/15 02:09:02 Plate Solve
+2026/11/15 02:09:05 Solve succeeded: RA:5h20m21s DEC:+34°25'36" Angle = 0.706, Star number = 1443
+2026/11/15 02:09:05 [AutoCenter|End] Too far from center, distance = 52%(0.595643°)
+2026/11/15 02:09:07 [AutoCenter|Begin] Auto-Center 23#
+2026/11/15 02:09:07 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:09:10 Exposure 10.0s
+2026/11/15 02:09:23 Plate Solve
+2026/11/15 02:09:26 Solve succeeded: RA:5h20m24s DEC:+34°25'36" Angle = 0.719, Star number = 1449
+2026/11/15 02:09:26 [AutoCenter|End] Too far from center, distance = 53%(0.607416°)
+2026/11/15 02:09:28 [AutoCenter|Begin] Auto-Center 24#
+2026/11/15 02:09:28 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:09:31 Exposure 10.0s
+2026/11/15 02:09:44 Plate Solve
+2026/11/15 02:09:47 Solve succeeded: RA:5h20m27s DEC:+34°25'35" Angle = 0.726, Star number = 1442
+2026/11/15 02:09:47 [AutoCenter|End] Too far from center, distance = 54%(0.616979°)
+2026/11/15 02:09:49 [AutoCenter|Begin] Auto-Center 25#
+2026/11/15 02:09:49 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:09:52 Exposure 10.0s
+2026/11/15 02:10:06 Plate Solve
+2026/11/15 02:10:09 Solve succeeded: RA:5h20m30s DEC:+34°25'33" Angle = 0.734, Star number = 1414
+2026/11/15 02:10:09 [AutoCenter|End] Too far from center, distance = 55%(0.628752°)
+2026/11/15 02:10:11 [AutoCenter|Begin] Auto-Center 26#
+2026/11/15 02:10:11 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:10:14 Exposure 10.0s
+2026/11/15 02:10:27 Plate Solve
+2026/11/15 02:10:30 Solve succeeded: RA:5h20m34s DEC:+34°25'33" Angle = 0.741, Star number = 1476
+2026/11/15 02:10:30 [AutoCenter|End] Too far from center, distance = 56%(0.639948°)
+2026/11/15 02:10:32 [AutoCenter|Begin] Auto-Center 27#
+2026/11/15 02:10:32 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:10:35 Exposure 10.0s
+2026/11/15 02:10:48 Plate Solve
+2026/11/15 02:10:51 Solve succeeded: RA:5h20m36s DEC:+34°25'32" Angle = 0.747, Star number = 1440
+2026/11/15 02:10:51 [AutoCenter|End] Too far from center, distance = 57%(0.648322°)
+2026/11/15 02:10:53 [AutoCenter|Begin] Auto-Center 28#
+2026/11/15 02:10:53 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:10:56 Exposure 10.0s
+2026/11/15 02:11:10 Plate Solve
+2026/11/15 02:11:13 Solve succeeded: RA:5h20m39s DEC:+34°25'32" Angle = 0.75, Star number = 1453
+2026/11/15 02:11:13 [AutoCenter|End] Too far from center, distance = 58%(0.659189°)
+2026/11/15 02:11:15 [AutoCenter|Begin] Auto-Center 29#
+2026/11/15 02:11:15 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:11:18 Exposure 10.0s
+2026/11/15 02:11:32 Plate Solve
+2026/11/15 02:11:34 Solve succeeded: RA:5h20m42s DEC:+34°25'32" Angle = 0.761, Star number = 1460
+2026/11/15 02:11:35 [AutoCenter|End] Too far from center, distance = 59%(0.669756°)
+2026/11/15 02:11:37 [AutoCenter|Begin] Auto-Center 30#
+2026/11/15 02:11:37 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:11:40 Exposure 10.0s
+2026/11/15 02:11:53 Plate Solve
+2026/11/15 02:11:56 Solve succeeded: RA:5h20m45s DEC:+34°25'31" Angle = 0.767, Star number = 1461
+2026/11/15 02:11:56 [AutoCenter|End] Too far from center, distance = 60%(0.679412°)
+2026/11/15 02:11:58 [AutoCenter|Begin] Auto-Center 31#
+2026/11/15 02:11:58 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:12:01 Exposure 10.0s
+2026/11/15 02:12:15 Plate Solve
+2026/11/15 02:12:17 Solve succeeded: RA:5h20m48s DEC:+34°25'32" Angle = 0.775, Star number = 1494
+2026/11/15 02:12:17 [AutoCenter|End] Too far from center, distance = 61%(0.691154°)
+2026/11/15 02:12:19 [AutoCenter|Begin] Auto-Center 32#
+2026/11/15 02:12:19 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:12:23 Exposure 10.0s
+2026/11/15 02:12:36 Plate Solve
+2026/11/15 02:12:39 Solve succeeded: RA:5h20m52s DEC:+34°25'33" Angle = 0.781, Star number = 1473
+2026/11/15 02:12:39 [AutoCenter|End] Too far from center, distance = 62%(0.702343°)
+2026/11/15 02:12:41 [AutoCenter|Begin] Auto-Center 33#
+2026/11/15 02:12:41 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:12:45 Exposure 10.0s
+2026/11/15 02:12:58 Plate Solve
+2026/11/15 02:13:01 Solve succeeded: RA:5h20m55s DEC:+34°25'34" Angle = 0.785, Star number = 1493
+2026/11/15 02:13:01 [AutoCenter|End] Too far from center, distance = 63%(0.713748°)
+2026/11/15 02:13:03 [AutoCenter|Begin] Auto-Center 34#
+2026/11/15 02:13:03 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:13:06 Exposure 10.0s
+2026/11/15 02:13:20 Plate Solve
+2026/11/15 02:13:23 Solve succeeded: RA:5h20m58s DEC:+34°25'33" Angle = 0.795, Star number = 1471
+2026/11/15 02:13:23 [AutoCenter|End] Too far from center, distance = 64%(0.725388°)
+2026/11/15 02:13:25 [AutoCenter|Begin] Auto-Center 35#
+2026/11/15 02:13:25 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:13:28 Exposure 10.0s
+2026/11/15 02:13:41 Plate Solve
+2026/11/15 02:13:44 Solve succeeded: RA:5h21m1s DEC:+34°25'33" Angle = 0.803, Star number = 1467
+2026/11/15 02:13:44 [AutoCenter|End] Too far from center, distance = 65%(0.735154°)
+2026/11/15 02:13:46 [AutoCenter|Begin] Auto-Center 36#
+2026/11/15 02:13:46 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:13:49 Exposure 10.0s
+2026/11/15 02:14:03 Plate Solve
+2026/11/15 02:14:06 Solve succeeded: RA:5h21m4s DEC:+34°25'32" Angle = 0.809, Star number = 1481
+2026/11/15 02:14:06 [AutoCenter|End] Too far from center, distance = 66%(0.74546°)
+2026/11/15 02:14:08 [AutoCenter|Begin] Auto-Center 37#
+2026/11/15 02:14:08 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:14:11 Exposure 10.0s
+2026/11/15 02:14:24 Plate Solve
+2026/11/15 02:14:28 Solve succeeded: RA:5h21m7s DEC:+34°25'32" Angle = 0.819, Star number = 1453
+2026/11/15 02:14:28 [AutoCenter|End] Too far from center, distance = 66%(0.75567°)
+2026/11/15 02:14:30 [AutoCenter|Begin] Auto-Center 38#
+2026/11/15 02:14:30 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:14:33 Exposure 10.0s
+2026/11/15 02:14:46 Plate Solve
+2026/11/15 02:14:49 Solve succeeded: RA:5h21m10s DEC:+34°25'33" Angle = 0.823, Star number = 1465
+2026/11/15 02:14:50 [AutoCenter|End] Too far from center, distance = 67%(0.766225°)
+2026/11/15 02:14:52 [AutoCenter|Begin] Auto-Center 39#
+2026/11/15 02:14:52 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:14:55 Exposure 10.0s
+2026/11/15 02:15:08 Plate Solve
+2026/11/15 02:15:11 Solve succeeded: RA:5h21m13s DEC:+34°25'32" Angle = 0.836, Star number = 1465
+2026/11/15 02:15:11 [AutoCenter|End] Too far from center, distance = 68%(0.77627°)
+2026/11/15 02:15:13 [AutoCenter|Begin] Auto-Center 40#
+2026/11/15 02:15:13 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:15:16 Exposure 10.0s
+2026/11/15 02:15:29 Plate Solve
+2026/11/15 02:15:33 Solve succeeded: RA:5h21m16s DEC:+34°25'31" Angle = 0.847, Star number = 1458
+2026/11/15 02:15:33 [AutoCenter|End] Too far from center, distance = 69%(0.786051°)
+2026/11/15 02:15:35 [AutoCenter|Begin] Auto-Center 41#
+2026/11/15 02:15:35 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:15:38 Exposure 10.0s
+2026/11/15 02:15:51 Plate Solve
+2026/11/15 02:15:54 Solve succeeded: RA:5h21m19s DEC:+34°25'31" Angle = 0.855, Star number = 1484
+2026/11/15 02:15:54 [AutoCenter|End] Too far from center, distance = 70%(0.796925°)
+2026/11/15 02:15:56 [AutoCenter|Begin] Auto-Center 42#
+2026/11/15 02:15:56 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:15:59 Exposure 10.0s
+2026/11/15 02:16:13 Plate Solve
+2026/11/15 02:16:16 Solve succeeded: RA:5h21m22s DEC:+34°25'31" Angle = 0.855, Star number = 1476
+2026/11/15 02:16:16 [AutoCenter|End] Too far from center, distance = 71%(0.807873°)
+2026/11/15 02:16:18 [AutoCenter|Begin] Auto-Center 43#
+2026/11/15 02:16:18 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:16:21 Exposure 10.0s
+2026/11/15 02:16:34 Plate Solve
+2026/11/15 02:16:38 Solve succeeded: RA:5h21m26s DEC:+34°25'31" Angle = 0.859, Star number = 1473
+2026/11/15 02:16:38 [AutoCenter|End] Too far from center, distance = 72%(0.819051°)
+2026/11/15 02:16:40 [AutoCenter|Begin] Auto-Center 44#
+2026/11/15 02:16:40 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:16:43 Exposure 10.0s
+2026/11/15 02:16:56 Plate Solve
+2026/11/15 02:16:59 Solve succeeded: RA:5h21m29s DEC:+34°25'32" Angle = 0.864, Star number = 1488
+2026/11/15 02:16:59 [AutoCenter|End] Too far from center, distance = 73%(0.830521°)
+2026/11/15 02:17:01 [AutoCenter|Begin] Auto-Center 45#
+2026/11/15 02:17:01 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:17:04 Exposure 10.0s
+2026/11/15 02:17:18 Plate Solve
+2026/11/15 02:17:21 Solve succeeded: RA:5h21m32s DEC:+34°25'31" Angle = 0.874, Star number = 1507
+2026/11/15 02:17:21 [AutoCenter|End] Too far from center, distance = 74%(0.84154°)
+2026/11/15 02:17:23 [AutoCenter|Begin] Auto-Center 46#
+2026/11/15 02:17:23 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:17:26 Exposure 10.0s
+2026/11/15 02:17:39 Plate Solve
+2026/11/15 02:17:43 Solve succeeded: RA:5h21m35s DEC:+34°25'29" Angle = 0.88, Star number = 1502
+2026/11/15 02:17:43 [AutoCenter|End] Too far from center, distance = 75%(0.852235°)
+2026/11/15 02:17:45 [AutoCenter|Begin] Auto-Center 47#
+2026/11/15 02:17:45 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:17:48 Exposure 10.0s
+2026/11/15 02:18:01 Plate Solve
+2026/11/15 02:18:04 Solve succeeded: RA:5h21m38s DEC:+34°25'28" Angle = 0.89, Star number = 1554
+2026/11/15 02:18:04 [AutoCenter|End] Too far from center, distance = 76%(0.862604°)
+2026/11/15 02:18:06 [AutoCenter|Begin] Auto-Center 48#
+2026/11/15 02:18:06 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:18:09 Exposure 10.0s
+2026/11/15 02:18:23 Plate Solve
+2026/11/15 02:18:25 Solve succeeded: RA:5h21m42s DEC:+34°25'27" Angle = 0.901, Star number = 1521
+2026/11/15 02:18:25 [AutoCenter|End] Too far from center, distance = 77%(0.873652°)
+2026/11/15 02:18:27 [AutoCenter|Begin] Auto-Center 49#
+2026/11/15 02:18:27 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:18:31 Exposure 10.0s
+2026/11/15 02:18:44 Plate Solve
+2026/11/15 02:18:47 Solve succeeded: RA:5h21m45s DEC:+34°25'27" Angle = 0.906, Star number = 1510
+2026/11/15 02:18:47 [AutoCenter|End] Too far from center, distance = 78%(0.885831°)
+2026/11/15 02:18:49 [AutoCenter|Begin] Auto-Center 50#
+2026/11/15 02:18:49 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:18:52 Exposure 10.0s
+2026/11/15 02:19:05 Plate Solve
+2026/11/15 02:19:08 Solve succeeded: RA:5h21m48s DEC:+34°25'27" Angle = 0.918, Star number = 1511
+2026/11/15 02:19:08 [AutoCenter|End] Too far from center, distance = 79%(0.895239°)
+2026/11/15 02:19:10 [AutoCenter|Begin] Auto-Center 51#
+2026/11/15 02:19:10 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:19:13 Exposure 10.0s
+2026/11/15 02:19:26 Plate Solve
+2026/11/15 02:19:29 Solve succeeded: RA:5h21m51s DEC:+34°25'26" Angle = 0.918, Star number = 1501
+2026/11/15 02:19:29 [AutoCenter|End] Too far from center, distance = 80%(0.907098°)
+2026/11/15 02:19:31 [AutoCenter|Begin] Auto-Center 52#
+2026/11/15 02:19:31 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:19:35 Exposure 10.0s
+2026/11/15 02:19:48 Plate Solve
+2026/11/15 02:19:51 Solve succeeded: RA:5h21m55s DEC:+34°25'24" Angle = 0.907, Star number = 1513
+2026/11/15 02:19:51 [AutoCenter|End] Too far from center, distance = 81%(0.919109°)
+2026/11/15 02:19:53 [AutoCenter|Begin] Auto-Center 53#
+2026/11/15 02:19:53 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:19:56 Exposure 10.0s
+2026/11/15 02:20:10 Plate Solve
+2026/11/15 02:20:12 Solve succeeded: RA:5h21m58s DEC:+34°25'24" Angle = 0.907, Star number = 1532
+2026/11/15 02:20:13 [AutoCenter|End] Too far from center, distance = 82%(0.930363°)
+2026/11/15 02:20:15 [AutoCenter|Begin] Auto-Center 54#
+2026/11/15 02:20:15 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:20:18 Exposure 10.0s
+2026/11/15 02:20:31 Plate Solve
+2026/11/15 02:20:34 Solve succeeded: RA:5h22m1s DEC:+34°25'25" Angle = 0.912, Star number = 1520
+2026/11/15 02:20:34 [AutoCenter|End] Too far from center, distance = 83%(0.941784°)
+2026/11/15 02:20:36 [AutoCenter|Begin] Auto-Center 55#
+2026/11/15 02:20:36 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:20:40 Exposure 10.0s
+2026/11/15 02:20:53 Plate Solve
+2026/11/15 02:20:56 Solve succeeded: RA:5h22m5s DEC:+34°25'24" Angle = 0.918, Star number = 1539
+2026/11/15 02:20:56 [AutoCenter|End] Too far from center, distance = 84%(0.952793°)
+2026/11/15 02:20:58 [AutoCenter|Begin] Auto-Center 56#
+2026/11/15 02:20:58 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:21:01 Exposure 10.0s
+2026/11/15 02:21:15 Plate Solve
+2026/11/15 02:21:17 Solve succeeded: RA:5h22m8s DEC:+34°25'25" Angle = 0.929, Star number = 1564
+2026/11/15 02:21:18 [AutoCenter|End] Too far from center, distance = 85%(0.964377°)
+2026/11/15 02:21:20 [AutoCenter|Begin] Auto-Center 57#
+2026/11/15 02:21:20 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:21:23 Exposure 10.0s
+2026/11/15 02:21:36 Plate Solve
+2026/11/15 02:21:39 Solve succeeded: RA:5h22m11s DEC:+34°25'24" Angle = 0.937, Star number = 1522
+2026/11/15 02:21:39 [AutoCenter|End] Too far from center, distance = 86%(0.975592°)
+2026/11/15 02:21:41 [AutoCenter|Begin] Auto-Center 58#
+2026/11/15 02:21:41 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:21:45 Exposure 10.0s
+2026/11/15 02:21:58 Plate Solve
+2026/11/15 02:22:01 Solve succeeded: RA:5h22m15s DEC:+34°25'25" Angle = 0.946, Star number = 1559
+2026/11/15 02:22:01 [AutoCenter|End] Too far from center, distance = 87%(0.986582°)
+2026/11/15 02:22:03 [AutoCenter|Begin] Auto-Center 59#
+2026/11/15 02:22:03 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:22:06 Exposure 10.0s
+2026/11/15 02:22:20 Plate Solve
+2026/11/15 02:22:22 Solve succeeded: RA:5h22m18s DEC:+34°25'25" Angle = 0.947, Star number = 1549
+2026/11/15 02:22:22 [AutoCenter|End] Too far from center, distance = 88%(0.997859°)
+2026/11/15 02:22:24 [AutoCenter|Begin] Auto-Center 60#
+2026/11/15 02:22:24 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:22:28 Exposure 10.0s
+2026/11/15 02:22:41 Plate Solve
+2026/11/15 02:22:44 Solve succeeded: RA:5h22m21s DEC:+34°25'25" Angle = 0.96, Star number = 1563
+2026/11/15 02:22:44 [AutoCenter|End] Too far from center, distance = 89%(1.0093°)
+2026/11/15 02:22:46 [AutoCenter|Begin] Auto-Center 61#
+2026/11/15 02:22:46 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:22:50 Exposure 10.0s
+2026/11/15 02:23:03 Plate Solve
+2026/11/15 02:23:06 Solve succeeded: RA:5h22m25s DEC:+34°25'25" Angle = 0.968, Star number = 1554
+2026/11/15 02:23:06 [AutoCenter|End] Too far from center, distance = 90%(1.02137°)
+2026/11/15 02:23:08 [AutoCenter|Begin] Auto-Center 62#
+2026/11/15 02:23:08 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:23:11 Exposure 10.0s
+2026/11/15 02:23:25 Plate Solve
+2026/11/15 02:23:27 Solve succeeded: RA:5h22m28s DEC:+34°25'25" Angle = 0.975, Star number = 1564
+2026/11/15 02:23:28 [AutoCenter|End] Too far from center, distance = 91%(1.0329°)
+2026/11/15 02:23:30 [AutoCenter|Begin] Auto-Center 63#
+2026/11/15 02:23:30 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:23:33 Exposure 10.0s
+2026/11/15 02:23:46 Plate Solve
+2026/11/15 02:23:49 Solve succeeded: RA:5h22m31s DEC:+34°25'24" Angle = 0.984, Star number = 1568
+2026/11/15 02:23:49 [AutoCenter|End] Too far from center, distance = 92%(1.0446°)
+2026/11/15 02:23:51 [AutoCenter|Begin] Auto-Center 64#
+2026/11/15 02:23:51 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:23:55 Exposure 10.0s
+2026/11/15 02:24:08 Plate Solve
+2026/11/15 02:24:11 Solve succeeded: RA:5h22m35s DEC:+34°25'24" Angle = 0.992, Star number = 1556
+2026/11/15 02:24:11 [AutoCenter|End] Too far from center, distance = 93%(1.05726°)
+2026/11/15 02:24:13 [AutoCenter|Begin] Auto-Center 65#
+2026/11/15 02:24:13 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:24:16 Exposure 10.0s
+2026/11/15 02:24:29 Plate Solve
+2026/11/15 02:24:32 Solve succeeded: RA:5h22m39s DEC:+34°25'23" Angle = 1.006, Star number = 1548
+2026/11/15 02:24:32 [AutoCenter|End] Too far from center, distance = 94%(1.07012°)
+2026/11/15 02:24:34 [AutoCenter|Begin] Auto-Center 66#
+2026/11/15 02:24:34 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:24:37 Exposure 10.0s
+2026/11/15 02:24:50 Plate Solve
+2026/11/15 02:24:53 Solve succeeded: RA:5h22m42s DEC:+34°25'23" Angle = 1.015, Star number = 1567
+2026/11/15 02:24:53 [AutoCenter|End] Too far from center, distance = 95%(1.07991°)
+2026/11/15 02:24:55 [AutoCenter|Begin] Auto-Center 67#
+2026/11/15 02:24:55 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:24:57 Exposure 10.0s
+2026/11/15 02:25:11 Plate Solve
+2026/11/15 02:25:13 Solve succeeded: RA:5h22m44s DEC:+34°25'23" Angle = 1.025, Star number = 1561
+2026/11/15 02:25:14 [AutoCenter|End] Too far from center, distance = 96%(1.08916°)
+2026/11/15 02:25:16 [AutoCenter|Begin] Auto-Center 68#
+2026/11/15 02:25:16 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:25:19 Exposure 10.0s
+2026/11/15 02:25:33 Plate Solve
+2026/11/15 02:25:35 Solve succeeded: RA:5h22m48s DEC:+34°25'23" Angle = 1.027, Star number = 1571
+2026/11/15 02:25:35 [AutoCenter|End] Too far from center, distance = 97%(1.10083°)
+2026/11/15 02:25:37 [AutoCenter|Begin] Auto-Center 69#
+2026/11/15 02:25:37 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:25:41 Exposure 10.0s
+2026/11/15 02:25:54 Plate Solve
+2026/11/15 02:25:57 Solve succeeded: RA:5h22m51s DEC:+34°25'22" Angle = 1.029, Star number = 1554
+2026/11/15 02:25:57 [AutoCenter|End] Too far from center, distance = 98%(1.11235°)
+2026/11/15 02:25:59 [AutoCenter|Begin] Auto-Center 70#
+2026/11/15 02:25:59 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:26:02 Exposure 10.0s
+2026/11/15 02:26:16 Plate Solve
+2026/11/15 02:26:18 Solve succeeded: RA:5h22m55s DEC:+34°25'21" Angle = 1.052, Star number = 1575
+2026/11/15 02:26:18 [AutoCenter|End] Too far from center, distance = 99%(1.12462°)
+2026/11/15 02:26:20 [AutoCenter|Begin] Auto-Center 71#
+2026/11/15 02:26:20 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:26:24 Exposure 10.0s
+2026/11/15 02:26:37 Plate Solve
+2026/11/15 02:26:44 Solve succeeded: RA:5h22m58s DEC:+34°25'23" Angle = 1.05, Star number = 1613
+2026/11/15 02:26:44 [AutoCenter|End] Too far from center, distance = 100%(1.13659°)
+2026/11/15 02:26:46 [AutoCenter|Begin] Auto-Center 72#
+2026/11/15 02:26:46 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:26:49 Exposure 10.0s
+2026/11/15 02:27:02 Plate Solve
+2026/11/15 02:27:09 Solve succeeded: RA:5h23m1s DEC:+34°25'23" Angle = 1.06, Star number = 1608
+2026/11/15 02:27:09 [AutoCenter|End] Too far from center, distance = 101%(1.14563°)
+2026/11/15 02:27:11 [AutoCenter|Begin] Auto-Center 73#
+2026/11/15 02:27:11 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:27:14 Exposure 10.0s
+2026/11/15 02:27:27 Plate Solve
+2026/11/15 02:27:34 Solve succeeded: RA:5h23m3s DEC:+34°25'21" Angle = 1.07, Star number = 1577
+2026/11/15 02:27:34 [AutoCenter|End] Too far from center, distance = 102%(1.15474°)
+2026/11/15 02:27:36 [AutoCenter|Begin] Auto-Center 74#
+2026/11/15 02:27:36 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:27:39 Exposure 10.0s
+2026/11/15 02:27:53 Plate Solve
+2026/11/15 02:28:00 Solve succeeded: RA:5h23m6s DEC:+34°25'19" Angle = 1.075, Star number = 1562
+2026/11/15 02:28:00 [AutoCenter|End] Too far from center, distance = 103%(1.16357°)
+2026/11/15 02:28:02 [AutoCenter|Begin] Auto-Center 75#
+2026/11/15 02:28:02 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:28:05 Exposure 10.0s
+2026/11/15 02:28:19 Plate Solve
+2026/11/15 02:28:26 Solve succeeded: RA:5h23m9s DEC:+34°25'20" Angle = 1.075, Star number = 1588
+2026/11/15 02:28:26 [AutoCenter|End] Too far from center, distance = 104%(1.1745°)
+2026/11/15 02:28:28 [AutoCenter|Begin] Auto-Center 76#
+2026/11/15 02:28:28 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:28:31 Exposure 10.0s
+2026/11/15 02:28:44 Plate Solve
+2026/11/15 02:28:51 Solve succeeded: RA:5h23m12s DEC:+34°25'17" Angle = 0.326, Star number = 1562
+2026/11/15 02:28:51 [AutoCenter|End] Too far from center, distance = 104%(1.18408°)
+2026/11/15 02:28:53 [AutoCenter|Begin] Auto-Center 77#
+2026/11/15 02:28:53 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:28:56 Exposure 10.0s
+2026/11/15 02:29:09 Plate Solve
+2026/11/15 02:29:15 Solve succeeded: RA:5h23m14s DEC:+34°25'13" Angle = 0.332, Star number = 1561
+2026/11/15 02:29:15 [AutoCenter|End] Too far from center, distance = 105%(1.19211°)
+2026/11/15 02:29:17 [AutoCenter|Begin] Auto-Center 78#
+2026/11/15 02:29:17 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:29:20 Exposure 10.0s
+2026/11/15 02:29:34 Plate Solve
+2026/11/15 02:29:40 Solve succeeded: RA:5h23m17s DEC:+34°25'12" Angle = 0.343, Star number = 1564
+2026/11/15 02:29:40 [AutoCenter|End] Too far from center, distance = 106%(1.201°)
+2026/11/15 02:29:42 [AutoCenter|Begin] Auto-Center 79#
+2026/11/15 02:29:42 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:29:45 Exposure 10.0s
+2026/11/15 02:29:58 Plate Solve
+2026/11/15 02:30:04 Solve succeeded: RA:5h23m20s DEC:+34°25'10" Angle = 0.346, Star number = 1555
+2026/11/15 02:30:05 [AutoCenter|End] Too far from center, distance = 107%(1.21049°)
+2026/11/15 02:30:07 [AutoCenter|Begin] Auto-Center 80#
+2026/11/15 02:30:07 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:30:10 Exposure 10.0s
+2026/11/15 02:30:23 Plate Solve
+2026/11/15 02:30:30 Solve succeeded: RA:5h23m22s DEC:+34°25'8" Angle = 0.358, Star number = 1589
+2026/11/15 02:30:30 [AutoCenter|End] Too far from center, distance = 107%(1.21913°)
+2026/11/15 02:30:32 [AutoCenter|Begin] Auto-Center 81#
+2026/11/15 02:30:32 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:30:34 Exposure 10.0s
+2026/11/15 02:30:48 Plate Solve
+2026/11/15 02:30:54 Solve succeeded: RA:5h23m25s DEC:+34°25'7" Angle = 0.372, Star number = 1562
+2026/11/15 02:30:54 [AutoCenter|End] Too far from center, distance = 108%(1.22801°)
+2026/11/15 02:30:56 [AutoCenter|Begin] Auto-Center 82#
+2026/11/15 02:30:56 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:30:59 Exposure 10.0s
+2026/11/15 02:31:13 Plate Solve
+2026/11/15 02:31:19 Solve succeeded: RA:5h23m28s DEC:+34°25'9" Angle = 0.37, Star number = 1577
+2026/11/15 02:31:19 [AutoCenter|End] Too far from center, distance = 109%(1.23812°)
+2026/11/15 02:31:21 [AutoCenter|Begin] Auto-Center 83#
+2026/11/15 02:31:21 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:31:24 Exposure 10.0s
+2026/11/15 02:31:37 Plate Solve
+2026/11/15 02:31:43 Solve succeeded: RA:5h23m31s DEC:+34°25'9" Angle = 0.377, Star number = 1551
+2026/11/15 02:31:43 [AutoCenter|End] Too far from center, distance = 110%(1.2491°)
+2026/11/15 02:31:45 [AutoCenter|Begin] Auto-Center 84#
+2026/11/15 02:31:45 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:31:49 Exposure 10.0s
+2026/11/15 02:32:02 Plate Solve
+2026/11/15 02:32:08 Solve succeeded: RA:5h23m34s DEC:+34°25'10" Angle = 0.38, Star number = 1563
+2026/11/15 02:32:08 [AutoCenter|End] Too far from center, distance = 111%(1.25964°)
+2026/11/15 02:32:10 [AutoCenter|Begin] Auto-Center 85#
+2026/11/15 02:32:10 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:32:13 Exposure 10.0s
+2026/11/15 02:32:27 Plate Solve
+2026/11/15 02:32:33 Solve succeeded: RA:5h23m37s DEC:+34°25'11" Angle = 0.393, Star number = 1578
+2026/11/15 02:32:33 [AutoCenter|End] Too far from center, distance = 112%(1.27098°)
+2026/11/15 02:32:35 [AutoCenter|Begin] Auto-Center 86#
+2026/11/15 02:32:35 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:32:38 Exposure 10.0s
+2026/11/15 02:32:51 Plate Solve
+2026/11/15 02:32:58 Solve succeeded: RA:5h23m40s DEC:+34°25'12" Angle = 0.402, Star number = 1569
+2026/11/15 02:32:58 [AutoCenter|End] Too far from center, distance = 113%(1.28084°)
+2026/11/15 02:33:00 [AutoCenter|Begin] Auto-Center 87#
+2026/11/15 02:33:00 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:33:04 Exposure 10.0s
+2026/11/15 02:33:17 Plate Solve
+2026/11/15 02:33:24 Solve succeeded: RA:5h23m44s DEC:+34°25'8" Angle = 0.411, Star number = 1566
+2026/11/15 02:33:24 [AutoCenter|End] Too far from center, distance = 114%(1.29367°)
+2026/11/15 02:33:26 [AutoCenter|Begin] Auto-Center 88#
+2026/11/15 02:33:26 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:33:30 Exposure 10.0s
+2026/11/15 02:33:43 Plate Solve
+2026/11/15 02:33:49 Solve succeeded: RA:5h23m47s DEC:+34°25'9" Angle = 0.419, Star number = 1551
+2026/11/15 02:33:49 [AutoCenter|End] Too far from center, distance = 115%(1.30501°)
+2026/11/15 02:33:51 [AutoCenter|Begin] Auto-Center 89#
+2026/11/15 02:33:51 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:33:54 Exposure 10.0s
+2026/11/15 02:34:08 Plate Solve
+2026/11/15 02:34:14 Solve succeeded: RA:5h23m50s DEC:+34°25'9" Angle = 0.429, Star number = 1527
+2026/11/15 02:34:14 [AutoCenter|End] Too far from center, distance = 116%(1.31568°)
+2026/11/15 02:34:16 [AutoCenter|Begin] Auto-Center 90#
+2026/11/15 02:34:16 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:34:19 Exposure 10.0s
+2026/11/15 02:34:32 Plate Solve
+2026/11/15 02:34:38 Solve succeeded: RA:5h23m53s DEC:+34°25'7" Angle = 0.438, Star number = 1556
+2026/11/15 02:34:39 [AutoCenter|End] Too far from center, distance = 117%(1.32649°)
+2026/11/15 02:34:41 [AutoCenter|Begin] Auto-Center 91#
+2026/11/15 02:34:41 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:34:44 Exposure 10.0s
+2026/11/15 02:34:57 Plate Solve
+2026/11/15 02:35:03 Solve succeeded: RA:5h23m57s DEC:+34°25'8" Angle = 0.471, Star number = 1545
+2026/11/15 02:35:03 [AutoCenter|End] Too far from center, distance = 118%(1.33741°)
+2026/11/15 02:35:05 [AutoCenter|Begin] Auto-Center 92#
+2026/11/15 02:35:05 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:35:08 Exposure 10.0s
+2026/11/15 02:35:22 Plate Solve
+2026/11/15 02:35:28 Solve succeeded: RA:5h24m0s DEC:+34°25'9" Angle = 0.453, Star number = 1561
+2026/11/15 02:35:28 [AutoCenter|End] Too far from center, distance = 119%(1.3495°)
+2026/11/15 02:35:30 [AutoCenter|Begin] Auto-Center 93#
+2026/11/15 02:35:30 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:35:33 Exposure 10.0s
+2026/11/15 02:35:47 Plate Solve
+2026/11/15 02:35:52 Solve succeeded: RA:5h24m3s DEC:+34°25'11" Angle = 0.451, Star number = 1554
+2026/11/15 02:35:52 [AutoCenter|End] Too far from center, distance = 120%(1.36039°)
+2026/11/15 02:35:54 [AutoCenter|Begin] Auto-Center 94#
+2026/11/15 02:35:54 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:35:58 Exposure 10.0s
+2026/11/15 02:36:11 Plate Solve
+2026/11/15 02:36:17 Solve succeeded: RA:5h24m7s DEC:+34°25'12" Angle = 0.464, Star number = 1550
+2026/11/15 02:36:17 [AutoCenter|End] Too far from center, distance = 121%(1.37185°)
+2026/11/15 02:36:19 [AutoCenter|Begin] Auto-Center 95#
+2026/11/15 02:36:19 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:36:22 Exposure 10.0s
+2026/11/15 02:36:35 Plate Solve
+2026/11/15 02:36:41 Solve succeeded: RA:5h24m9s DEC:+34°25'12" Angle = 0.47, Star number = 1579
+2026/11/15 02:36:41 [AutoCenter|End] Too far from center, distance = 122%(1.38084°)
+2026/11/15 02:36:43 [AutoCenter|Begin] Auto-Center 96#
+2026/11/15 02:36:43 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:36:46 Exposure 10.0s
+2026/11/15 02:37:00 Plate Solve
+2026/11/15 02:37:06 Solve succeeded: RA:5h24m12s DEC:+34°25'10" Angle = 0.485, Star number = 1564
+2026/11/15 02:37:06 [AutoCenter|End] Too far from center, distance = 123%(1.39124°)
+2026/11/15 02:37:08 [AutoCenter|Begin] Auto-Center 97#
+2026/11/15 02:37:08 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:37:11 Exposure 10.0s
+2026/11/15 02:37:24 Plate Solve
+2026/11/15 02:37:30 Solve succeeded: RA:5h24m15s DEC:+34°25'9" Angle = 0.489, Star number = 1584
+2026/11/15 02:37:30 [AutoCenter|End] Too far from center, distance = 124%(1.40169°)
+2026/11/15 02:37:32 [AutoCenter|Begin] Auto-Center 98#
+2026/11/15 02:37:32 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:37:36 Exposure 10.0s
+2026/11/15 02:37:49 Plate Solve
+2026/11/15 02:37:55 Solve succeeded: RA:5h24m19s DEC:+34°25'10" Angle = 0.5, Star number = 1591
+2026/11/15 02:37:55 [AutoCenter|End] Too far from center, distance = 125%(1.41403°)
+2026/11/15 02:37:57 [AutoCenter|Begin] Auto-Center 99#
+2026/11/15 02:37:57 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:38:01 Exposure 10.0s
+2026/11/15 02:38:14 Plate Solve
+2026/11/15 02:38:20 Solve succeeded: RA:5h24m22s DEC:+34°25'8" Angle = 0.501, Star number = 1596
+2026/11/15 02:38:20 [AutoCenter|End] Too far from center, distance = 126%(1.42543°)
+2026/11/15 02:38:22 [AutoCenter|Begin] Auto-Center 100#
+2026/11/15 02:38:22 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:38:25 Exposure 10.0s
+2026/11/15 02:38:39 Plate Solve
+2026/11/15 02:38:44 Solve succeeded: RA:5h24m25s DEC:+34°25'4" Angle = 0.52, Star number = 1584
+2026/11/15 02:38:44 [AutoCenter|End] Too far from center, distance = 127%(1.43611°)
+2026/11/15 02:38:46 [AutoCenter|Begin] Auto-Center 101#
+2026/11/15 02:38:46 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:38:50 Exposure 10.0s
+2026/11/15 02:39:04 Plate Solve
+2026/11/15 02:39:08 Solve succeeded: RA:5h24m29s DEC:+34°25'4" Angle = 0.524, Star number = 1602
+2026/11/15 02:39:08 [AutoCenter|End] Too far from center, distance = 128%(1.44781°)
+2026/11/15 02:39:10 [AutoCenter|Begin] Auto-Center 102#
+2026/11/15 02:39:10 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:39:13 Exposure 10.0s
+2026/11/15 02:39:26 Plate Solve
+2026/11/15 02:39:32 Solve succeeded: RA:5h24m32s DEC:+34°25'4" Angle = 0.524, Star number = 1579
+2026/11/15 02:39:33 [AutoCenter|End] Too far from center, distance = 129%(1.45721°)
+2026/11/15 02:39:35 [AutoCenter|Begin] Auto-Center 103#
+2026/11/15 02:39:35 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:39:37 Exposure 10.0s
+2026/11/15 02:39:51 Plate Solve
+2026/11/15 02:39:57 Solve succeeded: RA:5h24m34s DEC:+34°25'4" Angle = 0.531, Star number = 1575
+2026/11/15 02:39:57 [AutoCenter|End] Too far from center, distance = 129%(1.46585°)
+2026/11/15 02:39:59 [AutoCenter|Begin] Auto-Center 104#
+2026/11/15 02:39:59 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:40:02 Exposure 10.0s
+2026/11/15 02:40:15 Plate Solve
+2026/11/15 02:40:22 Solve succeeded: RA:5h24m37s DEC:+34°25'5" Angle = 0.535, Star number = 1601
+2026/11/15 02:40:22 [AutoCenter|End] Too far from center, distance = 130%(1.47541°)
+2026/11/15 02:40:24 [AutoCenter|Begin] Auto-Center 105#
+2026/11/15 02:40:24 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:40:27 Exposure 10.0s
+2026/11/15 02:40:40 Plate Solve
+2026/11/15 02:40:46 Solve succeeded: RA:5h24m39s DEC:+34°25'5" Angle = 0.546, Star number = 1571
+2026/11/15 02:40:47 [AutoCenter|End] Too far from center, distance = 131%(1.48349°)
+2026/11/15 02:40:49 [AutoCenter|Begin] Auto-Center 106#
+2026/11/15 02:40:49 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:40:52 Exposure 10.0s
+2026/11/15 02:41:05 Plate Solve
+2026/11/15 02:41:10 Solve succeeded: RA:5h24m42s DEC:+34°25'7" Angle = 0.55, Star number = 1604
+2026/11/15 02:41:10 [AutoCenter|End] Too far from center, distance = 132%(1.4928°)
+2026/11/15 02:41:12 [AutoCenter|Begin] Auto-Center 107#
+2026/11/15 02:41:12 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:41:15 Exposure 10.0s
+2026/11/15 02:41:29 Plate Solve
+2026/11/15 02:41:34 Solve succeeded: RA:5h24m45s DEC:+34°25'9" Angle = 0.539, Star number = 1612
+2026/11/15 02:41:34 [AutoCenter|End] Too far from center, distance = 133%(1.5038°)
+2026/11/15 02:41:36 [AutoCenter|Begin] Auto-Center 108#
+2026/11/15 02:41:36 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:41:39 Exposure 10.0s
+2026/11/15 02:41:52 Plate Solve
+2026/11/15 02:41:57 Solve succeeded: RA:5h24m48s DEC:+34°25'6" Angle = 0.553, Star number = 1600
+2026/11/15 02:41:58 [AutoCenter|End] Too far from center, distance = 134%(1.51405°)
+2026/11/15 02:42:00 [AutoCenter|Begin] Auto-Center 109#
+2026/11/15 02:42:00 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:42:03 Exposure 10.0s
+2026/11/15 02:42:16 Plate Solve
+2026/11/15 02:42:21 Solve succeeded: RA:5h24m51s DEC:+34°25'5" Angle = 0.558, Star number = 1605
+2026/11/15 02:42:21 [AutoCenter|End] Too far from center, distance = 135%(1.52496°)
+2026/11/15 02:42:23 [AutoCenter|Begin] Auto-Center 110#
+2026/11/15 02:42:23 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:42:26 Exposure 10.0s
+2026/11/15 02:42:40 Plate Solve
+2026/11/15 02:42:44 Solve succeeded: RA:5h24m55s DEC:+34°25'6" Angle = 0.569, Star number = 1590
+2026/11/15 02:42:45 [AutoCenter|End] Too far from center, distance = 136%(1.53749°)
+2026/11/15 02:42:47 [AutoCenter|Begin] Auto-Center 111#
+2026/11/15 02:42:47 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:42:50 Exposure 10.0s
+2026/11/15 02:43:03 Plate Solve
+2026/11/15 02:43:08 Solve succeeded: RA:5h24m59s DEC:+34°25'6" Angle = 0.581, Star number = 1572
+2026/11/15 02:43:08 [AutoCenter|End] Too far from center, distance = 137%(1.55052°)
+2026/11/15 02:43:10 [AutoCenter|Begin] Auto-Center 112#
+2026/11/15 02:43:10 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:43:14 Exposure 10.0s
+2026/11/15 02:43:27 Plate Solve
+2026/11/15 02:43:32 Solve succeeded: RA:5h25m2s DEC:+34°25'3" Angle = 0.596, Star number = 1618
+2026/11/15 02:43:32 [AutoCenter|End] Too far from center, distance = 138%(1.56278°)
+2026/11/15 02:43:34 [AutoCenter|Begin] Auto-Center 113#
+2026/11/15 02:43:34 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:43:38 Exposure 10.0s
+2026/11/15 02:43:51 Plate Solve
+2026/11/15 02:43:56 Solve succeeded: RA:5h25m5s DEC:+34°25'5" Angle = 0.6, Star number = 1632
+2026/11/15 02:43:56 [AutoCenter|End] Too far from center, distance = 139%(1.57386°)
+2026/11/15 02:43:58 [AutoCenter|Begin] Auto-Center 114#
+2026/11/15 02:43:58 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:44:01 Exposure 10.0s
+2026/11/15 02:44:15 Plate Solve
+2026/11/15 02:44:19 Solve succeeded: RA:5h25m9s DEC:+34°25'4" Angle = 0.609, Star number = 1611
+2026/11/15 02:44:19 [AutoCenter|End] Too far from center, distance = 140%(1.58479°)
+2026/11/15 02:44:21 [AutoCenter|Begin] Auto-Center 115#
+2026/11/15 02:44:21 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:44:25 Exposure 10.0s
+2026/11/15 02:44:38 Plate Solve
+2026/11/15 02:44:42 Solve succeeded: RA:5h25m13s DEC:+34°25'3" Angle = 0.616, Star number = 1618
+2026/11/15 02:44:43 [AutoCenter|End] Too far from center, distance = 141%(1.59803°)
+2026/11/15 02:44:45 [AutoCenter|Begin] Auto-Center 116#
+2026/11/15 02:44:45 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:44:48 Exposure 10.0s
+2026/11/15 02:45:01 Plate Solve
+2026/11/15 02:45:04 Solve succeeded: RA:5h25m16s DEC:+34°25'4" Angle = 0.624, Star number = 1617
+2026/11/15 02:45:04 [AutoCenter|End] Too far from center, distance = 142%(1.60892°)
+2026/11/15 02:45:06 [AutoCenter|Begin] Auto-Center 117#
+2026/11/15 02:45:06 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:45:09 Exposure 10.0s
+2026/11/15 02:45:23 Plate Solve
+2026/11/15 02:45:26 Solve succeeded: RA:5h25m19s DEC:+34°25'6" Angle = 0.639, Star number = 1614
+2026/11/15 02:45:26 [AutoCenter|End] Too far from center, distance = 143%(1.61875°)
+2026/11/15 02:45:28 [AutoCenter|Begin] Auto-Center 118#
+2026/11/15 02:45:28 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:45:31 Exposure 10.0s
+2026/11/15 02:45:44 Plate Solve
+2026/11/15 02:45:47 Solve succeeded: RA:5h25m23s DEC:+34°25'6" Angle = 0.507, Star number = 1656
+2026/11/15 02:45:47 [AutoCenter|End] Too far from center, distance = 144%(1.63451°)
+2026/11/15 02:45:49 [AutoCenter|Begin] Auto-Center 119#
+2026/11/15 02:45:49 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:45:53 Exposure 10.0s
+2026/11/15 02:46:06 Plate Solve
+2026/11/15 02:46:09 Solve succeeded: RA:5h25m27s DEC:+34°25'9" Angle = 0.441, Star number = 1679
+2026/11/15 02:46:09 [AutoCenter|End] Too far from center, distance = 145%(1.64683°)
+2026/11/15 02:46:11 [AutoCenter|Begin] Auto-Center 120#
+2026/11/15 02:46:11 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:46:14 Exposure 10.0s
+2026/11/15 02:46:28 Plate Solve
+2026/11/15 02:46:30 Solve succeeded: RA:5h25m29s DEC:+34°25'4" Angle = 0.751, Star number = 1682
+2026/11/15 02:46:30 [AutoCenter|End] Too far from center, distance = 146%(1.6554°)
+2026/11/15 02:46:32 [AutoCenter|Begin] Auto-Center 121#
+2026/11/15 02:46:32 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:46:36 Exposure 10.0s
+2026/11/15 02:46:49 Plate Solve
+2026/11/15 02:46:52 Solve succeeded: RA:5h25m33s DEC:+34°25'3" Angle = 0.757, Star number = 1685
+2026/11/15 02:46:52 [AutoCenter|End] Too far from center, distance = 147%(1.66791°)
+2026/11/15 02:46:54 [AutoCenter|Begin] Auto-Center 122#
+2026/11/15 02:46:54 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:46:57 Exposure 10.0s
+2026/11/15 02:47:11 Plate Solve
+2026/11/15 02:47:13 Solve succeeded: RA:5h25m36s DEC:+34°25'4" Angle = 0.755, Star number = 1709
+2026/11/15 02:47:13 [AutoCenter|End] Too far from center, distance = 149%(1.68014°)
+2026/11/15 02:47:15 [AutoCenter|Begin] Auto-Center 123#
+2026/11/15 02:47:15 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:47:18 Exposure 10.0s
+2026/11/15 02:47:31 Plate Solve
+2026/11/15 02:47:34 Solve succeeded: RA:5h25m39s DEC:+34°25'6" Angle = 0.762, Star number = 1697
+2026/11/15 02:47:34 [AutoCenter|End] Too far from center, distance = 149%(1.68923°)
+2026/11/15 02:47:36 [AutoCenter|Begin] Auto-Center 124#
+2026/11/15 02:47:36 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:47:40 Exposure 10.0s
+2026/11/15 02:47:53 Plate Solve
+2026/11/15 02:47:55 Solve succeeded: RA:5h25m42s DEC:+34°25'7" Angle = 0.769, Star number = 1672
+2026/11/15 02:47:56 [AutoCenter|End] Too far from center, distance = 150%(1.70001°)
+2026/11/15 02:47:58 [AutoCenter|Begin] Auto-Center 125#
+2026/11/15 02:47:58 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:48:01 Exposure 10.0s
+2026/11/15 02:48:15 Plate Solve
+2026/11/15 02:48:17 Solve succeeded: RA:5h25m45s DEC:+34°25'7" Angle = 0.779, Star number = 1695
+2026/11/15 02:48:18 [AutoCenter|End] Too far from center, distance = 151%(1.71104°)
+2026/11/15 02:48:20 [AutoCenter|Begin] Auto-Center 126#
+2026/11/15 02:48:20 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:48:23 Exposure 10.0s
+2026/11/15 02:48:36 Plate Solve
+2026/11/15 02:48:39 Solve succeeded: RA:5h25m49s DEC:+34°25'7" Angle = 0.784, Star number = 1699
+2026/11/15 02:48:39 [AutoCenter|End] Too far from center, distance = 152%(1.72157°)
+2026/11/15 02:48:41 [AutoCenter|Begin] Auto-Center 127#
+2026/11/15 02:48:41 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:48:45 Exposure 10.0s
+2026/11/15 02:48:58 Plate Solve
+2026/11/15 02:49:01 Solve succeeded: RA:5h25m51s DEC:+34°25'8" Angle = 0.417, Star number = 1754
+2026/11/15 02:49:01 [AutoCenter|End] Too far from center, distance = 153%(1.73069°)
+2026/11/15 02:49:03 [AutoCenter|Begin] Auto-Center 128#
+2026/11/15 02:49:03 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:49:06 Exposure 10.0s
+2026/11/15 02:49:20 Plate Solve
+2026/11/15 02:49:22 Solve succeeded: RA:5h25m55s DEC:+34°25'8" Angle = 0.424, Star number = 1753
+2026/11/15 02:49:22 [AutoCenter|End] Too far from center, distance = 154%(1.74247°)
+2026/11/15 02:49:24 [AutoCenter|Begin] Auto-Center 129#
+2026/11/15 02:49:24 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:49:28 Exposure 10.0s
+2026/11/15 02:49:41 Plate Solve
+2026/11/15 02:49:44 Solve succeeded: RA:5h25m58s DEC:+34°25'8" Angle = 0.432, Star number = 1732
+2026/11/15 02:49:44 [AutoCenter|End] Too far from center, distance = 155%(1.75411°)
+2026/11/15 02:49:46 [AutoCenter|Begin] Auto-Center 130#
+2026/11/15 02:49:46 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:49:50 Exposure 10.0s
+2026/11/15 02:50:03 Plate Solve
+2026/11/15 02:50:05 Solve succeeded: RA:5h26m1s DEC:+34°25'8" Angle = 0.438, Star number = 1735
+2026/11/15 02:50:06 [AutoCenter|End] Too far from center, distance = 156%(1.76554°)
+2026/11/15 02:50:08 [AutoCenter|Begin] Auto-Center 131#
+2026/11/15 02:50:08 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:50:10 Exposure 10.0s
+2026/11/15 02:50:24 Plate Solve
+2026/11/15 02:50:26 Solve succeeded: RA:5h26m4s DEC:+34°25'7" Angle = 0.448, Star number = 1730
+2026/11/15 02:50:26 [AutoCenter|End] Too far from center, distance = 157%(1.77452°)
+2026/11/15 02:50:28 [AutoCenter|Begin] Auto-Center 132#
+2026/11/15 02:50:28 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:50:32 Exposure 10.0s
+2026/11/15 02:50:45 Plate Solve
+2026/11/15 02:50:48 Solve succeeded: RA:5h26m7s DEC:+34°25'6" Angle = 0.457, Star number = 1708
+2026/11/15 02:50:48 [AutoCenter|End] Too far from center, distance = 158%(1.78575°)
+2026/11/15 02:50:50 [AutoCenter|Begin] Auto-Center 133#
+2026/11/15 02:50:50 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:50:53 Exposure 10.0s
+2026/11/15 02:51:07 Plate Solve
+2026/11/15 02:51:10 Solve succeeded: RA:5h26m11s DEC:+34°25'5" Angle = 0.51, Star number = 1730
+2026/11/15 02:51:10 [AutoCenter|End] Too far from center, distance = 159%(1.79744°)
+2026/11/15 02:51:12 [AutoCenter|Begin] Auto-Center 134#
+2026/11/15 02:51:12 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:51:15 Exposure 10.0s
+2026/11/15 02:51:29 Plate Solve
+2026/11/15 02:51:31 Solve succeeded: RA:5h26m14s DEC:+34°25'3" Angle = 0.518, Star number = 1766
+2026/11/15 02:51:31 [AutoCenter|End] Too far from center, distance = 160%(1.80937°)
+2026/11/15 02:51:33 [AutoCenter|Begin] Auto-Center 135#
+2026/11/15 02:51:33 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:51:37 Exposure 10.0s
+2026/11/15 02:51:50 Plate Solve
+2026/11/15 02:51:53 Solve succeeded: RA:5h26m18s DEC:+34°25'3" Angle = 0.526, Star number = 1769
+2026/11/15 02:51:53 [AutoCenter|End] Too far from center, distance = 161%(1.82175°)
+2026/11/15 02:51:55 [AutoCenter|Begin] Auto-Center 136#
+2026/11/15 02:51:55 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:51:58 Exposure 10.0s
+2026/11/15 02:52:12 Plate Solve
+2026/11/15 02:52:15 Solve succeeded: RA:5h26m21s DEC:+34°25'5" Angle = 0.531, Star number = 1759
+2026/11/15 02:52:15 [AutoCenter|End] Too far from center, distance = 162%(1.83403°)
+2026/11/15 02:52:17 [AutoCenter|Begin] Auto-Center 137#
+2026/11/15 02:52:17 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:52:20 Exposure 10.0s
+2026/11/15 02:52:33 Plate Solve
+2026/11/15 02:52:36 Solve succeeded: RA:5h26m25s DEC:+34°25'3" Angle = 0.536, Star number = 1769
+2026/11/15 02:52:36 [AutoCenter|End] Too far from center, distance = 163%(1.84606°)
+2026/11/15 02:52:38 [AutoCenter|Begin] Auto-Center 138#
+2026/11/15 02:52:38 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:52:41 Exposure 10.0s
+2026/11/15 02:52:54 Plate Solve
+2026/11/15 02:52:57 Solve succeeded: RA:5h26m27s DEC:+34°25'2" Angle = 0.541, Star number = 1828
+2026/11/15 02:52:57 [AutoCenter|End] Too far from center, distance = 164%(1.85486°)
+2026/11/15 02:52:59 [AutoCenter|Begin] Auto-Center 139#
+2026/11/15 02:52:59 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:53:02 Exposure 10.0s
+2026/11/15 02:53:15 Plate Solve
+2026/11/15 02:53:18 Solve succeeded: RA:5h26m31s DEC:+34°25'2" Angle = 0.549, Star number = 1810
+2026/11/15 02:53:18 [AutoCenter|End] Too far from center, distance = 165%(1.8674°)
+2026/11/15 02:53:20 [AutoCenter|Begin] Auto-Center 140#
+2026/11/15 02:53:20 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:53:23 Exposure 10.0s
+2026/11/15 02:53:36 Plate Solve
+2026/11/15 02:53:39 Solve succeeded: RA:5h26m34s DEC:+34°25'3" Angle = 0.556, Star number = 1811
+2026/11/15 02:53:39 [AutoCenter|End] Too far from center, distance = 166%(1.8762°)
+2026/11/15 02:53:41 [AutoCenter|Begin] Auto-Center 141#
+2026/11/15 02:53:41 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:53:45 Exposure 10.0s
+2026/11/15 02:53:58 Plate Solve
+2026/11/15 02:54:01 Solve succeeded: RA:5h26m37s DEC:+34°25'4" Angle = 0.564, Star number = 1829
+2026/11/15 02:54:01 [AutoCenter|End] Too far from center, distance = 167%(1.8882°)
+2026/11/15 02:54:03 [AutoCenter|Begin] Auto-Center 142#
+2026/11/15 02:54:03 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:54:06 Exposure 10.0s
+2026/11/15 02:54:20 Plate Solve
+2026/11/15 02:54:22 Solve succeeded: RA:5h26m40s DEC:+34°25'4" Angle = 0.573, Star number = 1846
+2026/11/15 02:54:22 [AutoCenter|End] Too far from center, distance = 168%(1.90008°)
+2026/11/15 02:54:24 [AutoCenter|Begin] Auto-Center 143#
+2026/11/15 02:54:24 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:54:28 Exposure 10.0s
+2026/11/15 02:54:41 Plate Solve
+2026/11/15 02:54:44 Solve succeeded: RA:5h26m44s DEC:+34°25'4" Angle = 0.581, Star number = 1841
+2026/11/15 02:54:44 [AutoCenter|End] Too far from center, distance = 169%(1.91185°)
+2026/11/15 02:54:46 [AutoCenter|Begin] Auto-Center 144#
+2026/11/15 02:54:46 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:54:49 Exposure 10.0s
+2026/11/15 02:55:03 Plate Solve
+2026/11/15 02:55:06 Solve succeeded: RA:5h26m47s DEC:+34°25'4" Angle = 0.588, Star number = 1851
+2026/11/15 02:55:06 [AutoCenter|End] Too far from center, distance = 170%(1.92402°)
+2026/11/15 02:55:08 [AutoCenter|Begin] Auto-Center 145#
+2026/11/15 02:55:08 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:55:11 Exposure 10.0s
+2026/11/15 02:55:24 Plate Solve
+2026/11/15 02:55:27 Solve succeeded: RA:5h26m51s DEC:+34°25'2" Angle = 0.596, Star number = 1855
+2026/11/15 02:55:27 [AutoCenter|End] Too far from center, distance = 171%(1.93494°)
+2026/11/15 02:55:29 [AutoCenter|Begin] Auto-Center 146#
+2026/11/15 02:55:29 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:55:33 Exposure 10.0s
+2026/11/15 02:55:46 Plate Solve
+2026/11/15 02:55:49 Solve succeeded: RA:5h26m54s DEC:+34°25'1" Angle = 0.607, Star number = 1824
+2026/11/15 02:55:49 [AutoCenter|End] Too far from center, distance = 172%(1.94687°)
+2026/11/15 02:55:51 [AutoCenter|Begin] Auto-Center 147#
+2026/11/15 02:55:51 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:55:53 Exposure 10.0s
+2026/11/15 02:56:07 Plate Solve
+2026/11/15 02:56:09 Solve succeeded: RA:5h26m57s DEC:+34°25'2" Angle = 0.599, Star number = 1837
+2026/11/15 02:56:10 [AutoCenter|End] Too far from center, distance = 173%(1.95628°)
+2026/11/15 02:56:12 [AutoCenter|Begin] Auto-Center 148#
+2026/11/15 02:56:12 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:56:15 Exposure 10.0s
+2026/11/15 02:56:28 Plate Solve
+2026/11/15 02:56:31 Solve succeeded: RA:5h27m0s DEC:+34°25'2" Angle = 0.608, Star number = 1828
+2026/11/15 02:56:31 [AutoCenter|End] Too far from center, distance = 174%(1.96831°)
+2026/11/15 02:56:33 [AutoCenter|Begin] Auto-Center 149#
+2026/11/15 02:56:33 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:56:37 Exposure 10.0s
+2026/11/15 02:56:50 Plate Solve
+2026/11/15 02:56:53 Solve succeeded: RA:5h27m4s DEC:+34°25'0" Angle = 0.616, Star number = 1877
+2026/11/15 02:56:53 [AutoCenter|End] Too far from center, distance = 175%(1.98039°)
+2026/11/15 02:56:55 [AutoCenter|Begin] Auto-Center 150#
+2026/11/15 02:56:55 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:56:58 Exposure 10.0s
+2026/11/15 02:57:12 Plate Solve
+2026/11/15 02:57:15 Solve succeeded: RA:5h27m7s DEC:+34°25'1" Angle = 0.624, Star number = 1891
+2026/11/15 02:57:15 [AutoCenter|End] Too far from center, distance = 176%(1.99189°)
+2026/11/15 02:57:17 [AutoCenter|Begin] Auto-Center 151#
+2026/11/15 02:57:17 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:57:20 Exposure 10.0s
+2026/11/15 02:57:33 Plate Solve
+2026/11/15 02:57:36 Solve succeeded: RA:5h27m10s DEC:+34°25'2" Angle = 0.632, Star number = 1896
+2026/11/15 02:57:36 [AutoCenter|End] Too far from center, distance = 177%(2.00179°)
+2026/11/15 02:57:38 [AutoCenter|Begin] Auto-Center 152#
+2026/11/15 02:57:38 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:57:42 Exposure 10.0s
+2026/11/15 02:57:55 Plate Solve
+2026/11/15 02:57:58 Solve succeeded: RA:5h27m13s DEC:+34°25'2" Angle = 0.639, Star number = 1899
+2026/11/15 02:57:58 [AutoCenter|End] Too far from center, distance = 178%(2.01273°)
+2026/11/15 02:58:00 [AutoCenter|Begin] Auto-Center 153#
+2026/11/15 02:58:00 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:58:03 Exposure 10.0s
+2026/11/15 02:58:17 Plate Solve
+2026/11/15 02:58:19 Solve succeeded: RA:5h27m16s DEC:+34°25'2" Angle = 0.646, Star number = 1860
+2026/11/15 02:58:20 [AutoCenter|End] Too far from center, distance = 179%(2.02375°)
+2026/11/15 02:58:22 [AutoCenter|Begin] Auto-Center 154#
+2026/11/15 02:58:22 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:58:25 Exposure 10.0s
+2026/11/15 02:58:38 Plate Solve
+2026/11/15 02:58:41 Solve succeeded: RA:5h27m20s DEC:+34°25'3" Angle = 0.613, Star number = 1892
+2026/11/15 02:58:41 [AutoCenter|End] Too far from center, distance = 180%(2.03542°)
+2026/11/15 02:58:43 [AutoCenter|Begin] Auto-Center 155#
+2026/11/15 02:58:43 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:58:47 Exposure 10.0s
+2026/11/15 02:59:00 Plate Solve
+2026/11/15 02:59:02 Solve succeeded: RA:5h27m23s DEC:+34°25'0" Angle = 0.651, Star number = 1869
+2026/11/15 02:59:03 [AutoCenter|End] Too far from center, distance = 181%(2.04721°)
+2026/11/15 02:59:05 [AutoCenter|Begin] Auto-Center 156#
+2026/11/15 02:59:05 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:59:07 Exposure 10.0s
+2026/11/15 02:59:21 Plate Solve
+2026/11/15 02:59:23 Solve succeeded: RA:5h27m26s DEC:+34°25'0" Angle = 0.657, Star number = 1883
+2026/11/15 02:59:23 [AutoCenter|End] Too far from center, distance = 182%(2.05626°)
+2026/11/15 02:59:25 [AutoCenter|Begin] Auto-Center 157#
+2026/11/15 02:59:25 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:59:29 Exposure 10.0s
+2026/11/15 02:59:42 Plate Solve
+2026/11/15 02:59:45 Solve succeeded: RA:5h27m29s DEC:+34°25'0" Angle = 0.669, Star number = 1902
+2026/11/15 02:59:45 [AutoCenter|End] Too far from center, distance = 183%(2.06789°)
+2026/11/15 02:59:47 [AutoCenter|Begin] Auto-Center 158#
+2026/11/15 02:59:47 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 02:59:51 Exposure 10.0s
+2026/11/15 03:00:04 Plate Solve
+2026/11/15 03:00:06 Solve succeeded: RA:5h27m33s DEC:+34°24'59" Angle = 0.682, Star number = 1858
+2026/11/15 03:00:07 [AutoCenter|End] Too far from center, distance = 184%(2.07989°)
+2026/11/15 03:00:09 [AutoCenter|Begin] Auto-Center 159#
+2026/11/15 03:00:09 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 03:00:12 Exposure 10.0s
+2026/11/15 03:00:25 Plate Solve
+2026/11/15 03:00:28 Solve succeeded: RA:5h27m36s DEC:+34°24'59" Angle = 0.692, Star number = 1869
+2026/11/15 03:00:28 [AutoCenter|End] Too far from center, distance = 185%(2.09199°)
+2026/11/15 03:00:30 [AutoCenter|Begin] Auto-Center 160#
+2026/11/15 03:00:30 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 03:00:34 Exposure 10.0s
+2026/11/15 03:00:47 Plate Solve
+2026/11/15 03:00:50 Solve succeeded: RA:5h27m40s DEC:+34°24'58" Angle = 0.704, Star number = 1869
+2026/11/15 03:00:50 [AutoCenter|End] Too far from center, distance = 186%(2.10461°)
+2026/11/15 03:00:52 [AutoCenter|Begin] Auto-Center 161#
+2026/11/15 03:00:52 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 03:00:55 Exposure 10.0s
+2026/11/15 03:01:09 Plate Solve
+2026/11/15 03:01:11 Solve succeeded: RA:5h27m44s DEC:+34°24'56" Angle = 0.71, Star number = 1884
+2026/11/15 03:01:12 [AutoCenter|End] Too far from center, distance = 187%(2.1167°)
+2026/11/15 03:01:14 [AutoCenter|Begin] Auto-Center 162#
+2026/11/15 03:01:14 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 03:01:17 Exposure 10.0s
+2026/11/15 03:01:30 Plate Solve
+2026/11/15 03:01:33 Solve succeeded: RA:5h27m47s DEC:+34°24'54" Angle = 0.719, Star number = 1874
+2026/11/15 03:01:33 [AutoCenter|End] Too far from center, distance = 188%(2.12913°)
+2026/11/15 03:01:35 [AutoCenter|Begin] Auto-Center 163#
+2026/11/15 03:01:35 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 03:01:39 Exposure 10.0s
+2026/11/15 03:01:51 Stop Autorun Manually
+2026/11/15 03:01:52 [AutoCenter|End] Cancel
+2026/11/15 03:01:52 Meridian Flip 1# failed
+2026/11/15 03:01:52 [Meridian Flip|End] Cancel, Meridian Flip failed
+2026/11/15 03:01:52 Start Tracking
+2026/11/15 03:01:52 [Guide] ReSelect Guide star
+2026/11/15 03:01:53 [Guide] Start Guiding
+2026/11/15 03:01:53 [Guide] Select Guide Star failed, no star found
+2026/11/15 03:01:53 [Autorun|End] Pause Autorun
+2026/11/15 03:01:53 Pause Plan M. 51 Darkframes 
+Log disabled at 2026/11/15 03:01:53
+Log enabled at 2026/11/15 03:03:00
+2026/11/15 03:03:00 Plan M. 51 Darkframes  Start
+2026/11/15 03:03:01 [Autorun|Begin] AE Aurigae Start
+2026/11/15 03:03:01 [Guide] Stop Guiding
+2026/11/15 03:03:01 [AutoCenter|Begin] Auto-Center 1#
+2026/11/15 03:03:01 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 03:03:07 Exposure 10.0s
+2026/11/15 03:03:21 Plate Solve
+2026/11/15 03:03:24 Solve succeeded: RA:5h17m31s DEC:+34°27'55" Angle = 1.093, Star number = 1281
+2026/11/15 03:03:24 [AutoCenter|End] The target is centered
+2026/11/15 03:03:24 Start Tracking
+2026/11/15 03:03:27 [Guide] ReSelect Guide star
+2026/11/15 03:03:27 [Guide] Start Guiding
+2026/11/15 03:03:29 [Guide] Guide Settle
+2026/11/15 03:03:32 [Guide] Settle Done
+2026/11/15 03:03:32 Shooting 150 light frames, exposure 300.0s Bin1
+2026/11/15 03:03:32 [Guide] Dither
+2026/11/15 03:03:32 [Guide] Dither Settle
+2026/11/15 03:03:42 [Guide] Settle Done
+2026/11/15 03:03:42 Exposure 300.0s image 73#
+2026/11/15 03:08:48 [Guide] Dither
+2026/11/15 03:08:48 [Guide] Dither Settle
+2026/11/15 03:09:02 [Guide] Settle Done
+2026/11/15 03:09:02 Exposure 300.0s image 74#
+2026/11/15 03:14:08 [Guide] Dither
+2026/11/15 03:14:08 [Guide] Dither Settle
+2026/11/15 03:14:16 [Guide] Settle Done
+2026/11/15 03:14:16 Exposure 300.0s image 75#
+2026/11/15 03:19:22 [Guide] Dither
+2026/11/15 03:19:22 [Guide] Dither Settle
+2026/11/15 03:19:37 [Guide] Settle Done
+2026/11/15 03:19:37 Exposure 300.0s image 76#
+2026/11/15 03:24:43 [Guide] Dither
+2026/11/15 03:24:43 [Guide] Dither Settle
+2026/11/15 03:24:58 [Guide] Settle Done
+2026/11/15 03:24:58 Exposure 300.0s image 77#
+2026/11/15 03:30:04 [Guide] Dither
+2026/11/15 03:30:04 [Guide] Dither Settle
+2026/11/15 03:30:16 [Guide] Settle Done
+2026/11/15 03:30:16 Exposure 300.0s image 78#
+2026/11/15 03:35:22 [Guide] Dither
+2026/11/15 03:35:22 [Guide] Dither Settle
+2026/11/15 03:35:28 [Guide] Settle Done
+2026/11/15 03:35:28 Exposure 300.0s image 79#
+2026/11/15 03:40:34 [Guide] Dither
+2026/11/15 03:40:34 [Guide] Dither Settle
+2026/11/15 03:40:45 [Guide] Settle Done
+2026/11/15 03:40:45 Start Tracking
+2026/11/15 03:40:45 [Guide] Stop Guiding
+2026/11/15 03:40:45 [AutoFocus|Begin] Run AF 2 hours later, exposure 8.0s Bin1, temperature -0.3℃
+2026/11/15 03:40:45 Find Focus Star
+2026/11/15 03:40:59 Find Focus Star: detect and calculate star size 4.0 ,  EAF position 5820
+2026/11/15 03:40:59 Find Focus Star: finding appropriate stars star size 4.0
+2026/11/15 03:41:23 Find Focus Star: detect and calculate star size 17.4 ,  EAF position 6020
+2026/11/15 03:41:23 Calculate V-Curve
+2026/11/15 03:41:37 Calculate V-Curve: detect and calculate star size 17.4 ,  EAF position 6020
+2026/11/15 03:41:51 Calculate V-Curve: detect and calculate star size 16.8 ,  EAF position 5980
+2026/11/15 03:42:06 Calculate V-Curve: detect and calculate star size 14.0 ,  EAF position 5940
+2026/11/15 03:42:21 Calculate V-Curve: detect and calculate star size 9.1 ,  EAF position 5900
+2026/11/15 03:42:35 Calculate V-Curve: detect and calculate star size 5.4 ,  EAF position 5860
+2026/11/15 03:42:50 Calculate V-Curve: detect and calculate star size 3.9 ,  EAF position 5820
+2026/11/15 03:43:05 Calculate V-Curve: detect and calculate star size 5.1 ,  EAF position 5780
+2026/11/15 03:43:19 Calculate V-Curve: detect and calculate star size 8.5 ,  EAF position 5740
+2026/11/15 03:43:34 Calculate V-Curve: detect and calculate star size 12.9 ,  EAF position 5700
+2026/11/15 03:43:49 Calculate V-Curve: detect and calculate star size 14.6 ,  EAF position 5660
+2026/11/15 03:43:59 Find Focus Point
+2026/11/15 03:44:13 Calculate Focus Point: detect and calculate star size 5.2 ,  EAF position 5900
+2026/11/15 03:44:28 Calculate Focus Point: detect and calculate star size 5.0 ,  EAF position 5880
+2026/11/15 03:44:42 Calculate Focus Point: detect and calculate star size 5.1 ,  EAF position 5860
+2026/11/15 03:44:57 Calculate Focus Point: detect and calculate star size 4.3 ,  EAF position 5840
+2026/11/15 03:45:12 Calculate Focus Point: detect and calculate star size 3.9 ,  EAF position 5820
+2026/11/15 03:45:12 Auto focus succeeded, the focused position is 5820
+2026/11/15 03:45:12 [AutoFocus|End] Auto focus succeeded
+2026/11/15 03:45:15 [Guide] ReSelect Guide star
+2026/11/15 03:45:15 [Guide] Start Guiding
+2026/11/15 03:45:17 [Guide] Guide Settle
+2026/11/15 03:45:21 [Guide] Settle Done
+2026/11/15 03:45:21 Exposure 300.0s image 80#
+2026/11/15 03:50:27 [Guide] Dither
+2026/11/15 03:50:27 [Guide] Dither Settle
+2026/11/15 03:50:41 [Guide] Settle Done
+2026/11/15 03:50:41 Exposure 300.0s image 81#
+2026/11/15 03:55:47 [Guide] Dither
+2026/11/15 03:55:47 [Guide] Dither Settle
+2026/11/15 03:55:58 [Guide] Settle Done
+2026/11/15 03:55:58 Exposure 300.0s image 82#
+2026/11/15 04:01:04 [Guide] Dither
+2026/11/15 04:01:04 [Guide] Dither Settle
+2026/11/15 04:01:18 [Guide] Settle Done
+2026/11/15 04:01:18 Exposure 300.0s image 83#
+2026/11/15 04:06:24 [Guide] Dither
+2026/11/15 04:06:24 [Guide] Dither Settle
+2026/11/15 04:06:34 [Guide] Settle Done
+2026/11/15 04:06:34 Exposure 300.0s image 84#
+2026/11/15 04:11:40 [Guide] Dither
+2026/11/15 04:11:40 [Guide] Dither Settle
+2026/11/15 04:11:55 [Guide] Settle Done
+2026/11/15 04:11:55 Exposure 300.0s image 85#
+2026/11/15 04:17:01 [Guide] Dither
+2026/11/15 04:17:01 [Guide] Dither Settle
+2026/11/15 04:17:16 [Guide] Settle Done
+2026/11/15 04:17:16 Exposure 300.0s image 86#
+2026/11/15 04:22:22 [Guide] Dither
+2026/11/15 04:22:22 [Guide] Dither Settle
+2026/11/15 04:22:33 [Guide] Settle Done
+2026/11/15 04:22:33 Exposure 300.0s image 87#
+2026/11/15 04:27:39 [Guide] Dither
+2026/11/15 04:27:39 [Guide] Dither Settle
+2026/11/15 04:27:45 [Guide] Settle Done
+2026/11/15 04:27:45 Exposure 300.0s image 88#
+2026/11/15 04:32:51 [Guide] Dither
+2026/11/15 04:32:51 [Guide] Dither Settle
+2026/11/15 04:33:04 [Guide] Settle Done
+2026/11/15 04:33:04 Exposure 300.0s image 89#
+2026/11/15 04:38:10 [Guide] Dither
+2026/11/15 04:38:10 [Guide] Dither Settle
+2026/11/15 04:39:11 [Guide] Settle Timeout
+2026/11/15 04:39:11 Exposure 300.0s image 90#
+2026/11/15 04:41:47 [Guide] Guide star lost
+2026/11/15 04:41:50 [Guide] ReSelect Guide star
+2026/11/15 04:41:50 [Guide] Start Guiding
+2026/11/15 04:44:17 [Guide] Dither
+2026/11/15 04:44:17 [Guide] Dither Settle
+2026/11/15 04:45:18 [Guide] Settle Timeout
+2026/11/15 04:45:18 Exposure 300.0s image 91#
+2026/11/15 04:50:24 [Guide] Dither
+2026/11/15 04:50:24 [Guide] Dither Settle
+2026/11/15 04:51:25 [Guide] Settle Timeout
+2026/11/15 04:51:25 Exposure 300.0s image 92#
+2026/11/15 04:53:50 [Guide] Guide star lost
+2026/11/15 04:53:53 [Guide] ReSelect Guide star
+2026/11/15 04:53:53 [Guide] Start Guiding
+2026/11/15 04:56:31 [Guide] Dither
+2026/11/15 04:56:31 [Guide] Dither Settle
+2026/11/15 04:57:32 [Guide] Settle Timeout
+2026/11/15 04:57:32 Exposure 300.0s image 93#
+2026/11/15 05:02:38 [Guide] Dither
+2026/11/15 05:02:38 [Guide] Dither Settle
+2026/11/15 05:03:39 [Guide] Settle Timeout
+2026/11/15 05:03:39 [Guide] Stop Guiding
+2026/11/15 05:03:39 [AutoCenter|Begin] Auto-Center 1#
+2026/11/15 05:03:39 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 05:04:32 [AutoCenter|End] Mount slews failed
+2026/11/15 05:04:34 [AutoCenter|Begin] Auto-Center 2#
+2026/11/15 05:04:34 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 05:04:37 Exposure 10.0s
+2026/11/15 05:04:50 Plate Solve
+2026/11/15 05:04:53 Solve succeeded: RA:5h17m50s DEC:+49°15'23" Angle = 179.618, Star number = 1561
+2026/11/15 05:04:53 [AutoCenter|End] Too far from center, distance = 1310%(14.7879°)
+2026/11/15 05:04:55 [AutoCenter|Begin] Auto-Center 3#
+2026/11/15 05:04:55 Mount slews to target position: RA:5h17m28s DEC:+34°28'7"
+2026/11/15 05:05:06 Exposure 10.0s
+2026/11/15 05:05:20 Plate Solve
+2026/11/15 05:05:23 Solve succeeded: RA:5h17m25s DEC:+34°27'34" Angle = 180.246, Star number = 1211
+2026/11/15 05:05:23 [AutoCenter|End] The target is centered
+2026/11/15 05:05:26 [Guide] ReSelect Guide star
+2026/11/15 05:05:26 [Guide] Start Guiding
+2026/11/15 05:05:28 [Guide] Guide Settle
+2026/11/15 05:05:54 [Guide] Settle Done
+2026/11/15 05:05:54 Exposure 300.0s image 94#
+2026/11/15 05:11:00 [Guide] Dither
+2026/11/15 05:11:00 [Guide] Dither Settle
+2026/11/15 05:11:28 [Guide] Settle Done
+2026/11/15 05:11:28 Exposure 300.0s image 95#
+2026/11/15 05:16:34 [Guide] Dither
+2026/11/15 05:16:34 [Guide] Dither Settle
+2026/11/15 05:16:49 [Guide] Settle Done
+2026/11/15 05:16:49 Exposure 300.0s image 96#
+2026/11/15 05:21:55 [Guide] Dither
+2026/11/15 05:21:55 [Guide] Dither Settle
+2026/11/15 05:22:02 [Guide] Settle Done
+2026/11/15 05:22:02 Exposure 300.0s image 97#
+2026/11/15 05:27:08 [Guide] Dither
+2026/11/15 05:27:08 [Guide] Dither Settle
+2026/11/15 05:27:24 [Guide] Settle Done
+2026/11/15 05:27:24 Exposure 300.0s image 98#
+2026/11/15 05:32:30 [Guide] Dither
+2026/11/15 05:32:30 [Guide] Dither Settle
+2026/11/15 05:32:47 [Guide] Settle Done
+2026/11/15 05:32:47 Exposure 300.0s image 99#
+2026/11/15 05:37:53 [Guide] Dither
+2026/11/15 05:37:53 [Guide] Dither Settle
+2026/11/15 05:38:02 [Guide] Settle Done
+2026/11/15 05:38:02 Exposure 300.0s image 100#
+2026/11/15 05:43:08 [Guide] Dither
+2026/11/15 05:43:08 [Guide] Dither Settle
+2026/11/15 05:43:17 [Guide] Settle Done
+2026/11/15 05:43:17 Exposure 300.0s image 101#
+2026/11/15 05:48:23 [Guide] Dither
+2026/11/15 05:48:23 [Guide] Dither Settle
+2026/11/15 05:48:37 [Guide] Settle Done
+2026/11/15 05:48:37 Start Tracking
+2026/11/15 05:48:37 [Guide] Stop Guiding
+2026/11/15 05:48:37 [AutoFocus|Begin] Run AF 2 hours later, exposure 8.0s Bin1, temperature -0.5℃
+2026/11/15 05:48:37 Find Focus Star
+2026/11/15 05:48:51 Find Focus Star: detect and calculate star size 4.1 ,  EAF position 5820
+2026/11/15 05:48:51 Find Focus Star: finding appropriate stars star size 4.1
+2026/11/15 05:49:15 Find Focus Star: detect and calculate star size 15.5 ,  EAF position 6020
+2026/11/15 05:49:15 Calculate V-Curve
+2026/11/15 05:49:29 Calculate V-Curve: detect and calculate star size 15.6 ,  EAF position 6020
+2026/11/15 05:49:43 Calculate V-Curve: detect and calculate star size 14.6 ,  EAF position 5980
+2026/11/15 05:49:58 Calculate V-Curve: detect and calculate star size 12.7 ,  EAF position 5940
+2026/11/15 05:50:13 Calculate V-Curve: detect and calculate star size 7.9 ,  EAF position 5900
+2026/11/15 05:50:28 Calculate V-Curve: detect and calculate star size 5.0 ,  EAF position 5860
+2026/11/15 05:50:42 Calculate V-Curve: detect and calculate star size 4.2 ,  EAF position 5820
+2026/11/15 05:50:57 Calculate V-Curve: detect and calculate star size 6.2 ,  EAF position 5780
+2026/11/15 05:51:12 Calculate V-Curve: detect and calculate star size 10.0 ,  EAF position 5740
+2026/11/15 05:51:26 Calculate V-Curve: detect and calculate star size 13.1 ,  EAF position 5700
+2026/11/15 05:51:41 Calculate V-Curve: detect and calculate star size 17.3 ,  EAF position 5660
+2026/11/15 05:51:52 Find Focus Point
+2026/11/15 05:52:06 Calculate Focus Point: detect and calculate star size 5.2 ,  EAF position 5908
+2026/11/15 05:52:21 Calculate Focus Point: detect and calculate star size 4.6 ,  EAF position 5888
+2026/11/15 05:52:35 Calculate Focus Point: detect and calculate star size 4.4 ,  EAF position 5868
+2026/11/15 05:52:50 Calculate Focus Point: detect and calculate star size 4.6 ,  EAF position 5848
+2026/11/15 05:52:50 Auto focus succeeded, the focused position is 5848
+2026/11/15 05:52:50 [AutoFocus|End] Auto focus succeeded
+2026/11/15 05:52:53 [Guide] ReSelect Guide star
+2026/11/15 05:52:53 [Guide] Start Guiding
+2026/11/15 05:52:55 [Guide] Guide Settle
+2026/11/15 05:53:14 [Guide] Settle Done
+2026/11/15 05:53:14 Exposure 300.0s image 102#
+2026/11/15 05:58:20 [Guide] Dither
+2026/11/15 05:58:20 [Guide] Dither Settle
+2026/11/15 05:58:29 [Guide] Settle Done
+2026/11/15 05:58:29 Exposure 300.0s image 103#
+2026/11/15 06:03:35 [Guide] Dither
+2026/11/15 06:03:35 [Guide] Dither Settle
+2026/11/15 06:03:45 [Guide] Settle Done
+2026/11/15 06:03:45 Exposure 300.0s image 104#
+2026/11/15 06:08:51 [Guide] Dither
+2026/11/15 06:08:51 [Guide] Dither Settle
+2026/11/15 06:09:20 [Guide] Settle Done
+2026/11/15 06:09:20 Exposure 300.0s image 105#
+2026/11/15 06:14:26 [Guide] Dither
+2026/11/15 06:14:26 [Guide] Dither Settle
+2026/11/15 06:14:31 [Guide] Settle Done
+2026/11/15 06:14:31 Exposure 300.0s image 106#
+2026/11/15 06:19:37 [Guide] Dither
+2026/11/15 06:19:37 [Guide] Dither Settle
+2026/11/15 06:19:45 [Guide] Settle Done
+2026/11/15 06:19:45 Exposure 300.0s image 107#
+2026/11/15 06:24:50 [Guide] Dither
+2026/11/15 06:24:50 [Guide] Dither Settle
+2026/11/15 06:25:03 [Guide] Settle Done
+2026/11/15 06:25:03 Exposure 300.0s image 108#
+2026/11/15 06:30:09 [Guide] Dither
+2026/11/15 06:30:09 [Guide] Dither Settle
+2026/11/15 06:30:25 [Guide] Settle Done
+2026/11/15 06:30:25 Exposure 300.0s image 109#
+2026/11/15 06:35:31 [Guide] Dither
+2026/11/15 06:35:31 [Guide] Dither Settle
+2026/11/15 06:36:01 [Guide] Settle Done
+2026/11/15 06:36:01 Exposure 300.0s image 110#
+2026/11/15 06:39:58 [Guide] Guide star lost
+2026/11/15 06:40:01 [Guide] ReSelect Guide star
+2026/11/15 06:40:02 [Guide] Start Guiding
+2026/11/15 06:40:05 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:40:16 [Guide] ReSelect Guide star
+2026/11/15 06:40:17 [Guide] Start Guiding
+2026/11/15 06:40:20 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:40:31 [Guide] ReSelect Guide star
+2026/11/15 06:40:32 [Guide] Start Guiding
+2026/11/15 06:40:35 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:40:46 [Guide] ReSelect Guide star
+2026/11/15 06:40:47 [Guide] Start Guiding
+2026/11/15 06:40:50 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:41:01 [Guide] ReSelect Guide star
+2026/11/15 06:41:02 [Guide] Start Guiding
+2026/11/15 06:41:05 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:41:08 Exposure 300.0s image 111#
+2026/11/15 06:41:16 [Guide] ReSelect Guide star
+2026/11/15 06:41:17 [Guide] Start Guiding
+2026/11/15 06:41:21 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:41:32 [Guide] ReSelect Guide star
+2026/11/15 06:41:32 [Guide] Start Guiding
+2026/11/15 06:41:36 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:41:47 [Guide] ReSelect Guide star
+2026/11/15 06:41:47 [Guide] Start Guiding
+2026/11/15 06:41:51 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:42:02 [Guide] ReSelect Guide star
+2026/11/15 06:42:02 [Guide] Start Guiding
+2026/11/15 06:42:06 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:42:18 [Guide] ReSelect Guide star
+2026/11/15 06:42:19 [Guide] Start Guiding
+2026/11/15 06:42:22 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:42:34 [Guide] ReSelect Guide star
+2026/11/15 06:42:34 [Guide] Start Guiding
+2026/11/15 06:42:38 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:42:50 [Guide] ReSelect Guide star
+2026/11/15 06:42:50 [Guide] Start Guiding
+2026/11/15 06:42:53 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:43:05 [Guide] ReSelect Guide star
+2026/11/15 06:43:05 [Guide] Start Guiding
+2026/11/15 06:43:09 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:43:21 [Guide] ReSelect Guide star
+2026/11/15 06:43:21 [Guide] Start Guiding
+2026/11/15 06:43:24 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:43:36 [Guide] ReSelect Guide star
+2026/11/15 06:43:37 [Guide] Start Guiding
+2026/11/15 06:43:40 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:43:52 [Guide] ReSelect Guide star
+2026/11/15 06:43:52 [Guide] Start Guiding
+2026/11/15 06:43:56 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:44:08 [Guide] ReSelect Guide star
+2026/11/15 06:44:08 [Guide] Start Guiding
+2026/11/15 06:44:11 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:44:23 [Guide] ReSelect Guide star
+2026/11/15 06:44:24 [Guide] Start Guiding
+2026/11/15 06:44:27 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:44:39 [Guide] ReSelect Guide star
+2026/11/15 06:44:39 [Guide] Start Guiding
+2026/11/15 06:44:43 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:44:55 [Guide] ReSelect Guide star
+2026/11/15 06:44:55 [Guide] Start Guiding
+2026/11/15 06:44:58 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:45:10 [Guide] ReSelect Guide star
+2026/11/15 06:45:11 [Guide] Start Guiding
+2026/11/15 06:45:14 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:45:26 [Guide] ReSelect Guide star
+2026/11/15 06:45:26 [Guide] Start Guiding
+2026/11/15 06:45:30 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:45:42 [Guide] ReSelect Guide star
+2026/11/15 06:45:42 [Guide] Start Guiding
+2026/11/15 06:45:45 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:45:57 [Guide] ReSelect Guide star
+2026/11/15 06:45:57 [Guide] Start Guiding
+2026/11/15 06:46:01 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:46:13 [Guide] ReSelect Guide star
+2026/11/15 06:46:13 [Guide] Start Guiding
+2026/11/15 06:46:14 Exposure 300.0s image 112#
+2026/11/15 06:46:16 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:46:28 [Guide] ReSelect Guide star
+2026/11/15 06:46:29 [Guide] Start Guiding
+2026/11/15 06:46:32 [Guide] Select Guide Star failed, no star found
+2026/11/15 06:46:32 Stop Autorun Manually
+2026/11/15 06:46:34 [Autorun|End] Pause Autorun
+2026/11/15 06:46:34 Pause Plan M. 51 Darkframes 
+Log disabled at 2026/11/15 06:46:34

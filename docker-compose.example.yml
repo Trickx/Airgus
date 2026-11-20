@@ -1,0 +1,27 @@
+# Copy to docker-compose.yml and adjust.
+# Web UI: http://<host>:8080 - choose replay or live there.
+# Live logs are read directly from the ASIAIR's SMB share (Einstellungen → SMB-Freigabe,
+# default: SD card //asiair.local/TF Images/ASIAIR/log and internal //asiair.local/EMMC Images/log);
+# no host mount is needed.
+services:
+  airgus:
+    build: .
+    image: airgus:latest
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      TZ: Europe/Berlin            # log timestamps are local time
+      # Optional, otherwise set in the web UI:
+      # AIRGUS_PUSHOVER_TOKEN: ${AIRGUS_PUSHOVER_TOKEN}
+      # AIRGUS_PUSHOVER_USER: ${AIRGUS_PUSHOVER_USER}
+    volumes:
+      - ./logs:/logs:ro            # finished nights for replay
+      - airgus-data:/data
+    # asiair.local is resolved via mDNS, which containers usually cannot do.
+    # Enter the ASIAIR's IP address in the web UI, or map the name here:
+    # extra_hosts:
+    #   - "asiair.local:192.168.0.236"
+
+volumes:
+  airgus-data:

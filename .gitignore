@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+build/
+dist/
+.DS_Store
+.idea/
+airgus.toml
+data/
+.claude/

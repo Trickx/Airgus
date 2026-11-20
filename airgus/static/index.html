@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Airgus</title>
+<link rel="icon" type="image/svg+xml" href="/static/logo.svg">
+<link rel="stylesheet" href="/static/style.css">
+<script type="importmap">
+{ "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<header>
+  <img src="/static/logo.svg" alt="" class="logo" width="28" height="28">
+  <h1><span class="brand-accent">Air</span>gus</h1>
+  <span id="run-badge" class="badge">–</span>
+  <span id="conn" class="conn" title="Verbindung zum Server">●</span>
+</header>
+<div id="restart-banner" class="restart-banner" hidden>
+  Airgus wurde aktualisiert, läuft aber noch mit dem alten Programmstand. Bitte Airgus neu starten –
+  bis dahin können einzelne Anzeigen fehlen.
+</div>
+
+<main>
+  <section class="card" id="control">
+    <h2>Quelle</h2>
+    <div class="row">
+      <label class="seg"><input type="radio" name="mode" value="replay" checked> Replay</label>
+      <label class="seg"><input type="radio" name="mode" value="live"> Live</label>
+    </div>
+    <div class="row live-only" hidden>
+      <label class="seg"><input type="radio" name="location" value="local" checked> Lokaler Ordner</label>
+      <label class="seg"><input type="radio" name="location" value="smb"> SMB-Freigabe</label>
+    </div>
+    <label id="folder-field">Log-Ordner
+      <select id="folder"></select>
+    </label>
+    <p id="smb-field" class="muted" hidden></p>
+    <div class="replay-only">
+      <label>Geschwindigkeit
+        <select id="speed">
+          <option value="1">1× (Echtzeit)</option>
+          <option value="10">10×</option>
+          <option value="60" selected>60× (1 min/s)</option>
+          <option value="300">300× (5 min/s)</option>
+          <option value="1200">1200× (20 min/s)</option>
+          <option value="0">Maximal</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="push-replay"> Pushover auch im Replay senden</label>
+    </div>
+    <div class="live-only" hidden>
+      <label>Abfrageintervall (s) <input type="number" id="interval" min="1" value="5"></label>
+      <label class="check"><input type="checkbox" id="from-start"> Vorhandene Logzeilen mit auswerten</label>
+    </div>
+    <div class="row buttons">
+      <button id="btn-start" class="primary">Start</button>
+      <button id="btn-pause">Pause</button>
+      <button id="btn-stop">Stop</button>
+    </div>
+    <div class="progress"><div id="progress-bar"></div></div>
+    <div id="run-info" class="muted"></div>
+  </section>
+
+  <section class="card" id="mount">
+    <h2>Montierung</h2>
+    <div id="mount-view"></div>
+    <dl class="grid mount-data">
+      <dt class="live">Gerät</dt><dd class="live" id="c-mount">–</dd>
+      <dt>Nachführung</dt><dd id="s-tracking">–</dd>
+      <dt>Pier Side</dt><dd id="s-pier">–</dd>
+      <dt>Stundenwinkel</dt><dd id="s-ha">–</dd>
+      <dt>Deklination</dt><dd id="s-dec">–</dd>
+      <dt>Meridian</dt><dd id="s-meridian">–</dd>
+    </dl>
+    <div id="mount-info" class="muted"></div>
+  </section>
+
+  <section class="card" id="rig">
+    <h2>Zustand</h2>
+    <h3>Sequenz</h3>
+    <dl class="grid">
+      <dt>Ziel</dt><dd id="s-target">–</dd>
+      <dt>Bild</dt><dd id="s-image">–</dd>
+      <dt class="live">Belichtung</dt><dd class="live" id="c-exposure">–</dd>
+      <dt class="live">Plate Solve</dt><dd class="live" id="c-solve">–</dd>
+      <dt>Log-Zeit</dt><dd id="s-time">–</dd>
+    </dl>
+    <h3>Guiding</h3>
+    <dl class="grid">
+      <dt>Guiding</dt><dd id="s-guiding">–</dd>
+      <dt class="live">Guide-Kamera</dt><dd class="live" id="c-guidecam">–</dd>
+      <dt>RMS RA / DEC</dt><dd id="s-rms">–</dd>
+      <dt>RMS gesamt</dt><dd id="s-rms-total">–</dd>
+      <dt>SNR</dt><dd id="s-snr">–</dd>
+    </dl>
+    <h3>Kamera &amp; Fokus</h3>
+    <dl class="grid">
+      <dt class="live">Hauptkamera</dt><dd class="live" id="c-maincam">–</dd>
+      <dt>Fokus (EAF)</dt><dd id="s-focus">–</dd>
+    </dl>
+    <h3 class="live">ASIAIR</h3>
+    <dl class="grid live">
+      <dt>Verbindung</dt><dd id="c-conn">–</dd>
+      <dt>Temperatur</dt><dd id="c-temp">–</dd>
+      <dt>Stromversorgung</dt><dd id="c-power">–</dd>
+      <dt>WLAN</dt><dd id="c-wifi">–</dd>
+    </dl>
+  </section>
+
+  <section class="card wide" id="guiding">
+    <div class="card-head">
+      <h2>Guiding</h2>
+      <label class="inline">Fenster
+        <select id="window">
+          <option value="10">10 min</option>
+          <option value="30" selected>30 min</option>
+          <option value="60">60 min</option>
+          <option value="180">3 h</option>
+        </select>
+      </label>
+    </div>
+    <canvas id="chart" height="260"></canvas>
+    <div class="legend"><span class="ra">RA</span> <span class="dec">DEC</span> <span class="muted">Bogensekunden, Rohabweichung</span></div>
+  </section>
+
+  <section class="card" id="alerts">
+    <h2>Meldungen <span id="alert-count" class="muted"></span></h2>
+    <ul id="alert-list"></ul>
+  </section>
+
+  <section class="card wide" id="settings">
+    <details>
+      <summary><h2>Einstellungen</h2></summary>
+      <div class="settings-grid">
+        <form id="pushover-form">
+          <h3>Pushover</h3>
+          <label>App-Token <input type="password" id="po-token" autocomplete="off"></label>
+          <label>User-Key <input type="password" id="po-user" autocomplete="off"></label>
+          <label>Gerät (optional) <input type="text" id="po-device"></label>
+          <label>Melden ab
+            <select id="po-min">
+              <option>INFO</option><option selected>WARNING</option><option>HIGH</option><option>EMERGENCY</option>
+            </select>
+          </label>
+          <div class="row buttons">
+            <button type="submit" class="primary">Speichern</button>
+            <button type="button" id="po-test">Testnachricht</button>
+          </div>
+          <h3>Standort</h3>
+          <label>Geografische Breite (°) <input type="number" id="site-lat" step="0.1" min="-90" max="90"></label>
+          <div class="row buttons"><button type="button" id="site-save">Speichern</button></div>
+          <h3>SMB-Freigaben (Live-Logs)</h3>
+          <label>Server <input type="text" id="smb-server" autocomplete="off" spellcheck="false"></label>
+          <label>Freigaben mit Pfad, eine pro Zeile
+            <textarea id="smb-shares" rows="3" autocomplete="off" spellcheck="false"></textarea></label>
+          <label>Benutzer (leer = Gast) <input type="text" id="smb-user" autocomplete="off"></label>
+          <label>Passwort <input type="password" id="smb-pass" autocomplete="off"></label>
+          <label>Nur Dateien der letzten … Stunden <input type="number" id="smb-age" min="1" step="1"></label>
+          <p class="muted">ASIAIR: „TF Images/ASIAIR/log“ (SD-Karte) und „EMMC Images/log“ (interner Speicher).
+            Airgus liest alle Freigaben; eine fehlende (z.&nbsp;B. ohne SD-Karte) wird übersprungen.</p>
+          <div class="row buttons">
+            <button type="button" id="smb-save">Speichern</button>
+            <button type="button" id="smb-test">Verbindung testen</button>
+          </div>
+          <ul id="smb-result" class="muted file-list"></ul>
+          <h3>ASIAIR live (Ports 4700/4400)</h3>
+          <label class="check"><input type="checkbox" id="as-enabled"> Im Live-Modus mit der ASIAIR verbinden</label>
+          <label>Host oder IP <input type="text" id="as-host" autocomplete="off" spellcheck="false"></label>
+          <label>Port <input type="number" id="as-port" min="1" max="65535"></label>
+          <label class="check"><input type="checkbox" id="as-guider"> Guiding live über den Guider-Port</label>
+          <label>Guider-Port <input type="number" id="as-guider-port" min="1" max="65535"></label>
+          <label class="check"><input type="checkbox" id="as-record"> Empfangene Nachrichten aufzeichnen</label>
+          <p class="muted">Inoffizielle Schnittstelle. Airgus sendet nur lesende Anfragen, nie Steuerbefehle.
+            Gilt ab dem nächsten Start.</p>
+          <div class="row buttons"><button type="button" id="as-save">Speichern</button></div>
+        </form>
+        <form id="rules-form">
+          <h3>Regeln</h3>
+          <div id="rules"></div>
+          <div class="row buttons">
+            <button type="submit" class="primary">Regeln speichern</button>
+            <span class="muted">Gilt ab dem nächsten Start.</span>
+          </div>
+        </form>
+      </div>
+    </details>
+  </section>
+</main>
+
+<div id="toast" hidden></div>
+<script type="module" src="/static/app.js"></script>
+</body>
+</html>

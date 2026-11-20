@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "airgus"
+version = "0.1.0"
+description = "Live log monitor for ASIAIR and NINA: detects guiding failures, failed meridian flips and stalled sessions, and alerts via Pushover or Home Assistant."
+readme = "README.md"
+license = "GPL-3.0-or-later"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "smbprotocol>=1.13",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27"]
+
+[project.scripts]
+airgus = "airgus.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["airgus*"]
+
+[tool.setuptools.package-data]
+airgus = ["static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

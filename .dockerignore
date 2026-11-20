@@ -1,0 +1,8 @@
+.git
+.venv
+.idea
+logs
+tests
+**/__pycache__
+*.egg-info
+airgus.toml
