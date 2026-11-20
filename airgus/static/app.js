@@ -151,17 +151,17 @@ function renderController(c) {
   const off4700 = c.connected === false, off4400 = c.guider_connected === false;
   $("#c-conn").textContent = off4700 && off4400 ? "getrennt" : off4700 ? "Port 4700 getrennt"
     : off4400 ? "Port 4400 getrennt" : "verbunden";
-  $("#c-conn").className = off4700 || off4400 ? "bad" : "";
+  $("#c-conn").classList.toggle("bad", !!(off4700 || off4400));
   // Guiding state live from the guider while connected (otherwise the log value stays)
   const gs = { Guiding: "guidet", Stopped: "aus", Looping: "Belichtungsschleife", LostLock: "Stern verloren",
     Paused: "pausiert", Calibrating: "kalibriert", Selected: "Stern gewählt" };
   if (c.guider_state) {
     $("#s-guiding").textContent = gs[c.guider_state] || c.guider_state;
-    $("#s-guiding").className = c.guider_state === "LostLock" ? "bad" : "";
+    $("#s-guiding").classList.toggle("bad", !!(c.guider_state === "LostLock"));
   }
   for (const [id, value] of [["#c-guidecam", c.guide_camera], ["#c-mount", c.mount]]) {
     $(id).textContent = !c.devices_known ? "–" : value || "nicht verbunden";
-    $(id).className = c.devices_known && !value ? "bad" : "";
+    $(id).classList.toggle("bad", !!(c.devices_known && !value));
   }
   const mo = c.mount_motion;
   if (mo && c.devices_known && c.mount) {
@@ -188,20 +188,20 @@ function renderController(c) {
     mcText = `Statuswechsel ${hhmm(mc)} · Zustand unbekannt`;
   }
   $("#c-maincam").textContent = mcText;
-  $("#c-maincam").className = mcBad ? "bad" : "";
+  $("#c-maincam").classList.toggle("bad", !!(mcBad));
   $("#c-exposure").textContent = !ex ? "–" : [EXP[ex.state] || ex.state, PAGES[ex.page] || ex.page,
     ex.duration_s ? `${ex.duration_s} s` : null, ex.state === "start" ? `seit ${hhmm(ex.started)}` : hhmm(ex.updated),
   ].filter(Boolean).join(" · ");
-  $("#c-exposure").className = ex && ["fail", "cancel"].includes(ex.state) ? "bad" : "";
+  $("#c-exposure").classList.toggle("bad", !!(ex && ["fail", "cancel"].includes(ex.state)));
   const so = c.solve;
   $("#c-solve").textContent = !so ? "–" : [SOLVE[so.state] || so.state, PAGES[so.page] || so.page,
     so.stars !== null ? `${so.stars} Sterne` : null, so.error, hhmm(so.updated)].filter(Boolean).join(" · ");
-  $("#c-solve").className = so && so.state === "fail" ? "bad" : "";
+  $("#c-solve").classList.toggle("bad", !!(so && so.state === "fail"));
   $("#c-temp").textContent = fmt(c.temp_c, 0, " °C");
   const problems = [c.undervolt && "Unterspannung", c.overcurrent && "Überstrom", c.overtemp && "Überhitzung"]
     .filter(Boolean);
   $("#c-power").textContent = c.temp_c === null ? "–" : problems.length ? problems.join(", ") : "ok";
-  $("#c-power").className = problems.length ? "bad" : "";
+  $("#c-power").classList.toggle("bad", !!(problems.length));
   $("#c-wifi").textContent = fmt(c.wifi_dbm, 0, " dBm");
 }
 
@@ -237,8 +237,9 @@ function renderStatus(s) {
   $("#s-target").textContent = g.target || "–";
   $("#s-image").textContent = g.exposure_index ? `#${g.exposure_index}` : "–";
   $("#s-guiding").textContent = g.guiding ? "aktiv" : "aus";
+  $("#s-guiding").classList.remove("bad");  // a live "Stern verloren" sets it again below
   $("#s-tracking").textContent = g.tracking === true ? "an" : g.tracking === false ? "aus" : "unbekannt";
-  $("#s-tracking").className = g.tracking === false && g.sequence_active ? "bad" : "";
+  $("#s-tracking").classList.toggle("bad", !!(g.tracking === false && g.sequence_active));
   const ps = g.pose, est = ps && ps.source !== "live" ? " (geschätzt)" : "";
   $("#s-pier").textContent = ps?.pier ? `${ps.pier}${ps.source === "live" ? "" : " (PHD2-Log)"}` : "–";
   $("#s-ha").textContent = ps && ps.ha !== null ? `${fmt(ps.ha, 2)} h${est}` : "–";

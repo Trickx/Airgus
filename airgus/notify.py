@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime
 import logging
 import urllib.parse
 import urllib.request
@@ -50,4 +51,7 @@ class PushoverNotifier:
             result = json.loads(resp.read() or b"{}")
         if result.get("status") != 1:
             raise RuntimeError(f"Pushover rejected message: {result}")
-        log.info("pushover sent: %s", alert.title)
+        # both times, so a delay can be told apart: late detection (event -> sent) vs. late delivery
+        sent = datetime.now()
+        log.info("pushover sent %s: %s (Ereignis %s, %.0f s später)", sent.strftime("%H:%M:%S"), alert.title,
+                    alert.time.strftime("%H:%M:%S"), (sent - alert.time).total_seconds())
