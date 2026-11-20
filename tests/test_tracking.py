@@ -52,8 +52,11 @@ def test_flip_gets_longer_grace():
     assert engine.tick(T0 + timedelta(minutes=8)) == []
     (alert,) = engine.tick(T0 + timedelta(minutes=11))
     assert "Meridian-Flip" in alert.message
-    # a successful flip ends the grace: tracking still off afterwards is reported (after cooldown)
+    # the grace ends when tracking runs again, not with the flip's end line: the ASIAIR writes
+    # "Start Tracking" in the same second, after "Meridian Flip succeeded"
     engine.process(ev(MeridianFlipCompleted, 12))
+    assert engine.rules[0]._flip_active is True
+    engine.process(ev(TrackingChanged, 12, on=True))
     assert engine.rules[0]._flip_active is False
 
 

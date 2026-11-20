@@ -15,14 +15,15 @@ Web UI, runs in Docker.
 | Rule | Detects | Severity |
 |---|---|---|
 | `runaway` | Guide error keeps growing although corrections are at their limit (collision, cable drag, clutch slip) | high → emergency |
-| `star-lost` | Guide star lost for longer than a short glitch, or ASIAIR reports "Guide star lost" | high |
-| `settle` | Repeated settle failures after dithering | warning |
+| `star-lost` | Guide star lost for longer than a short glitch, or ASIAIR reports "Guide star lost"; from the 3rd loss within an hour one summary per hour, single losses only listed | high |
+| `calibration` | Guider calibration lost its star (PHD2 "STAR LOST during calibration") | high / warning |
+| `settle` | Repeated settle failures after dithering (PHD2, ASIAIR "Settle Timeout" / "Settle failed") | warning |
 | `meridian-flip` | Failed flip, endless auto-center loop, flip without pier-side change | high |
 | `past-meridian` | Target tracked far past the meridian on the pre-meridian pier side | high |
 | `rms` | Rolling total RMS above threshold | warning |
 | `snr-drop` | Guide-star SNR falls well below its starting value (clouds, dew, dawn) | warning |
 | `stale-log` | Sequence running but no new log lines | high |
-| `tracking-off` | Mount tracking off while the sequence runs (Autorun log "Stop Tracking", or live `ScopeTrack` on port 4400 – also when switched off by hand; longer grace during a meridian flip) | high |
+| `tracking-off` | Mount tracking off while the sequence runs (Autorun log "Stop Tracking", or live `ScopeTrack` on port 4400 – also when switched off by hand; longer grace during a meridian flip; not for flats, darks and bias; counted from the sequence start; "Start Tracking failed" is reported at once) | high |
 | `plate-solve` | Plate solve failed: preview shots info, during a sequence warning, repeated failures high ¹ | info / warning / high |
 | `device-lost` | Guide camera or mount disconnected from the ASIAIR (high during a sequence, else info); reconnect is listed too ¹ | high / info |
 | `main-camera` | Main camera: every `CameraStateChange` on port 4700 is listed (the event does not say whether it was connected or disconnected; warning during a sequence), high if no exposure starts within 3 min; port 4700 queries such as `get_camera_state` are only answered to the verified ASIAIR app ¹ | warning / high / info |
@@ -33,6 +34,9 @@ Web UI, runs in Docker.
 | `controller-offline` | Live connection to the ASIAIR lost while a sequence runs ¹ | high |
 
 ¹ needs the live ASIAIR connection.
+
+Failure lines the ASIAIR writes after "Stop Autorun Manually" (cancelled center, flip, settle) are the
+consequence of stopping by hand and are not reported.
 
 ## Live logs over SMB
 

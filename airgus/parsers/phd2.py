@@ -7,6 +7,7 @@ import re
 from datetime import datetime, timedelta
 
 from ..events import (
+    CalibrationFailed,
     Dither,
     Event,
     GuideFrame,
@@ -22,6 +23,7 @@ from ..events import (
 _TS = "%Y-%m-%d %H:%M:%S"
 _BEGINS = re.compile(r"^Guiding Begins at (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})")
 _ENDS = re.compile(r"^Guiding Ends at (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})")
+_CAL_BEGINS = re.compile(r"^Calibration Begins at (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})")
 _KV = re.compile(r"([A-Za-z][A-Za-z ._-]*?)\s*=\s*([^,]+)")
 _NUM = re.compile(r"-?\d+(?:\.\d+)?")
 
@@ -44,6 +46,8 @@ class Phd2Parser:
         self._header: dict[str, str] = {}
         self._last_time: datetime | None = None
         self._settling = False
+        self._calibration: datetime | None = None  # start of a running calibration
+        self._calibration_failed = False
 
     def feed(self, line: str) -> list[Event]:
         line = line.rstrip("\r\n")
@@ -56,6 +60,7 @@ class Phd2Parser:
             self._in_guiding = True
             self._header = {}
             self._settling = False
+            self._calibration = None
             return []
 
         if m := _ENDS.match(line):
@@ -66,9 +71,22 @@ class Phd2Parser:
                 return []
             return [GuidingStopped(time=datetime.strptime(m.group(1), _TS), source=self.source)]
 
-        if line.startswith("Calibration Begins"):
+        if m := _CAL_BEGINS.match(line):
             self._in_guiding = False
+            self._calibration = datetime.strptime(m.group(1), _TS)
+            self._calibration_failed = False
             return []
+
+        if self._calibration is not None:
+            # The calibration section has no per-step times: report once, at its start time.
+            if line.startswith("Calibration complete"):
+                self._calibration = None
+            elif line.startswith("INFO: STAR LOST during calibration") and not self._calibration_failed:
+                self._calibration_failed = True
+                status = line.split("Status=", 1)[-1].strip() if "Status=" in line else "star lost"
+                return [CalibrationFailed(time=self._calibration, source=self.source, message=status)]
+            if line.startswith("Calibration"):
+                return []
 
         if not self._in_guiding or self._start is None:
             return []

@@ -17,6 +17,7 @@ from .events import (
     ExposureProgress,
     MainCameraChanged,
     FocuserOpened,
+    FramesStarted,
     FocuserStatus,
     MainCameraStatus,
     MountMotion,
@@ -224,6 +225,8 @@ class RigState:
     tracking_since: datetime | None = None
     tracking_since_is_change: bool = True  # False: first seen in a poll answer, the switch itself was earlier
     focus: FocuserPosition | None = None  # last known EAF position
+    frame_type: str | None = None  # light / flat / dark / bias, from "Shooting ... frames"
+    sequence_started: datetime | None = None
     events_seen: int = 0
     controller: ControllerState = field(default_factory=ControllerState)
     _extra: dict = field(default_factory=dict)
@@ -241,6 +244,10 @@ class RigState:
         if isinstance(ev, SequenceStarted):
             self.sequence_active = True
             self.target = ev.target
+            self.frame_type = None
+            self.sequence_started = ev.time
+        elif isinstance(ev, FramesStarted):
+            self.frame_type = ev.frame_type
         elif isinstance(ev, SequenceEnded):
             self.sequence_active = False
         elif isinstance(ev, ExposureStarted):
@@ -292,6 +299,7 @@ class RigState:
             "focus": None if self.focus is None else {"position": self.focus.position, "final": self.focus.final,
                                                        "time": self.focus.time.isoformat()},
             "target": self.target,
+            "frame_type": self.frame_type,
             "exposure_index": self.exposure_index,
             "guiding": self.guiding,
             "pier_side": self.pier_side,

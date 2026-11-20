@@ -42,6 +42,25 @@ class ExposureStarted(Event):
     duration_s: float
 
 
+@dataclass(frozen=True, kw_only=True)
+class FramesStarted(Event):
+    """ "Shooting 25 dark frames, ...": kind of frames the sequence takes now (light / flat / dark / bias)."""
+
+    frame_type: str
+
+
+@dataclass(frozen=True, kw_only=True)
+class TrackingStartFailed(Event):
+    """ASIAIR could not start tracking ("[Guide] Start Tracking failed")."""
+
+
+@dataclass(frozen=True, kw_only=True)
+class CalibrationFailed(Event):
+    """Guider calibration lost its star (PHD2 "STAR LOST during calibration")."""
+
+    message: str
+
+
 # --- Mount -------------------------------------------------------------------
 
 @dataclass(frozen=True, kw_only=True)

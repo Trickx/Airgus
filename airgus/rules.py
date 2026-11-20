@@ -14,6 +14,7 @@ from typing import Iterable
 from .alerts import Alert, Severity
 from .events import (
     AutoCenterResult,
+    CalibrationFailed,
     ControllerDisconnected,
     ControllerHealth,
     DeviceStatus,
@@ -38,6 +39,8 @@ from .events import (
     SolveProgress,
     Source,
     StarLost,
+    TrackingChanged,
+    TrackingStartFailed,
     WifiSignal,
 )
 from .state import RigState
@@ -138,13 +141,40 @@ class StarLostRule(Rule):
     name = "star-lost"
     cooldown = timedelta(minutes=10)
 
-    def __init__(self, min_lost_s: float = 15.0) -> None:
+    def __init__(self, min_lost_s: float = 15.0, repeat_count: int = 3, repeat_window_min: float = 60.0) -> None:
         self.min_lost = timedelta(seconds=min_lost_s)
+        self.repeat_count = repeat_count
+        self.repeat_window = timedelta(minutes=repeat_window_min)
         self._first_drop: datetime | None = None
         self._fired = False
         self._select_failures = 0
+        self._losses: deque[datetime] = deque()
+        self._summary_at: datetime | None = None
 
     def on_event(self, ev: Event, state: RigState) -> Iterable[Alert]:
+        for alert in self._detect(ev, state):
+            yield self._bundle(alert)
+
+    def _bundle(self, alert: Alert) -> Alert:
+        """Clouds make the star go and come back for hours: after `repeat_count` losses within
+        `repeat_window`, one summary is pushed per window and the single losses are only listed."""
+        while self._losses and alert.time - self._losses[0] > self.repeat_window:
+            self._losses.popleft()
+        self._losses.append(alert.time)
+        if len(self._losses) < self.repeat_count:
+            return alert
+        if self._summary_at is None or alert.time - self._summary_at > self.repeat_window:
+            self._summary_at = alert.time
+            minutes = self.repeat_window.total_seconds() / 60
+            return Alert(time=alert.time, rule=self.name, severity=Severity.HIGH,
+                         title="Leitstern immer wieder verloren",
+                         message=f"{len(self._losses)}x in {minutes:.0f} min (Wolken, Tau, Dämmerung?). Einzelne "
+                                 f"Verluste stehen ab jetzt nur in der Liste. {alert.message}",
+                         key="star-lost-repeated")
+        return Alert(time=alert.time, rule=self.name, severity=Severity.INFO, title=alert.title,
+                     message=alert.message, key=f"{alert.key}-listed")
+
+    def _detect(self, ev: Event, state: RigState) -> Iterable[Alert]:
         if isinstance(ev, (GuideFrame, GuidingStarted)):
             self._first_drop = None
             self._fired = False
@@ -167,6 +197,21 @@ class StarLostRule(Rule):
                 yield self.alert(ev.time, Severity.HIGH, "Kein Leitstern gefunden",
                                  f"Sternauswahl {self._select_failures}x fehlgeschlagen (Wolken, Dämmerung, Tau?). "
                                  f"{_where(state, ev.time)}", key="star-select")
+
+
+class CalibrationRule(Rule):
+    """Guider calibration failed: the star was lost while calibrating, so guiding cannot start."""
+
+    name = "calibration"
+    cooldown = timedelta(minutes=15)
+
+    def on_event(self, ev: Event, state: RigState) -> Iterable[Alert]:
+        if isinstance(ev, CalibrationFailed):
+            yield self.alert(ev.time, Severity.HIGH if state.imaging else Severity.WARNING,
+                             "Kalibrierung fehlgeschlagen",
+                             f"Die Guider-Kalibrierung ab {ev.time:%H:%M} hat den Stern verloren ({ev.message}). "
+                             f"Ohne Kalibrierung kein Guiding (Wolken, Leitstern, Fokus des Leitrohrs?). "
+                             f"{_where(state, ev.time)}".strip())
 
 
 class SettleRule(Rule):
@@ -223,7 +268,10 @@ class MeridianFlipRule(Rule):
         elif isinstance(ev, MeridianFlipStarted):
             self._flip_pending = True
             self._side_before_flip = state.pier_side
+        elif isinstance(ev, SequenceEnded):
+            self._flip_pending = False  # a flip cut short by the end of the sequence is not checked
         elif isinstance(ev, MeridianFlipFailed):
+            self._flip_pending = False
             yield self.alert(ev.time, Severity.HIGH, "Meridian-Flip fehlgeschlagen",
                              f"{ev.message}. {_where(state, ev.time)}", key="flip-failed")
         elif isinstance(ev, MeridianFlipCompleted):
@@ -380,17 +428,29 @@ class TrackingOffRule(Rule):
         self.flip_grace = timedelta(minutes=flip_grace_min)
         self._flip_active = False
 
+    # Flats, darks and bias are taken without tracking on purpose.
+    NO_TRACKING_FRAMES = ("flat", "dark", "bias")
+
     def on_event(self, ev: Event, state: RigState) -> Iterable[Alert]:
         if isinstance(ev, MeridianFlipStarted):
             self._flip_active = True
-        elif isinstance(ev, (MeridianFlipCompleted, MeridianFlipFailed, SequenceEnded)):
+        elif isinstance(ev, (MeridianFlipFailed, SequenceEnded)) or (isinstance(ev, TrackingChanged) and ev.on):
+            # not on MeridianFlipCompleted: the ASIAIR restarts tracking in the same second, after it
             self._flip_active = False
-        return ()
+        elif isinstance(ev, TrackingStartFailed) and state.frame_type not in self.NO_TRACKING_FRAMES:
+            yield self.alert(ev.time, Severity.HIGH if state.imaging else Severity.WARNING,
+                             "Nachführung startet nicht",
+                             "Die ASIAIR konnte die Nachführung nicht starten (Montierung verbunden, geparkt, "
+                             f"Stromversorgung?). {_where(state, ev.time)}".strip(), key="tracking-start-failed")
 
     def on_tick(self, now: datetime, state: RigState) -> Iterable[Alert]:
         if state.tracking is not False or not state.imaging or state.tracking_since is None:
             return
-        off = now - state.tracking_since
+        if state.frame_type in self.NO_TRACKING_FRAMES:
+            return
+        # count from the start of the sequence if tracking was already off before (e.g. a test shot by day)
+        since = max(state.tracking_since, state.sequence_started or state.tracking_since)
+        off = now - since
         if off < (self.flip_grace if self._flip_active else self.max_off):
             return
         ctx = " (Meridian-Flip läuft)" if self._flip_active else ""
@@ -658,7 +718,7 @@ class ControllerOfflineRule(Rule):
                              f"(Stromversorgung, Absturz, WLAN?).")
 
 
-RULE_CLASSES: list[type[Rule]] = [RunawayRule, StarLostRule, SettleRule, MeridianFlipRule,
+RULE_CLASSES: list[type[Rule]] = [RunawayRule, StarLostRule, CalibrationRule, SettleRule, MeridianFlipRule,
                                    PastMeridianRule, RmsRule, SnrDropRule, StaleLogRule, TrackingOffRule,
                                    PlateSolveRule, DeviceLostRule, MainCameraRule, FocuserRule, MountHomeRule,
                                    ControllerHealthRule, WifiRule, ControllerOfflineRule]

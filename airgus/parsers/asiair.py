@@ -11,6 +11,7 @@ from ..events import (
     FocuserPosition,
     Event,
     ExposureStarted,
+    FramesStarted,
     GuideStarSelectFailed,
     MeridianFlipCompleted,
     MeridianFlipFailed,
@@ -23,12 +24,19 @@ from ..events import (
     Source,
     StarLost,
     TrackingChanged,
+    TrackingStartFailed,
 )
 
 _LINE = re.compile(r"^(\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2}) (.*)$")
 _SEQ_BEGIN = re.compile(r"^\[Autorun\|Begin\] (.*?) Start$")
 _SEQ_END = re.compile(r"^\[Autorun\|End\] (.*)$")
-_EXPOSURE = re.compile(r"^Exposure ([\d.]+)s image (\d+)#")
+_EXPOSURE = re.compile(r"^Exposure ([\d.]+)(s|ms|us) image (\d+)#")
+_UNIT_S = {"s": 1.0, "ms": 1e-3, "us": 1e-6}
+_SHOOTING = re.compile(r"^Shooting \d+ (light|flat|dark|bias) frames")
+# Lines the ASIAIR writes as a consequence of "Stop Autorun Manually" (cancelled center, flip, settle ...):
+# the user stopped on purpose, so they are not reported as failures.
+_FAILURE_EVENTS = (AutoCenterResult, SlewFailed, MeridianFlipFailed, SettleFailed, StarLost,
+                   GuideStarSelectFailed, TrackingStartFailed)
 _CENTER_END = re.compile(r"^\[AutoCenter\|End\] (.*)$")
 _DISTANCE = re.compile(r"distance = [\d.]+%\(([\d.]+)°?\)")
 _SOLVED = re.compile(r"^Solve succeeded: .*Angle = (-?[\d.]+)")
@@ -41,7 +49,16 @@ _EAF_FOCUSED = re.compile(r"focused position is (\d+)")
 class AsiairAutorunParser:
     source = Source.ASIAIR
 
+    def __init__(self) -> None:
+        self._stopped_by_user = False
+
     def feed(self, line: str) -> list[Event]:
+        events = self._feed(line)
+        if self._stopped_by_user:
+            events = [e for e in events if not isinstance(e, _FAILURE_EVENTS)]
+        return events
+
+    def _feed(self, line: str) -> list[Event]:
         m = _LINE.match(line.rstrip("\r\n"))
         if not m:
             return []
@@ -50,17 +67,26 @@ class AsiairAutorunParser:
         s = self.source
 
         if mm := _SEQ_BEGIN.match(msg):
+            self._stopped_by_user = False
             return [SequenceStarted(time=t, source=s, target=mm.group(1))]
+        if msg == "Stop Autorun Manually":
+            self._stopped_by_user = True
+            return []
+        if mm := _SHOOTING.match(msg):
+            return [FramesStarted(time=t, source=s, frame_type=mm.group(1))]
         if mm := _SEQ_END.match(msg):
             return [SequenceEnded(time=t, source=s, reason=mm.group(1))]
         if mm := _EXPOSURE.match(msg):
-            return [ExposureStarted(time=t, source=s, index=int(mm.group(2)), duration_s=float(mm.group(1)))]
+            return [ExposureStarted(time=t, source=s, index=int(mm.group(3)),
+                                    duration_s=float(mm.group(1)) * _UNIT_S[mm.group(2)])]
         if mm := _CENTER_END.match(msg):
             text = mm.group(1)
             if "centered" in text:
                 return [AutoCenterResult(time=t, source=s, centered=True, distance_deg=None, message=text)]
             if "slews failed" in text:
                 return [SlewFailed(time=t, source=s, message=text)]
+            if text.startswith(("Exposure failed", "Plate Solve failed")):
+                return [AutoCenterResult(time=t, source=s, centered=False, distance_deg=None, message=text)]
             if "Too far" in text:
                 d = _DISTANCE.search(text)
                 return [AutoCenterResult(time=t, source=s, centered=False,
@@ -86,6 +112,10 @@ class AsiairAutorunParser:
             return [TrackingChanged(time=t, source=s, on=msg.startswith("Start"))]
         if msg == "[Guide] Settle Timeout":
             return [SettleFailed(time=t, source=s, message="ASIAIR settle timeout")]
+        if msg == "[Guide] Settle failed":
+            return [SettleFailed(time=t, source=s, message="ASIAIR settle failed")]
+        if msg == "[Guide] Start Tracking failed":
+            return [TrackingChanged(time=t, source=s, on=False), TrackingStartFailed(time=t, source=s)]
         if msg == "[Guide] Guide star lost":
             return [StarLost(time=t, source=s, reason="ASIAIR: guide star lost")]
         if msg.startswith("[Guide] Select Guide Star failed"):

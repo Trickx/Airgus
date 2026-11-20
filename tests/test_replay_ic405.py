@@ -35,9 +35,13 @@ def first(alerts, key):
 
 def test_flip_problems_detected(alerts):
     assert first(alerts, "auto-center").time.strftime("%H:%M") == "02:02"
-    assert first(alerts, "flip-failed").time.strftime("%H:%M") == "03:01"
-    assert first(alerts, "flip-no-side-change").time.strftime("%H:%M") == "03:01"
     assert first(alerts, "past-meridian").time.strftime("%H:%M") == "03:03"
+
+
+def test_manual_stop_is_not_a_failed_flip(alerts):
+    # 03:01:51 "Stop Autorun Manually": the cancelled center and flip that follow are the user's doing,
+    # the stuck flip itself was already reported at 02:02 (endless auto-center).
+    assert not [a for a in alerts if a.key in ("flip-failed", "flip-no-side-change")]
 
 
 def test_runaway_detected(alerts):

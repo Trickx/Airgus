@@ -14,6 +14,8 @@ saturation = 0.9           # pulse >= 90 % of max duration counts as "at the lim
 
 [rules.star-lost]
 min_lost_s = 15            # ignore shorter drop-outs
+repeat_count = 3           # from this many losses within the window: one summary per window
+repeat_window_min = 60.0
 
 [rules.settle]
 count = 3                  # settle failures ...
