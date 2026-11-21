@@ -4,7 +4,7 @@
 Live monitor for ZWO ASIAIR and N.I.N.A. – guiding, meridian flips, tracking, frozen sessions – with
 alerts on your phone via Pushover.</p>
 
-<p align="center"><img src="docs/airgus-verbindungen.drawio.svg" alt="How Airgus connects: ASIAIR and NINA PC to Airgus, Airgus to browser and via Pushover to the smartphone" width="100%"></p>
+<p align="center"><img src="docs/airgus-connections.drawio.svg" alt="How Airgus connects: ASIAIR and NINA PC to Airgus, Airgus to browser and via Pushover to the smartphone" width="100%"></p>
 
 ## Highlights
 
@@ -24,7 +24,7 @@ alerts on your phone via Pushover.</p>
 
 ## How it works
 
-<p align="center"><img src="docs/airgus-architektur.drawio.svg" alt="Architecture: inputs, adapters, domain events, engine with state and rules, outputs" width="100%"></p>
+<p align="center"><img src="docs/airgus-architecture.drawio.svg" alt="Architecture: inputs, adapters, domain events, engine with state and rules, outputs" width="100%"></p>
 
 Every source is translated into the same system-neutral events (`airgus/events.py`); the rules only see
 those events, never log text. Adding a system means adding one parser. When a live connection and a log
