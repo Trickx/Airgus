@@ -301,6 +301,40 @@ class MountMotion(ControllerEvent):
 
 
 @dataclass(frozen=True, kw_only=True)
+class NinaConnected(ControllerEvent):
+    """Live connection to NINA's Advanced API (WebSocket) is up."""
+
+    host: str
+    version: str | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class NinaDisconnected(ControllerEvent):
+    host: str
+    reason: str
+
+
+@dataclass(frozen=True, kw_only=True)
+class ImageSaved(Event):
+    """NINA saved an image (Advanced API "IMAGE-SAVE"), with its statistics."""
+
+    frame_type: str            # light / flat / dark / bias / snapshot
+    duration_s: float | None = None
+    target: str | None = None
+    filter: str | None = None
+    hfr: float | None = None
+    stars: int | None = None
+
+
+@dataclass(frozen=True, kw_only=True)
+class SequenceStepFailed(Event):
+    """A sequence instruction failed (NINA "SEQUENCE-ENTITY-FAILED")."""
+
+    step: str
+    error: str
+
+
+@dataclass(frozen=True, kw_only=True)
 class MainCameraStatus(ControllerEvent):
     """Answer to get_camera_state on port 4700 (only answered to a verified client, i.e. the ASIAIR app; seen in recordings)."""
 

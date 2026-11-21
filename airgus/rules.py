@@ -13,6 +13,9 @@ from typing import Iterable
 
 from .alerts import Alert, Severity
 from .events import (
+    SequenceStepFailed,
+    ImageSaved,
+    AutofocusCompleted,
     ApplicationError,
     AutoCenterResult,
     CalibrationFailed,
@@ -449,7 +452,8 @@ class CaptureStalledRule(Rule):
             self._flip_active = False
             self._last_start = ev.time if self._last_start else None  # count again from the end of the flip
             self._duration = timedelta(0)
-        elif isinstance(ev, ExposureStarted) or (isinstance(ev, ExposureProgress) and ev.state == "start"):
+        elif (isinstance(ev, (ExposureStarted, ImageSaved))
+              or (isinstance(ev, ExposureProgress) and ev.state == "start")):
             if self._alerted:
                 yield self.alert(ev.time, Severity.INFO, "Belichtungen laufen wieder",
                                  f"Nach {(ev.time - self._last_start).total_seconds() / 60:.0f} min ohne neue "
@@ -567,7 +571,8 @@ class DeviceLostRule(Rule):
     def __init__(self) -> None:
         self._last: DeviceStatus | None = None
 
-    NINA_DEVICES = {"mount": ("Montierung", "zur"), "camera": ("Kamera", "zur"), "focuser": ("Fokussierer", "zum")}
+    NINA_DEVICES = {"mount": ("Montierung", "zur"), "camera": ("Kamera", "zur"), "focuser": ("Fokussierer", "zum"),
+                    "guider": ("Guider", "zum"), "filterwheel": ("Filterrad", "zum"), "rotator": ("Rotator", "zum")}
 
     def on_event(self, ev: Event, state: RigState) -> Iterable[Alert]:
         if isinstance(ev, DeviceConnection):  # NINA log; outside a sequence (e.g. closing NINA) not of interest
@@ -712,6 +717,12 @@ class MountHomeRule(Rule):
     cooldown = timedelta(minutes=1)
 
     def on_event(self, ev: Event, state: RigState) -> Iterable[Alert]:
+        if isinstance(ev, MountMotion) and ev.kind == "Park" and ev.state == "complete":
+            if state.imaging:
+                yield self.alert(ev.time, Severity.WARNING, "Montierung geparkt",
+                                 f"Die Montierung wurde während der Sequenz geparkt. {_where(state, ev.time)}".strip(),
+                                 key="mount-parked")
+            return
         if not isinstance(ev, MountMotion) or ev.kind != "Home":
             return
         if ev.state == "working" and state.imaging:
@@ -730,6 +741,10 @@ class ApplicationErrorRule(Rule):
     cooldown = timedelta(minutes=5)
 
     def on_event(self, ev: Event, state: RigState) -> Iterable[Alert]:
+        if isinstance(ev, SequenceStepFailed):
+            yield self.alert(ev.time, Severity.WARNING if state.imaging else Severity.INFO,
+                             "Sequenzschritt fehlgeschlagen", f"{ev.step}: {ev.error}".strip(": "), key="step-failed")
+            return
         if not isinstance(ev, ApplicationError):
             return
         if ev.fatal:
@@ -740,6 +755,18 @@ class ApplicationErrorRule(Rule):
         else:
             yield self.alert(ev.time, Severity.INFO, "Fehler im Aufnahmeprogramm",
                              f"{ev.message} (das Programm läuft weiter).", key="app-error")
+
+
+class AutofocusRule(Rule):
+    """Autofocus failed (ASIAIR log, NINA log or NINA Advanced API "ERROR-AF")."""
+
+    name = "autofocus"
+    cooldown = timedelta(minutes=15)
+
+    def on_event(self, ev: Event, state: RigState) -> Iterable[Alert]:
+        if isinstance(ev, AutofocusCompleted) and not ev.success:
+            yield self.alert(ev.time, Severity.WARNING, "Autofokus fehlgeschlagen",
+                             f"{ev.message}. Fokus prüfen (Wolken, zu wenige Sterne?). {_where(state, ev.time)}".strip())
 
 
 class ControllerHealthRule(Rule):
@@ -791,7 +818,7 @@ class WifiRule(Rule):
 
 
 class ControllerOfflineRule(Rule):
-    """Live connection to the ASIAIR lost while a sequence runs (power, crash, WLAN)."""
+    """Live connection to the ASIAIR or to NINA (Advanced API) lost while a sequence runs."""
 
     name = "controller-offline"
     cooldown = timedelta(minutes=30)
@@ -807,11 +834,17 @@ class ControllerOfflineRule(Rule):
             yield self.alert(now, Severity.HIGH, "ASIAIR nicht erreichbar",
                              f"Keine Verbindung zu {c.host} seit {mins:.0f} min, obwohl eine Sequenz läuft "
                              f"(Stromversorgung, Absturz, WLAN?).")
+        if c.nina_connected is False and c.nina_disconnected_since and state.imaging \
+                and now - c.nina_disconnected_since >= self.offline:
+            mins = (now - c.nina_disconnected_since).total_seconds() / 60
+            yield self.alert(now, Severity.HIGH, "NINA nicht erreichbar",
+                             f"Keine Verbindung zur Advanced API auf {c.nina_host} seit {mins:.0f} min, obwohl eine "
+                             f"Sequenz läuft (NINA abgestürzt, PC aus, Netzwerk?).", key="nina-offline")
 
 
 RULE_CLASSES: list[type[Rule]] = [RunawayRule, StarLostRule, CalibrationRule, SettleRule, MeridianFlipRule,
                                    PastMeridianRule, RmsRule, SnrDropRule, StaleLogRule, CaptureStalledRule, TrackingOffRule,
-                                   PlateSolveRule, DeviceLostRule, MainCameraRule, FocuserRule, MountHomeRule, ApplicationErrorRule,
+                                   PlateSolveRule, DeviceLostRule, MainCameraRule, FocuserRule, MountHomeRule, ApplicationErrorRule, AutofocusRule,
                                    ControllerHealthRule, WifiRule, ControllerOfflineRule]
 
 

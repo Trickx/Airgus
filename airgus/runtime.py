@@ -22,6 +22,7 @@ from .settings import SettingsStore
 from .fs import MultiFS, SmbFS
 from .sources import FolderTail, log_files, replay
 from .timeline import Timeline
+from .nina_api import RECORD_PREFIX as NINA_RECORD_PREFIX, NinaApiClient
 
 PACKAGE_DIR = Path(__file__).resolve().parent
 
@@ -226,9 +227,17 @@ class Monitor:
                                 recorder=Recorder(folder, ch.record_prefix) if cfg["record"] else None)
                 for ch, port in channels]
 
+    def _nina_clients(self) -> list[NinaApiClient]:
+        cfg = self.store.get()["nina"]
+        if not cfg["enabled"] or not cfg["host"]:
+            return []
+        folder = self.store.path.parent / "recordings"
+        return [NinaApiClient(cfg["host"], self._handle, port=int(cfg["port"]),
+                              recorder=Recorder(folder, NINA_RECORD_PREFIX) if cfg["record"] else None)]
+
     async def _run_live(self, tail: FolderTail, interval_s: float) -> None:
         self.tail = tail
-        rpcs = [asyncio.create_task(c.run()) for c in self._asiair_clients()]
+        rpcs = [asyncio.create_task(c.run()) for c in [*self._asiair_clients(), *self._nina_clients()]]
         self.status = RunStatus.RUNNING
         try:
             while True:

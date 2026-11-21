@@ -2,7 +2,7 @@ const $ = (sel) => document.querySelector(sel);
 const RULE_LABELS = {
   "runaway": "Stern läuft davon", "star-lost": "Leitstern verloren", "calibration": "Kalibrierung", "settle": "Settle-Fehler",
   "meridian-flip": "Meridian-Flip", "past-meridian": "Hinter dem Meridian", "rms": "Guiding-RMS",
-  "snr-drop": "SNR-Abfall", "stale-log": "Log steht still", "capture-stalled": "Aufnahme hängt", "tracking-off": "Nachführung aus",
+  "snr-drop": "SNR-Abfall", "stale-log": "Log steht still", "capture-stalled": "Aufnahme hängt", "autofocus": "Autofokus", "tracking-off": "Nachführung aus",
   "plate-solve": "Plate Solve", "device-lost": "Gerät getrennt", "main-camera": "Hauptkamera", "focuser": "Fokussierer", "mount-home": "Home-Position", "app-error": "Aufnahmeprogramm",
   "controller-health": "ASIAIR-Stromversorgung/Temperatur", "wifi": "ASIAIR-WLAN",
   "controller-offline": "ASIAIR nicht erreichbar",
@@ -143,15 +143,22 @@ function markStale(c, pose) {
 }
 
 function renderController(c) {
-  const show = !!c && c.connected !== null;
+  const show = !!c && (c.connected !== null || (c.nina_connected !== null && c.nina_connected !== undefined));
   // rows from the live ASIAIR connection are hidden without one (e.g. replaying old logs)
   document.body.classList.toggle("no-live", !show);
   if (!show) return;
   // Two connections: port 4700 (imager) and port 4400 (guider and mount; null = switched off).
   const off4700 = c.connected === false, off4400 = c.guider_connected === false;
-  $("#c-conn").textContent = off4700 && off4400 ? "getrennt" : off4700 ? "Port 4700 getrennt"
-    : off4400 ? "Port 4400 getrennt" : "verbunden";
-  $("#c-conn").classList.toggle("bad", !!(off4700 || off4400));
+  const parts = [];
+  if (c.connected !== null) {
+    parts.push(off4700 && off4400 ? "ASIAIR getrennt" : off4700 ? "ASIAIR: Port 4700 getrennt"
+      : off4400 ? "ASIAIR: Port 4400 getrennt" : "ASIAIR verbunden");
+  }
+  if (c.nina_connected === true || c.nina_connected === false) {
+    parts.push(c.nina_connected ? "NINA verbunden" : "NINA getrennt");
+  }
+  $("#c-conn").textContent = parts.join(" · ") || "–";
+  $("#c-conn").classList.toggle("bad", !!(off4700 || off4400 || c.nina_connected === false));
   // Guiding state live from the guider while connected (otherwise the log value stays)
   const gs = { Guiding: "guidet", Stopped: "aus", Looping: "Belichtungsschleife", LostLock: "Stern verloren",
     Paused: "pausiert", Calibrating: "kalibriert", Selected: "Stern gewählt" };
@@ -466,6 +473,10 @@ async function loadSettings() {
   $("#as-record").checked = settings.asiair.record;
   $("#as-guider").checked = settings.asiair.guider;
   $("#as-guider-port").value = settings.asiair.guider_port;
+  $("#ni-enabled").checked = settings.nina.enabled;
+  $("#ni-host").value = settings.nina.host;
+  $("#ni-port").value = settings.nina.port;
+  $("#ni-record").checked = settings.nina.record;
 
   const smb = settings.smb;
   $("#smb-server").value = smb.server; $("#smb-shares").value = smb.shares.join("\n");
@@ -583,6 +594,13 @@ async function init() {
       guider: $("#as-guider").checked, guider_port: Number($("#as-guider-port").value) } };
     try { await api("/api/settings", { method: "PUT", body });
       toast("ASIAIR-Einstellungen gespeichert – gelten ab dem nächsten Start"); }
+    catch (e) { toast(`Speichern fehlgeschlagen: ${e.message}`); }
+  });
+  $("#ni-save").addEventListener("click", async () => {
+    const body = { nina: { enabled: $("#ni-enabled").checked, host: $("#ni-host").value.trim(),
+      port: Number($("#ni-port").value), record: $("#ni-record").checked } };
+    try { await api("/api/settings", { method: "PUT", body });
+      toast("NINA-Einstellungen gespeichert – gelten ab dem nächsten Start"); }
     catch (e) { toast(`Speichern fehlgeschlagen: ${e.message}`); }
   });
   $("#rules-form").addEventListener("submit", saveRules);

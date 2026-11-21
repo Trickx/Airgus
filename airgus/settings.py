@@ -22,6 +22,7 @@ DEFAULTS: dict = {
     "asiair": {"enabled": False, "host": "asiair.local", "port": 4700, "guider": True, "guider_port": 4400,
                "record": True},
     # Each entry: "<share>/<path>". The ASIAIR writes logs to the storage selected in the app.
+    "nina": {"enabled": False, "host": "", "port": 1888, "record": True},
     "smb": {"server": "asiair.local", "shares": ["TF Images/ASIAIR/log", "EMMC Images/log"], "username": "",
             "password": "", "max_age_h": 12.0},
     "source": {"mode": "replay", "location": "local", "folder": "", "speed": 60.0, "interval_s": 5.0,
@@ -101,6 +102,8 @@ class SettingsStore:
             patch["smb"] = self._validate_smb(patch["smb"])
         if "asiair" in patch:
             patch["asiair"] = self._validate_asiair(patch["asiair"])
+        if "nina" in patch:
+            patch["nina"] = self._validate_nina(patch["nina"])
         if "rules" in patch:
             patch["rules"] = self._validate_rules(patch["rules"])
             with self._lock:
@@ -173,6 +176,26 @@ class SettingsStore:
                 if not 1 <= port <= 65535:
                     raise ValueError("port must be between 1 and 65535")
                 out[key] = port
+        return out
+
+    @staticmethod
+    def _validate_nina(opts: dict) -> dict:
+        out: dict = {}
+        for key in ("enabled", "record"):
+            if key in opts:
+                out[key] = bool(opts[key])
+        if "host" in opts:
+            host = str(opts["host"]).strip()
+            if any(c.isspace() or c in "/:@" for c in host):
+                raise ValueError("host must be a plain host name or IP address")
+            out["host"] = host
+        if "port" in opts:
+            port = int(opts["port"])
+            if not 1 <= port <= 65535:
+                raise ValueError("port must be between 1 and 65535")
+            out["port"] = port
+        if out.get("enabled") and not out.get("host", "x"):
+            raise ValueError("host is required")
         return out
 
     @staticmethod

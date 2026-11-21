@@ -16,6 +16,7 @@ from .events import (
     ExposureProgress,
     ExposureStarted,
     GuideFrame,
+    ImageSaved,
     MountStatus,
     Source,
     TrackingChanged,
@@ -50,6 +51,7 @@ class Timeline:
         self.guiding: set[datetime] = set()
         self.tracking: list[tuple[datetime, bool]] = []
         self.alerts: list[Alert] = []
+        self._log_exposure: datetime | None = None
 
     def add(self, ev: Event) -> None:
         t = ev.time
@@ -61,7 +63,12 @@ class Timeline:
         lane = SOURCE_LANES.get(ev.source)
         if lane and not isinstance(ev, ControllerEvent):  # log lines, not the live status reports
             self.activity.setdefault(lane, set()).add(_bucket(t))
-        if isinstance(ev, ExposureStarted) or (isinstance(ev, ExposureProgress) and ev.state == "start"):
+        if isinstance(ev, ExposureStarted):
+            self._log_exposure = t
+        if isinstance(ev, ImageSaved) and self._log_exposure and t - self._log_exposure < timedelta(minutes=15):
+            return  # the log already marks this exposure at its start
+        if (isinstance(ev, (ExposureStarted, ImageSaved))
+                or (isinstance(ev, ExposureProgress) and ev.state == "start")):
             # live and log report the same exposure: keep one
             if not self.exposures or abs(t - self.exposures[-1]) > timedelta(seconds=30):
                 self.exposures.append(t)

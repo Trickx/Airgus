@@ -8,6 +8,13 @@ from typing import Iterable, Protocol
 
 from .alerts import Alert, Severity
 from .events import (
+    AutofocusCompleted,
+    DeviceConnection,
+    MeridianFlipCompleted,
+    MeridianFlipStarted,
+    SequenceEnded,
+    SequenceStarted,
+
     Dither,
     Event,
     GuideFrame,
@@ -24,6 +31,10 @@ log = logging.getLogger(__name__)
 
 # Guide-log events that the live guider connection reports as well (and earlier).
 LIVE_GUIDER_DUPLICATES = (GuideFrame, StarLost, SettleCompleted, SettleFailed, Dither, GuidingStopped)
+# What the NINA log repeats while the Advanced API delivers it live (the log keeps the rest, e.g.
+# exposure starts, tracking stops during a flip, settle errors, crashes).
+LIVE_NINA_DUPLICATES = (SequenceStarted, SequenceEnded, MeridianFlipStarted, MeridianFlipCompleted,
+                        AutofocusCompleted, DeviceConnection)
 
 
 class Notifier(Protocol):
@@ -55,8 +66,13 @@ class Engine:
 
         The log's guiding header (pier side, hour angle, pixel scale) is still used.
         """
-        return (not ev.live and ev.source is Source.PHD2 and isinstance(ev, LIVE_GUIDER_DUPLICATES)
-                and self.state.controller.guider_connected is True)
+        if ev.live:
+            return False
+        if ev.source is Source.PHD2 and isinstance(ev, LIVE_GUIDER_DUPLICATES):
+            return self.state.controller.guider_connected is True
+        if ev.source is Source.NINA and isinstance(ev, LIVE_NINA_DUPLICATES):
+            return self.state.controller.nina_connected is True
+        return False
 
     def tick(self, now: datetime) -> list[Alert]:
         out: list[Alert] = []

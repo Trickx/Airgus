@@ -34,6 +34,9 @@ def parser_for(path: str | PurePath) -> LineParser | None:
         return NinaParser()
     if name.startswith("iOptronCommander") and "Log_" in name and name.endswith(".txt"):
         return IoptronParser()
+    if name.startswith("Airgus_NINA_") and name.endswith(".jsonl"):
+        from ..nina_api import NinaRecordParser
+        return NinaRecordParser()
     if name.startswith("Airgus_ASIAIR") and name.endswith(".jsonl"):
         from ..asiair_rpc import record_parser_for
         return record_parser_for(name)

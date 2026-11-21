@@ -22,6 +22,9 @@ from .events import (
     MainCameraStatus,
     MountMotion,
     MountStatus,
+    NinaConnected,
+    NinaDisconnected,
+    ImageSaved,
     FocuserPosition,
     GuiderConnected,
     GuiderDisconnected,
@@ -89,6 +92,10 @@ class ControllerState:
     site_lat: float | None = None
     site_lon: float | None = None
     mount_motion: dict | None = None  # last ScopeHome / ScopeGoto ...: kind, state, time
+    nina_host: str | None = None
+    nina_connected: bool | None = None  # None = NINA live not configured / not seen
+    nina_disconnected_since: datetime | None = None
+    nina_version: str | None = None
     solve: dict | None = None     # last plate solve
 
     def apply(self, ev: ControllerEvent) -> None:
@@ -112,6 +119,13 @@ class ControllerState:
                 self.guider_state = ev.app_state
             if ev.pixel_scale:
                 self.guider_pixel_scale = ev.pixel_scale
+        elif isinstance(ev, NinaConnected):
+            self.nina_host, self.nina_connected, self.nina_disconnected_since = ev.host, True, None
+            self.nina_version = ev.version
+        elif isinstance(ev, NinaDisconnected):
+            if self.nina_connected is not False:
+                self.nina_disconnected_since = ev.time
+            self.nina_host, self.nina_connected = ev.host, False
         elif isinstance(ev, MountStatus):
             if ev.ra_h is not None and ev.dec_deg is not None and ev.lst_h is not None:
                 self.mount_ra_h, self.mount_dec, self.mount_lst_h = ev.ra_h, ev.dec_deg, ev.lst_h
@@ -208,6 +222,7 @@ class ControllerState:
             "mount_hour_angle": self.live_hour_angle(), "mount_tracking": self.mount_tracking,
             "mount_pos_time": self.mount_pos_time.isoformat() if self.mount_pos_time else None,
             "mount_motion": self.mount_motion, "site_lat": self.site_lat, "site_lon": self.site_lon,
+            "nina_connected": self.nina_connected, "nina_host": self.nina_host, "nina_version": self.nina_version,
         }
 
 
@@ -243,11 +258,15 @@ class RigState:
         self.last_event_time = ev.time
         if isinstance(ev, SequenceStarted):
             self.sequence_active = True
-            self.target = ev.target
+            self.target = ev.target or self.target  # the NINA API does not name the target here
             self.frame_type = None
             self.sequence_started = ev.time
         elif isinstance(ev, FramesStarted):
             self.frame_type = ev.frame_type
+        elif isinstance(ev, ImageSaved):
+            self.frame_type = ev.frame_type
+            if ev.target:
+                self.target = ev.target
         elif isinstance(ev, SequenceEnded):
             self.sequence_active = False
         elif isinstance(ev, ExposureStarted):

@@ -30,10 +30,11 @@ Web UI, runs in Docker.
 | `main-camera` | Main camera: every `CameraStateChange` on port 4700 is listed (the event does not say whether it was connected or disconnected; warning during a sequence), high if no exposure starts within 3 min; port 4700 queries such as `get_camera_state` are only answered to the verified ASIAIR app ¹ | warning / high / info |
 | `focuser` | EAF: reopened during a sequence (port 4700 `OpenEAF`; closing sends nothing) is a warning; the live position (`get_focuser_info`) is only answered to the verified ASIAIR app ¹ | high / warning / info |
 | `mount-home` | Mount driven to its home position (port 4400 `ScopeHome`): warning while a sequence runs, info when it arrives ¹ | warning / info |
+| `autofocus` | Autofocus failed (ASIAIR / NINA logs, NINA live `ERROR-AF`) | warning |
 | `app-error` | Unhandled exception in NINA: a crash is high during a sequence (warning otherwise), others are listed | high / warning / info |
 | `controller-health` | ASIAIR reports undervoltage, overcurrent or overheating ¹ | high / warning |
 | `wifi` | ASIAIR WLAN signal stays weak ¹ | warning |
-| `controller-offline` | Live connection to the ASIAIR lost while a sequence runs ¹ | high |
+| `controller-offline` | Live connection to the ASIAIR or to NINA (Advanced API) lost while a sequence runs ¹ | high |
 
 ¹ needs the live ASIAIR connection.
 
@@ -51,6 +52,31 @@ consequence of stopping by hand and are not reported.
 
 Put the logs of one night (or one system) in a folder below the log folder; replay merges all files
 in time order. After a NINA "Sequence run was cancelled", centering or settle failures are not reported.
+
+## Connections
+
+<p align="center"><img src="docs/airgus-verbindungen.drawio.svg" alt="Connections between ASIAIR, NINA PC, Airgus, browser, Pushover and smartphone" width="100%"></p>
+
+Arrows show where data flows. Airgus opens every connection itself, except the browser that opens the
+web UI, and never sends control commands:
+
+| From → to | Connection | Carries |
+|---|---|---|
+| ASIAIR → Airgus | SMB 445 (guest, read only) | Autorun and PHD2 logs from `TF Images/ASIAIR/log` and `EMMC Images/log` |
+| ASIAIR → Airgus | TCP 4700, JSON-RPC | broadcast events: exposures, plate solves, main camera and EAF changes, temperature, power, WLAN |
+| ASIAIR → Airgus | TCP 4400, JSON-RPC | guiding events, guide camera and mount connection, position, pier side, tracking, GoTo / home |
+| NINA PC → Airgus | SMB 445 (read only) | NINA, PHD2 and iOptron Commander logs |
+| NINA PC → Airgus | TCP 1888, WebSocket + REST ("Advanced API" plugin) | live events: images with HFR / stars, sequence start / end, flips, autofocus and plate-solve errors, device connects; mount position |
+| Browser → Airgus | HTTP 8080 | web UI, live updates by server-sent events |
+| Airgus → Pushover → smartphone | HTTPS 443, then Apple / Google push | alerts from warning upwards (configurable) |
+| Airgus → Home Assistant | MQTT | planned |
+
+The ASIAIR app talks to the same ports, but logs in with a challenge-response (`get_verify_str` /
+`verify_client`, signed with a key inside the app). Airgus does not do that, so port 4700 only gives it
+the events every client receives; port 4400 needs no login.
+
+The diagram is a draw.io file with the drawing embedded: open `docs/airgus-verbindungen.drawio.svg` in
+draw.io to edit it.
 
 ## Live logs over SMB
 
@@ -73,12 +99,16 @@ in live mode
 (web UI → Einstellungen → ASIAIR live). ZWO does not document this interface; it was
 reverse-engineered from the ASIAIR app's traffic and may change with any firmware update.
 
-- Airgus only sends read-only requests (`test_connection` as keep-alive every 5 s,
-  `get_disk_volume`, `get_target_sequences`); control commands are refused in code.
+- Airgus only sends read-only requests (`test_connection` as keep-alive every 5 s, `get_*` /
+  `scope_get_*` queries); control commands are refused in code.
 - Events (`PiStatus`: temperature, undervoltage, overcurrent; `Station`: WLAN signal;
   `Sequence`, `AutoExp`) reach every client, also while the ASIAIR app is connected.
-- Queries such as `get_disk_volume` were only answered while no app held the main connection
-  (firmware 14.39); disk and plan values then stay empty.
+- Port 4700 answers queries (`get_disk_volume`, `get_camera_state`, `get_focuser_info`, ...) only to a
+  client that passed the app's challenge-response login, which Airgus does not do; the main camera and
+  EAF are therefore followed through their events (`CameraStateChange`, `OpenEAF`) only.
+- The mount is polled on the guider port every 5 s (`scope_get_ra_dec`, `scope_get_pierside`,
+  `scope_get_track_state`, `scope_get_location` every minute); the 3D view and the meridian countdown use
+  these values, and `ScopeHome` / `ScopeGoto` report each slew once per second.
 - Guide camera and mount are polled with the read-only `get_connected` on the guider port every 5 s
   (the ASIAIR sends no event when they drop); answers are recorded only when they change.
 - The guider port also reports tracking on/off (`ScopeTrack`) the moment it changes, including manual
@@ -88,6 +118,27 @@ reverse-engineered from the ASIAIR app's traffic and may change with any firmwar
   PHD2 log are dropped; the log still supplies pier side and hour angle from its guiding header.
 - Received messages can be recorded to `data/recordings/Airgus_ASIAIR4700_<date>.jsonl`.
   Copied into a log folder, such recordings can be replayed like logs.
+
+## Live connection to NINA (Advanced API plugin)
+
+With the NINA plugin "Advanced API" (christian-photo, API v2) installed and its server enabled, Airgus
+connects in live mode to `ws://<NINA PC>:1888/v2/socket` (web UI → Einstellungen → NINA live) and gets
+NINA's events the moment they happen, instead of waiting for log lines over SMB.
+
+- Mapped events: `IMAGE-SAVE` (image type, exposure, target, HFR, stars), `SEQUENCE-STARTING` /
+  `SEQUENCE-FINISHED`, `SEQUENCE-ENTITY-FAILED`, `MOUNT-BEFORE-FLIP` / `MOUNT-AFTER-FLIP`,
+  `MOUNT-PARKED` / `MOUNT-HOMED`, `AUTOFOCUS-FINISHED`, `ERROR-AF`, `ERROR-PLATESOLVE`,
+  `CAMERA-DOWNLOAD-TIMEOUT` and `<DEVICE>-CONNECTED` / `-DISCONNECTED`; other events are ignored.
+- The mount is read every 5 s from `/v2/api/equipment/mount/info` (position, pier side, tracking) for the
+  3D view and the meridian countdown.
+- Read only: Airgus sends nothing over the socket and only calls `/version` and
+  `/equipment/mount/info`. The plugin also has GET endpoints that move the mount (park, flip, slew);
+  every request is checked against that list in code.
+- While the socket is up, the same events from the NINA log are dropped; the log still supplies exposure
+  starts, tracking stops during a flip, settle errors and crashes. A frozen NINA stops sending images
+  (`capture-stalled`), a lost connection during a sequence raises `controller-offline`.
+- Received events can be recorded to `data/recordings/Airgus_NINA_<date>.jsonl` and replayed like logs.
+- Event names and fields follow the plugin's source (2.2.x); not yet tested against a running NINA.
 
 ## Quick start
 
@@ -149,7 +200,7 @@ Rules never see raw log text, so adding NINA only means adding a parser.
 - [x] Live guiding events from the ASIAIR guider port (4400, PHD2 event format)
 - [x] Built-in SMB client for live logs
 - [x] NINA log adapter (NINA 3.x logs, iOptron Commander serial logs)
-- [ ] live events via the NINA Advanced API plugin
+- [x] live events via the NINA Advanced API plugin
 - [x] Web UI: state, guiding graph, alert history, configuration, replay speed, 3D mount view
 - [ ] Authentication for the web UI (currently binds to localhost by default)
 - [ ] Home Assistant via MQTT discovery (sensors, alert events, mute/acknowledge)

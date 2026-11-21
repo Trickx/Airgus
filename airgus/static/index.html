@@ -103,7 +103,7 @@
       <dt class="live">Hauptkamera</dt><dd class="live" id="c-maincam">–</dd>
       <dt>Fokus (EAF)</dt><dd id="s-focus">–</dd>
     </dl>
-    <h3 class="live">ASIAIR</h3>
+    <h3 class="live">Verbindung &amp; ASIAIR</h3>
     <dl class="grid live">
       <dt>Verbindung</dt><dd id="c-conn">–</dd>
       <dt>Temperatur</dt><dd id="c-temp">–</dd>
@@ -183,6 +183,14 @@
           <p class="muted">Inoffizielle Schnittstelle. Airgus sendet nur lesende Anfragen, nie Steuerbefehle.
             Gilt ab dem nächsten Start.</p>
           <div class="row buttons"><button type="button" id="as-save">Speichern</button></div>
+          <h3>NINA live (Plugin „Advanced API“)</h3>
+          <label class="check"><input type="checkbox" id="ni-enabled"> Im Live-Modus mit NINA verbinden</label>
+          <label>Host oder IP des NINA-PCs <input type="text" id="ni-host" autocomplete="off" spellcheck="false"></label>
+          <label>Port <input type="number" id="ni-port" min="1" max="65535"></label>
+          <label class="check"><input type="checkbox" id="ni-record"> Empfangene Ereignisse aufzeichnen</label>
+          <p class="muted">Braucht das NINA-Plugin „Advanced API“ mit aktiviertem Server (Standard-Port 1888).
+            Airgus liest nur: Ereignisse über den WebSocket und die Position der Montierung. Gilt ab dem nächsten Start.</p>
+          <div class="row buttons"><button type="button" id="ni-save">Speichern</button></div>
         </form>
         <form id="rules-form">
           <h3>Regeln</h3>
