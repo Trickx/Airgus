@@ -1,0 +1,148 @@
+# Airgus dashboard for Home Assistant (only built-in cards).
+# Add it via Settings → Dashboards → Add dashboard → "New dashboard from scratch",
+# then ⋮ → Edit dashboard → ⋮ → Raw configuration editor, and paste this file.
+# Entities are created automatically by Airgus' MQTT discovery (device "Airgus").
+title: Airgus
+views:
+  - title: Night
+    path: night
+    icon: mdi:telescope
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Session
+            icon: mdi:telescope
+          - type: tile
+            entity: binary_sensor.airgus_sequence_running
+            name: Sequence
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: sensor.airgus_target
+            name: Target
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: sensor.airgus_image
+            name: Image
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: sensor.airgus_frame_type
+            name: Frames
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: sensor.airgus_focuser_position
+            name: Focus
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: sensor.airgus_alerts
+            name: Alerts
+            grid_options:
+              columns: 6
+          - type: markdown
+            content: '{% set a = state_attr(''sensor.airgus_last_alert'', ''severity'') %} {% if a %}**{{ a | upper
+              }}** · {{ states(''sensor.airgus_last_alert'') }}<br> {{ state_attr(''sensor.airgus_last_alert'',
+              ''message'') }}<br> <small>{{ as_timestamp(state_attr(''sensor.airgus_last_alert'', ''time'')) | timestamp_custom(''%H:%M'')
+              }}</small> {% else %}No alert yet.{% endif %}'
+            grid_options:
+              columns: full
+      - type: grid
+        cards:
+          - type: heading
+            heading: Guiding
+            icon: mdi:crosshairs-gps
+          - type: tile
+            entity: binary_sensor.airgus_guiding
+            name: Guiding
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: sensor.airgus_guide_star_snr
+            name: SNR
+            grid_options:
+              columns: 6
+          - type: gauge
+            entity: sensor.airgus_guiding_rms
+            name: RMS total
+            min: 0
+            max: 4
+            needle: true
+            severity:
+              green: 0
+              yellow: 1.5
+              red: 2.5
+            grid_options:
+              columns: full
+          - type: history-graph
+            title: RMS (3 h)
+            hours_to_show: 3
+            entities:
+              - entity: sensor.airgus_guiding_rms_ra
+                name: RA
+              - entity: sensor.airgus_guiding_rms_dec
+                name: Dec
+              - entity: sensor.airgus_guiding_rms
+                name: Total
+            grid_options:
+              columns: full
+      - type: grid
+        cards:
+          - type: heading
+            heading: Mount
+            icon: mdi:rotate-orbit
+          - type: tile
+            entity: binary_sensor.airgus_tracking
+            name: Tracking
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: sensor.airgus_meridian_in
+            name: Meridian in
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: sensor.airgus_pier_side
+            name: Pier side
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: sensor.airgus_hour_angle
+            name: Hour angle
+            grid_options:
+              columns: 6
+          - type: heading
+            heading: Connections
+            icon: mdi:lan-connect
+          - type: tile
+            entity: binary_sensor.airgus_asiair_connected
+            name: ASIAIR
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: binary_sensor.airgus_nina_connected
+            name: NINA
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: sensor.airgus_asiair_temperature
+            name: ASIAIR temp.
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: sensor.airgus_asiair_wlan
+            name: WLAN
+            grid_options:
+              columns: 6
+          - type: logbook
+            title: Alerts tonight
+            hours_to_show: 12
+            entities:
+              - event.airgus_alert
+            grid_options:
+              columns: full

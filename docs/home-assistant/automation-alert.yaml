@@ -1,0 +1,20 @@
+# Example automation: forward Airgus alerts from "high" upwards to a phone via the Home Assistant app.
+# Settings → Automations → Create automation → ⋮ → Edit in YAML, paste, and set your notify service.
+alias: Airgus alert to phone
+description: Airgus reports a high or emergency alert
+triggers:
+  - trigger: state
+    entity_id: event.airgus_alert
+conditions:
+  - condition: template
+    value_template: "{{ trigger.to_state.attributes.event_type in ['high', 'emergency'] }}"
+actions:
+  - action: notify.mobile_app_your_phone   # adjust
+    data:
+      title: "Airgus: {{ trigger.to_state.attributes.title }}"
+      message: "{{ trigger.to_state.attributes.message }}"
+      data:
+        push:
+          interruption-level: >-
+            {{ 'critical' if trigger.to_state.attributes.event_type == 'emergency' else 'time-sensitive' }}
+mode: queued

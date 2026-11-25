@@ -23,6 +23,9 @@ DEFAULTS: dict = {
                "record": True},
     # Each entry: "<share>/<path>". The ASIAIR writes logs to the storage selected in the app.
     "nina": {"enabled": False, "host": "", "port": 1888, "record": True},
+    # Home Assistant via MQTT discovery; only published in live mode
+    "mqtt": {"enabled": False, "host": "", "port": 1883, "username": "", "password": "", "tls": False,
+             "topic_prefix": "airgus", "discovery_prefix": "homeassistant"},
     "smb": {"server": "asiair.local", "shares": ["TF Images/ASIAIR/log", "EMMC Images/log"], "username": "",
             "password": "", "max_age_h": 12.0},
     "source": {"mode": "replay", "location": "local", "folder": "", "speed": 60.0, "interval_s": 5.0,
@@ -79,6 +82,7 @@ class SettingsStore:
         }
         smb = data["smb"]
         smb["password_set"] = bool(smb.pop("password"))
+        data["mqtt"]["password_set"] = bool(data["mqtt"].pop("password"))
         return data
 
     # --- writing -----------------------------------------------------------
@@ -104,6 +108,8 @@ class SettingsStore:
             patch["asiair"] = self._validate_asiair(patch["asiair"])
         if "nina" in patch:
             patch["nina"] = self._validate_nina(patch["nina"])
+        if "mqtt" in patch:
+            patch["mqtt"] = self._validate_mqtt(patch["mqtt"])
         if "rules" in patch:
             patch["rules"] = self._validate_rules(patch["rules"])
             with self._lock:
@@ -176,6 +182,38 @@ class SettingsStore:
                 if not 1 <= port <= 65535:
                     raise ValueError("port must be between 1 and 65535")
                 out[key] = port
+        return out
+
+    @staticmethod
+    def _validate_mqtt(opts: dict) -> dict:
+        out: dict = {}
+        for key in ("enabled", "tls"):
+            if key in opts:
+                out[key] = bool(opts[key])
+        if "host" in opts:
+            host = str(opts["host"]).strip()
+            if any(c.isspace() or c in "/:@" for c in host):
+                raise ValueError("host must be a plain host name or IP address")
+            out["host"] = host
+        if "port" in opts:
+            port = int(opts["port"])
+            if not 1 <= port <= 65535:
+                raise ValueError("port must be between 1 and 65535")
+            out["port"] = port
+        if "username" in opts:
+            out["username"] = str(opts["username"]).strip()
+        if opts.get("password"):  # empty = keep the stored one
+            out["password"] = str(opts["password"])
+        if opts.get("clear_password"):
+            out["password"] = ""
+        for key in ("topic_prefix", "discovery_prefix"):
+            if key in opts:
+                value = str(opts[key]).strip().strip("/")
+                if not value or any(c in value for c in "#+ "):
+                    raise ValueError(f"{key} must be a plain MQTT topic")
+                out[key] = value
+        if out.get("enabled") and not out.get("host", "x"):
+            raise ValueError("host is required")
         return out
 
     @staticmethod

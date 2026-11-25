@@ -22,6 +22,7 @@ from .settings import SettingsStore
 from .fs import MultiFS, SmbFS
 from .sources import FolderTail, log_files, replay
 from .timeline import Timeline
+from .mqtt import MqttPublisher
 from .nina_api import RECORD_PREFIX as NINA_RECORD_PREFIX, NinaApiClient
 
 PACKAGE_DIR = Path(__file__).resolve().parent
@@ -85,6 +86,7 @@ class Monitor:
         self._subscribers: set[asyncio.Queue] = set()
         self._frames: deque[dict] = deque(maxlen=FRAME_BUFFER)
         self.timeline = Timeline()
+        self.mqtt: MqttPublisher | None = None
         self._new_frames: list[dict] = []
         self._push_queue: asyncio.Queue[Alert] = asyncio.Queue()
         self._background: list[asyncio.Task] = []
@@ -235,8 +237,26 @@ class Monitor:
         return [NinaApiClient(cfg["host"], self._handle, port=int(cfg["port"]),
                               recorder=Recorder(folder, NINA_RECORD_PREFIX) if cfg["record"] else None)]
 
+    def _start_mqtt(self) -> None:
+        cfg = self.store.get()["mqtt"]
+        if not cfg["enabled"] or not cfg["host"]:
+            return
+        try:
+            self.mqtt = MqttPublisher(cfg)
+            self.mqtt.start()
+        except Exception as exc:  # noqa: BLE001 - monitoring goes on without MQTT
+            log.warning("MQTT not started: %s", exc)
+            self._publish("notice", {"level": "error", "text": f"MQTT nicht gestartet: {exc}"})
+            self.mqtt = None
+
+    def _stop_mqtt(self) -> None:
+        if self.mqtt:
+            self.mqtt.stop()
+            self.mqtt = None
+
     async def _run_live(self, tail: FolderTail, interval_s: float) -> None:
         self.tail = tail
+        self._start_mqtt()
         rpcs = [asyncio.create_task(c.run()) for c in [*self._asiair_clients(), *self._nina_clients()]]
         self.status = RunStatus.RUNNING
         try:
@@ -255,6 +275,7 @@ class Monitor:
         finally:
             for t in rpcs:
                 t.cancel()
+            self._stop_mqtt()
 
     def _handle(self, ev: Event) -> None:
         if self.engine.is_duplicate(ev):
@@ -273,6 +294,8 @@ class Monitor:
 
     def _on_alert(self, alert: Alert) -> None:
         self.timeline.add_alert(alert)
+        if self.mqtt and self.mode == "live":
+            self.mqtt.publish_alert(alert, self.snapshot())
         self._publish("alert", alert_dict(alert))
         if self.mode == "live" or self.push_enabled:
             po = self.store.pushover()
@@ -391,6 +414,8 @@ class Monitor:
     async def _ticker(self) -> None:
         while True:
             await asyncio.sleep(TICK_S)
+            if self.mqtt and self.mode == "live":
+                self.mqtt.publish_state(self.snapshot())
             if self._subscribers:
                 if self._new_frames:
                     self._publish("frames", self._new_frames)

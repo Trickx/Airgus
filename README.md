@@ -2,7 +2,7 @@
 
 <p align="center"><b>Watches your imaging night and wakes you when it goes wrong.</b><br>
 Live monitor for ZWO ASIAIR and N.I.N.A. – guiding, meridian flips, tracking, frozen sessions – with
-alerts on your phone via Pushover.</p>
+alerts on your phone via Pushover and a Home Assistant dashboard over MQTT.</p>
 
 <p align="center"><img src="docs/airgus-connections.drawio.svg" alt="How Airgus connects: ASIAIR and NINA PC to Airgus, Airgus to browser and via Pushover to the smartphone" width="100%"></p>
 
@@ -17,7 +17,8 @@ alerts on your phone via Pushover.</p>
 - **Read only** – Airgus never sends a control command to the ASIAIR or NINA; it is refused in code.
 - **Web UI** – live state, timeline of the night, guiding chart, 3D mount view with meridian countdown,
   replay of past nights at up to 1200× speed.
-- **Runs anywhere** – Python or Docker, alerts via Pushover (Home Assistant / MQTT planned).
+- **Home Assistant** – state and alerts over MQTT with automatic discovery, plus a ready-made dashboard.
+- **Runs anywhere** – Python or Docker, alerts via Pushover.
 
 > **Status:** early prototype, used on real nights. The ASIAIR interface is reverse-engineered and
 > undocumented; the NINA live connection is not yet tested against a running NINA.
@@ -142,9 +143,34 @@ With the NINA plugin *Advanced API* (christian-photo, API v2) and its server ena
 | NINA PC → Airgus | TCP 1888, WebSocket + REST | live events, mount position |
 | Browser → Airgus | HTTP 8080 | web UI, live updates by server-sent events |
 | Airgus → Pushover → phone | HTTPS 443, then Apple / Google push | alerts from warning upwards (configurable) |
-| Airgus → Home Assistant | MQTT | planned |
+| Airgus → MQTT broker → Home Assistant | MQTT 1883 (or TLS), discovery | state every ≤ 5 s, alerts as events |
 
 Airgus opens every connection itself, except the browser's.
+
+## Home Assistant (MQTT)
+
+In live mode Airgus publishes to an MQTT broker (web UI → Einstellungen → Home Assistant). Home
+Assistant's MQTT discovery creates the device **Airgus** with 21 entities and an event entity – no
+custom integration needed:
+
+- binary sensors: sequence running, guiding, tracking, ASIAIR connected, NINA connected
+- sensors: target, image, frame type, guiding RMS (total / RA / Dec), SNR, pier side, hour angle,
+  meridian in, focuser position, ASIAIR temperature and WLAN, last log event, alert count, last alert
+  (severity, message and time as attributes)
+- `event.airgus_alert` with the event types `info`, `warning`, `high`, `emergency` for automations
+
+Topics: `airgus/status` (`online` / `offline`, last will), `airgus/state` (one JSON, retained) and
+`airgus/alert`. Values Airgus does not know are `null` and show as *unknown*; estimates (e.g. a pose from
+the PHD2 log) are not published. Airgus only publishes, it never reads from MQTT.
+
+- [`docs/home-assistant/dashboard.yaml`](docs/home-assistant/dashboard.yaml) – dashboard with built-in
+  cards only: session, guiding gauge and RMS history, mount with meridian countdown, connections,
+  alerts of the night
+- [`docs/home-assistant/automation-alert.yaml`](docs/home-assistant/automation-alert.yaml) – forwards
+  `high` / `emergency` alerts to the Home Assistant app (critical push for emergencies)
+
+Good companions: [AstroWeather](https://github.com/mawinkler/astroweather) (seeing / transparency forecast)
+and [INDI Allsky](https://www.home-assistant.io/integrations/indi_allsky/).
 
 ## Web UI
 
@@ -164,7 +190,8 @@ Airgus opens every connection itself, except the browser's.
 - `airgus/sources.py`, `airgus/fs.py` – replay, live folder tail, SMB client
 - `airgus/state.py`, `airgus/rules.py`, `airgus/engine.py` – state, rules, de-duplication, notification
 - `airgus/runtime.py`, `airgus/web.py`, `airgus/static/` – web UI and its backend
-- `docs/` – draw.io diagrams
+- `airgus/mqtt.py` – MQTT publisher with Home Assistant discovery
+- `docs/` – draw.io diagrams, Home Assistant dashboard and automation
 
 ## Roadmap
 
@@ -173,7 +200,8 @@ Airgus opens every connection itself, except the browser's.
 - [x] NINA and iOptron Commander logs; live events via the NINA Advanced API plugin
 - [x] Web UI: state, timeline, guiding chart, alert history, settings, replay, 3D mount view
 - [ ] Authentication for the web UI (binds to localhost by default)
-- [ ] Home Assistant via MQTT discovery (sensors, alert events, mute/acknowledge)
+- [x] Home Assistant via MQTT discovery (sensors, alert events, example dashboard)
+- [ ] Mute / acknowledge alerts from Home Assistant
 - [ ] Multiple rigs in one instance, SQLite persistence
 - [ ] Twilight-aware suppression of SNR / star-lost alerts
 

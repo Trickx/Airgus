@@ -477,6 +477,12 @@ async function loadSettings() {
   $("#ni-host").value = settings.nina.host;
   $("#ni-port").value = settings.nina.port;
   $("#ni-record").checked = settings.nina.record;
+  $("#mq-enabled").checked = settings.mqtt.enabled;
+  $("#mq-host").value = settings.mqtt.host;
+  $("#mq-port").value = settings.mqtt.port;
+  $("#mq-user").value = settings.mqtt.username;
+  $("#mq-tls").checked = settings.mqtt.tls;
+  $("#mq-password").placeholder = settings.mqtt.password_set ? "gespeichert – leer lassen zum Behalten" : "";
 
   const smb = settings.smb;
   $("#smb-server").value = smb.server; $("#smb-shares").value = smb.shares.join("\n");
@@ -601,6 +607,14 @@ async function init() {
       port: Number($("#ni-port").value), record: $("#ni-record").checked } };
     try { await api("/api/settings", { method: "PUT", body });
       toast("NINA-Einstellungen gespeichert – gelten ab dem nächsten Start"); }
+    catch (e) { toast(`Speichern fehlgeschlagen: ${e.message}`); }
+  });
+  $("#mq-save").addEventListener("click", async () => {
+    const body = { mqtt: { enabled: $("#mq-enabled").checked, host: $("#mq-host").value.trim(),
+      port: Number($("#mq-port").value), username: $("#mq-user").value.trim(), tls: $("#mq-tls").checked } };
+    if ($("#mq-password").value) body.mqtt.password = $("#mq-password").value;
+    try { await api("/api/settings", { method: "PUT", body }); $("#mq-password").value = "";
+      toast("MQTT-Einstellungen gespeichert – gelten ab dem nächsten Start"); await loadSettings(); }
     catch (e) { toast(`Speichern fehlgeschlagen: ${e.message}`); }
   });
   $("#rules-form").addEventListener("submit", saveRules);

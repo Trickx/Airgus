@@ -13,6 +13,7 @@ dependencies = [
     "fastapi>=0.115",
     "uvicorn[standard]>=0.30",
     "websockets>=12",
+    "paho-mqtt>=2.0",
     "smbprotocol>=1.13",
 ]
 

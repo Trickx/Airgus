@@ -191,6 +191,16 @@
           <p class="muted">Braucht das NINA-Plugin „Advanced API“ mit aktiviertem Server (Standard-Port 1888).
             Airgus liest nur: Ereignisse über den WebSocket und die Position der Montierung. Gilt ab dem nächsten Start.</p>
           <div class="row buttons"><button type="button" id="ni-save">Speichern</button></div>
+          <h3>Home Assistant (MQTT)</h3>
+          <label class="check"><input type="checkbox" id="mq-enabled"> Im Live-Modus Zustand und Meldungen per MQTT senden</label>
+          <label>Broker (Host oder IP) <input type="text" id="mq-host" autocomplete="off" spellcheck="false"></label>
+          <label>Port <input type="number" id="mq-port" min="1" max="65535"></label>
+          <label>Benutzer <input type="text" id="mq-user" autocomplete="off" spellcheck="false"></label>
+          <label>Passwort <input type="password" id="mq-password" autocomplete="new-password" placeholder="unverändert"></label>
+          <label class="check"><input type="checkbox" id="mq-tls"> TLS</label>
+          <p class="muted">Home Assistant legt das Gerät „Airgus“ automatisch an (MQTT-Discovery). Beispiel-Dashboard:
+            docs/home-assistant/dashboard.yaml. Gilt ab dem nächsten Start.</p>
+          <div class="row buttons"><button type="button" id="mq-save">Speichern</button></div>
         </form>
         <form id="rules-form">
           <h3>Regeln</h3>
